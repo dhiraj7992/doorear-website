@@ -68,7 +68,7 @@ const Footer = () => {
         </div>
         <div className='pt-4 flex flex-col sm:flex-row gap-4 items-center justify-between border-t border-t-white/30'>
           <h4 className='text-lg text-center md:text-start font-normal text-white/60'>
-            @2026.All rights reserved by: doorear.com{' '}
+            @2026.All rights reserved by - doorear.com{' '}
           </h4>
           <div className='flex gap-5  justify-center items-center md:justify-start'>
             <h4 className='text-lg font-normal text-white/60 hover:text-white'>
