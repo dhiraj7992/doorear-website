@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
+import { LinkButton } from '@/components/ui'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -60,17 +61,21 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.14 }}
               className='mt-10 flex flex-wrap items-center gap-4'>
-              <Link
+              <LinkButton
                 href={APP_SIGNUP_URL}
-                className='group inline-flex items-center gap-2 rounded-xl bg-[var(--app-primary)] px-6 py-3.5 text-base font-semibold text-white shadow-md shadow-blue-500/25 transition hover:opacity-95'>
+                variant='primary'
+                size='hero'
+                className='group'>
                 Get Started
                 <ArrowRight className='h-4 w-4 transition group-hover:translate-x-0.5' />
-              </Link>
-              <Link
+              </LinkButton>
+              <LinkButton
                 href='/contact'
-                className='inline-flex rounded-xl border border-[var(--app-border)] bg-[var(--app-card)] px-6 py-3.5 text-base font-semibold text-[var(--app-foreground)] shadow-sm transition hover:border-[var(--app-primary)]/30 hover:bg-[var(--app-surface)]'>
+                variant='secondary'
+                size='hero'
+                secondaryTone='card'>
                 Book Demo
-              </Link>
+              </LinkButton>
             </motion.div>
           </div>
 

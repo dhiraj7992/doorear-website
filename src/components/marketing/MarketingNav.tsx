@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { Menu, X } from 'lucide-react'
+import { LinkButton } from '@/components/ui'
 import MarketingLogo from './MarketingLogo'
 import { APP_LOGIN_URL, APP_SIGNUP_URL, NAV_LINKS } from './site-config'
 
@@ -52,21 +53,24 @@ export default function MarketingNav() {
         </nav>
 
         <div className='flex items-center gap-2 sm:gap-3'>
-          <Link
+          <LinkButton
             href='/contact'
-            className='hidden rounded-xl border border-white/20 px-3 py-2 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:inline-flex'>
+            variant='outlineOnDark'
+            size='nav'>
             Book Demo
-          </Link>
-          <Link
+          </LinkButton>
+          <LinkButton
             href={APP_SIGNUP_URL}
-            className='inline-flex rounded-xl bg-[var(--app-primary)] px-3 py-2 text-sm font-semibold text-white shadow-sm transition-opacity hover:opacity-90 sm:px-4'>
+            variant='primary'
+            size='nav'>
             Get Started
-          </Link>
-          <Link
+          </LinkButton>
+          <LinkButton
             href={APP_LOGIN_URL}
-            className='hidden text-sm font-medium text-white/80 underline-offset-4 hover:text-white hover:underline md:inline'>
+            variant='ghostOnDark'
+            size='nav'>
             Sign in
-          </Link>
+          </LinkButton>
           <button
             type='button'
             className='inline-flex rounded-lg p-2 text-white lg:hidden'
@@ -94,18 +98,20 @@ export default function MarketingNav() {
                 {item.label}
               </Link>
             ))}
-            <Link
+            <LinkButton
               href='/contact'
-              onClick={() => setOpen(false)}
-              className='mt-2 rounded-xl border border-white/20 px-3 py-2.5 text-center text-sm font-medium'>
+              variant='outlineOnDark'
+              size='navDrawer'
+              onClick={() => setOpen(false)}>
               Book Demo
-            </Link>
-            <Link
+            </LinkButton>
+            <LinkButton
               href={APP_SIGNUP_URL}
-              onClick={() => setOpen(false)}
-              className='rounded-xl bg-[var(--app-primary)] px-3 py-2.5 text-center text-sm font-semibold text-white'>
+              variant='primary'
+              size='navMobile'
+              onClick={() => setOpen(false)}>
               Get Started
-            </Link>
+            </LinkButton>
             <Link
               href={APP_LOGIN_URL}
               onClick={() => setOpen(false)}

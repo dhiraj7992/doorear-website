@@ -1,9 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
-import MarketingNav from '@/components/marketing/MarketingNav'
-import MarketingFooter from '@/components/marketing/MarketingFooter'
 import ScrollToTop from '@/app/components/ScrollToTop'
-import Aoscompo from '@/utils/aos'
+import { SiteShell } from '@/components/Layout/site-shell'
 import {
   getSiteUrl,
   SITE_DESCRIPTION,
@@ -64,11 +62,7 @@ export default function RootLayout({
   return (
     <html lang='en' suppressHydrationWarning>
       <body className='min-h-screen flex flex-col'>
-        <Aoscompo>
-          <MarketingNav />
-          <main className='flex-1'>{children}</main>
-          <MarketingFooter />
-        </Aoscompo>
+        <SiteShell>{children}</SiteShell>
         <ScrollToTop />
       </body>
     </html>

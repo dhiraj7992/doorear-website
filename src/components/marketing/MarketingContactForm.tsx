@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { Button } from '@/components/ui'
 
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/arshvasani9@gmail.com'
 
@@ -148,16 +149,13 @@ export default function MarketingContactForm() {
           required
         />
       </div>
-      <button
+      <Button
         type='submit'
         disabled={!isFormValid || loader}
-        className={`inline-flex rounded-xl px-6 py-3 text-base font-semibold shadow-sm transition-opacity ${
-          !isFormValid || loader
-            ? 'cursor-not-allowed bg-slate-200 text-slate-500'
-            : 'bg-[var(--app-primary)] text-white hover:opacity-90'
-        }`}>
+        variant='primary'
+        size='cta'>
         {loader ? 'Sending…' : 'Submit'}
-      </button>
+      </Button>
       {showThanks ? (
         <p className='text-sm font-medium text-[var(--chart-emerald)]' role='status'>
           Thank you—we will get back to you shortly.

@@ -3,6 +3,8 @@
 import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowUpRight, Crown, Mail } from 'lucide-react'
+import { LinkButton, marketingPricingOutlineClasses } from '@/components/ui'
+import { cn } from '@/lib/cn'
 
 export type PricingPlan = {
   id: string
@@ -33,11 +35,12 @@ export default function PricingPlanCards({ plans }: Props) {
             duration: 0.4,
             delay: reduceMotion ? 0 : Math.min(i * 0.07, 0.35),
           }}
-          className={`relative flex flex-col rounded-2xl border p-7 shadow-sm transition ${
+          className={cn(
+            `relative flex flex-col rounded-2xl border p-7 shadow-sm transition`,
             plan.highlight
               ? 'border-[var(--app-primary)] bg-[var(--app-card)] ring-2 ring-[var(--app-primary)]/20'
               : 'border-[var(--app-border)] bg-[var(--app-card)] hover:border-[var(--app-primary)]/25 hover:shadow-md'
-          }`}>
+          )}>
           {plan.popular ? (
             <div className='absolute -top-3 left-1/2 flex -translate-x-1/2 items-center gap-1 rounded-full bg-[var(--app-primary)] px-3 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-md'>
               <Crown className='h-3 w-3' />
@@ -61,23 +64,25 @@ export default function PricingPlanCards({ plans }: Props) {
           </p>
           <div className='mt-8 space-y-3'>
             {plan.cta.href.startsWith('http') ? (
-              <Link
+              <LinkButton
                 href={plan.cta.href}
-                className='flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--app-primary)] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95'>
+                variant='primary'
+                size='block'
+                className='gap-2'>
                 {plan.cta.label}
                 <ArrowUpRight className='h-4 w-4' />
-              </Link>
+              </LinkButton>
             ) : (
-              <Link
+              <LinkButton
                 href={plan.cta.href}
-                className='flex w-full items-center justify-center gap-2 rounded-xl bg-[var(--app-primary)] px-4 py-3 text-sm font-semibold text-white shadow-sm transition hover:opacity-95'>
+                variant='primary'
+                size='block'
+                className='gap-2'>
                 <Mail className='h-4 w-4' />
                 {plan.cta.label}
-              </Link>
+              </LinkButton>
             )}
-            <Link
-              href='/contact'
-              className='flex w-full items-center justify-center rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] px-4 py-2.5 text-xs font-semibold text-[var(--app-foreground)] transition hover:bg-[var(--app-card)]'>
+            <Link href='/contact' className={marketingPricingOutlineClasses()}>
               Book Demo
             </Link>
           </div>

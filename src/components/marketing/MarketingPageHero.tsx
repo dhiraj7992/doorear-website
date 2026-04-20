@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import Link from 'next/link'
+import { LinkButton } from '@/components/ui'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import MarketingHeroDecorations from './MarketingHeroDecorations'
@@ -77,21 +77,23 @@ export default function MarketingPageHero({
               className='mt-8 flex flex-wrap items-center gap-3'
             >
               {cta ? (
-                <Link
+                <LinkButton
                   href={cta.href}
-                  className='group inline-flex items-center gap-2 rounded-xl bg-[var(--app-primary)] px-5 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/25 transition hover:opacity-95'
-                >
+                  variant='primary'
+                  size='section'
+                  className='group'>
                   {cta.label}
                   <ArrowRight className='h-4 w-4 transition group-hover:translate-x-0.5' />
-                </Link>
+                </LinkButton>
               ) : null}
               {secondaryCta ? (
-                <Link
+                <LinkButton
                   href={secondaryCta.href}
-                  className='inline-flex rounded-xl border border-[var(--app-border)] bg-[var(--app-card)]/90 px-5 py-3 text-sm font-semibold text-[var(--app-foreground)] shadow-sm backdrop-blur-sm transition hover:border-[var(--app-primary)]/30'
-                >
+                  variant='secondary'
+                  size='section'
+                  secondaryTone='muted'>
                   {secondaryCta.label}
-                </Link>
+                </LinkButton>
               ) : null}
             </motion.div>
           </div>

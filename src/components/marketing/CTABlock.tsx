@@ -1,7 +1,7 @@
 'use client'
 
-import Link from 'next/link'
 import { motion, useReducedMotion } from 'framer-motion'
+import { LinkButton, PageContainer } from '@/components/ui'
 import { APP_SIGNUP_URL } from './site-config'
 
 type CTABlockProps = {
@@ -25,7 +25,7 @@ export default function CTABlock({
 
   return (
     <section className='py-16 md:py-20'>
-      <div className='marketing-container'>
+      <PageContainer>
         <motion.div
           initial={reduceMotion ? false : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,19 +47,22 @@ export default function CTABlock({
             {description}
           </p>
           <div className='relative mt-8 flex flex-wrap items-center justify-center gap-4'>
-            <Link
+            <LinkButton
               href={primaryHref}
-              className='inline-flex rounded-xl bg-[var(--app-primary)] px-6 py-3 text-base font-semibold text-white shadow-md shadow-blue-500/20 transition hover:opacity-95'>
+              variant='primary'
+              size='cta'>
               {primaryLabel}
-            </Link>
-            <Link
+            </LinkButton>
+            <LinkButton
               href={secondaryHref}
-              className='inline-flex rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] px-6 py-3 text-base font-semibold text-[var(--app-foreground)] transition hover:border-[var(--app-primary)]/25 hover:bg-[var(--app-card)]'>
+              variant='secondary'
+              size='cta'
+              secondaryTone='surface'>
               {secondaryLabel}
-            </Link>
+            </LinkButton>
           </div>
         </motion.div>
-      </div>
+      </PageContainer>
     </section>
   )
 }

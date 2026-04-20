@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { LinkButton } from '@/components/ui'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
@@ -180,16 +181,19 @@ export function WorkflowSection() {
           })}
         </div>
         <div className='mt-12 flex flex-wrap justify-center gap-4'>
-          <Link
+          <LinkButton
             href={APP_SIGNUP_URL}
-            className='inline-flex rounded-xl bg-[var(--app-primary)] px-6 py-3 text-sm font-semibold text-white shadow-sm hover:opacity-95'>
+            variant='primary'
+            size='sectionWide'>
             Get Started
-          </Link>
-          <Link
+          </LinkButton>
+          <LinkButton
             href='/pricing'
-            className='inline-flex rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] px-6 py-3 text-sm font-semibold text-[var(--app-foreground)] hover:bg-[var(--app-card)]'>
-              View plans &amp; limits
-          </Link>
+            variant='secondary'
+            size='sectionWide'
+            secondaryTone='surface'>
+            View plans &amp; limits
+          </LinkButton>
         </div>
       </div>
     </section>
