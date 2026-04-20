@@ -1,13 +1,26 @@
 @import 'tailwindcss';
 
+/* Doorear marketing tokens — align with docs/design-system.md */
+:root {
+  --app-primary: #2563eb;
+  --app-sidebar: #0f172a;
+  --app-surface: #f8fafc;
+  --app-card: #ffffff;
+  --app-border: #e2e8f0;
+  --app-muted: #64748b;
+  --app-foreground: #0f172a;
+  --chart-emerald: #059669;
+  --chart-amber: #b45309;
+}
+
 @theme {
   --shadow-cause-shadow: 0px 4px 17px 0px #00000008;
   --shadow-featureShadow: 0px 72px 129px 0px #0000001a;
 
   --spacing-70\%: 70%;
 
-  --color-primary: #0057ff;
-  --color-midnight_text: #001b50;
+  --color-primary: #2563eb;
+  --color-midnight_text: #0f172a;
   --color-Lightsuccess: #e7f8f2;
   --color-deepSlate: #6493ea;
 
@@ -64,8 +77,72 @@
   .container {
     @apply max-w-7xl mx-auto w-full px-4;
   }
+
+  .marketing-container {
+    @apply mx-auto w-full max-w-[1280px] px-4 lg:px-8;
+  }
 }
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    ui-sans-serif,
+    system-ui,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+  background-color: var(--app-surface);
+  color: var(--app-foreground);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Marketing hero — animated ambient (respect reduced motion) */
+.marketing-hero-mesh {
+  background:
+    radial-gradient(
+      ellipse 100% 70% at 12% 8%,
+      rgba(37, 99, 235, 0.2),
+      transparent 58%
+    ),
+    radial-gradient(
+      ellipse 80% 55% at 88% 85%,
+      rgba(245, 158, 11, 0.14),
+      transparent 52%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 50% 50%,
+      rgba(37, 99, 235, 0.06),
+      transparent 60%
+    );
+  animation: marketing-hero-mesh-shift 22s ease-in-out infinite alternate;
+}
+
+.marketing-hero-grid {
+  background-image:
+    linear-gradient(to right, var(--app-border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--app-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+  mask-image: radial-gradient(ellipse 85% 75% at 50% 40%, black 15%, transparent 75%);
+}
+
+@keyframes marketing-hero-mesh-shift {
+  0% {
+    transform: scale(1) translate(0, 0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.04) translate(1.5%, -1.5%);
+    opacity: 0.92;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marketing-hero-mesh {
+    animation: none;
+  }
 }
