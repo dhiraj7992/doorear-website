@@ -12,7 +12,7 @@ const Banner = () => {
                 Smarter Logistics Starts Here.
               </h1>
               <p className='text-black/75 text-lg font-normal text-center lg:text-start max-w-lg mx-auto lg:mx-0'>
-                Track your shipments, manage bookings, and stay in control of every delivery,<br></br>
+                Track your shipment, manage bookings, and stay in control of every delivery,<br></br>
                 all in one powerful, intuitive platform. With Doorear, your logistics works smarter for you.
               </p>
               <div className='mx-auto lg:mx-0'>
