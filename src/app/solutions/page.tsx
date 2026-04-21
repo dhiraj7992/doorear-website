@@ -87,10 +87,11 @@ export default function SolutionsPage() {
           </>
         }
         image={{
-          src: '/images/marketing/page-solutions.jpg',
-          alt: 'Team collaboration — planning logistics and operations together',
+          src: '/images/insights/Hub_operations.png',
+          alt: 'Doorear product screenshot: hub and inward operations workspace',
         }}
-        imageCaption='Ops, finance, and IT aligned on one workspace—fewer silos between branches and headquarters.'
+        imagePresentation='productUi'
+        imageCaption='Hub & inward operations: queues, handoffs, and execution views supervisors use before SLAs slip—left navigation shows how modules map to your network.'
         cta={{ href: '/contact', label: 'Discuss your branch model' }}
       />
 

@@ -3,8 +3,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
 import CTABlock from '@/components/marketing/CTABlock'
+import {
+  InsightBrowserFrame,
+  InsightProductShot,
+} from '@/components/marketing/InsightScreenshot'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import { MotionInView } from '@/components/marketing/MotionInView'
+import SectionHeading from '@/components/marketing/SectionHeading'
 import PricingPlanCards, {
   type PricingPlan,
 } from '@/components/marketing/PricingPlanCards'
@@ -135,6 +140,35 @@ export default function PricingPage() {
         <div className='marketing-container'>
           <MotionInView>
             <PricingPlanCards plans={plans} />
+          </MotionInView>
+
+          <MotionInView className='mt-20 scroll-mt-28' delay={0.05}>
+            <div
+              id='pricing-commercial'
+              className='grid gap-10 overflow-hidden rounded-2xl border border-[var(--app-border)] bg-gradient-to-br from-[var(--app-card)] via-[var(--app-surface)] to-[var(--app-card)] p-8 shadow-sm md:grid-cols-2 md:gap-12 md:p-10 lg:p-12'>
+              <div className='flex flex-col justify-center'>
+                <SectionHeading
+                  align='left'
+                  eyebrow='Commercial clarity'
+                  title='See revenue-side performance next to subscription economics'
+                  description='Sales and purchase analytics (where your tenant enables them) sit in the same workspace as operational activity—so when you compare Enterprise allowances to commercial outcomes, you are not reconciling two different tools.'
+                />
+                <p className='mt-4 text-sm leading-relaxed text-[var(--app-muted)]'>
+                  Pair this view with the Plans &amp; upgrade screen in the hero to
+                  brief finance: usage limits, top-ups, and commercial KPIs in one
+                  narrative.
+                </p>
+              </div>
+              <div className='transition duration-300 motion-safe:hover:-translate-y-1'>
+                <InsightBrowserFrame chromeLabel='Sales analytics'>
+                  <InsightProductShot
+                    src='/images/insights/Sales_analytics.png'
+                    alt='Doorear sales analytics dashboard — revenue and commercial KPIs'
+                    sizes='(max-width: 1024px) 100vw, 40vw'
+                  />
+                </InsightBrowserFrame>
+              </div>
+            </div>
           </MotionInView>
 
           <MotionInView className='mt-16' delay={0.08}>

@@ -13,6 +13,11 @@ export type MarketingPageHeroProps = {
   extra?: React.ReactNode
   image: { src: string; alt: string }
   imageCaption?: string
+  /**
+   * `productUi` — real app screenshots: no heavy gradient overlay, `object-left` so the
+   * app sidebar stays visible; caption sits below the card (SaaS product-marketing pattern).
+   */
+  imagePresentation?: 'default' | 'productUi'
   cta?: { href: string; label: string }
   /** Secondary link under CTA (e.g. pricing) */
   secondaryCta?: { href: string; label: string }
@@ -25,10 +30,12 @@ export default function MarketingPageHero({
   extra,
   image,
   imageCaption,
+  imagePresentation = 'default',
   cta,
   secondaryCta,
 }: MarketingPageHeroProps) {
   const reduceMotion = useReducedMotion()
+  const isProductUi = imagePresentation === 'productUi'
 
   return (
     <section className='relative overflow-hidden border-b border-[var(--app-border)] bg-[var(--app-surface)]'>
@@ -105,18 +112,40 @@ export default function MarketingPageHero({
             className='relative self-start'
           >
             <div className='hero-image-glow absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-[var(--app-primary)]/25 via-transparent to-amber-500/18 blur-2xl' />
-            <div className='relative overflow-hidden rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] shadow-2xl shadow-slate-900/15 ring-1 ring-[var(--app-primary)]/10'>
+            <div
+              className={`relative overflow-hidden rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] shadow-2xl shadow-slate-900/15 ring-1 ring-[var(--app-primary)]/10 ${isProductUi ? 'rounded-xl' : ''}`}>
+              {isProductUi ? (
+                <div
+                  className='flex h-9 items-center gap-3 border-b border-[var(--app-border)] bg-[var(--app-surface)] px-3'
+                  aria-hidden>
+                  <span className='flex gap-1.5'>
+                    <span className='h-2 w-2 rounded-full bg-red-400/90' />
+                    <span className='h-2 w-2 rounded-full bg-amber-400/90' />
+                    <span className='h-2 w-2 rounded-full bg-emerald-400/90' />
+                  </span>
+                  <span className='min-w-0 flex-1 truncate rounded-md border border-[var(--app-border)] bg-[var(--app-card)] px-2 py-0.5 text-center text-[10px] font-medium text-[var(--app-muted)]'>
+                    Product UI preview
+                  </span>
+                  <span className='w-10 shrink-0' />
+                </div>
+              ) : null}
               <Image
                 src={image.src}
                 alt={image.alt}
                 width={900}
                 height={560}
-                className='h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.02]'
+                className={
+                  isProductUi
+                    ? 'h-auto w-full object-cover object-left object-top transition duration-700 ease-out motion-safe:hover:scale-[1.01]'
+                    : 'h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.02]'
+                }
                 sizes='(max-width: 1024px) 100vw, 42vw'
                 priority
               />
-              <div className='absolute inset-0 bg-gradient-to-t from-[var(--app-sidebar)]/78 via-[var(--app-sidebar)]/10 to-transparent' />
-              {imageCaption ? (
+              {!isProductUi ? (
+                <div className='absolute inset-0 bg-gradient-to-t from-[var(--app-sidebar)]/78 via-[var(--app-sidebar)]/10 to-transparent' />
+              ) : null}
+              {imageCaption && !isProductUi ? (
                 <div className='absolute bottom-0 left-0 right-0 p-5 md:p-6'>
                   <p className='text-sm font-medium leading-snug text-white/95 drop-shadow-sm'>
                     {imageCaption}
@@ -124,6 +153,11 @@ export default function MarketingPageHero({
                 </div>
               ) : null}
             </div>
+            {imageCaption && isProductUi ? (
+              <p className='mt-4 text-sm leading-relaxed text-[var(--app-muted)]'>
+                {imageCaption}
+              </p>
+            ) : null}
           </motion.div>
         </div>
       </div>

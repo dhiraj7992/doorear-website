@@ -18,6 +18,8 @@ import {
   IndiaMarketSection,
   WorkflowSection,
 } from '@/components/marketing/HomeSections'
+import Link from 'next/link'
+import { LinkButton } from '@/components/ui'
 import { SITE_NAME } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
@@ -77,7 +79,7 @@ const homeFeatures = [
   {
     icon: BarChart3,
     title: 'Operational dashboard & MIS',
-    body: 'Give leadership and hub heads a logistics MIS dashboard tuned for daily operations: pipeline volume, delays, OFD progress, and branch throughput—so standups start from data, not anecdotes.',
+    body: 'Give leadership and hub heads in-product MIS views tuned for daily operations: pipeline volume, delays, OFD progress, and branch throughput—so standups start from the same screens finance exports, not anecdotes.',
     bullets: [
       'Faster reaction to recurring choke points',
       'Shared metrics across ops and branch managers',
@@ -87,7 +89,7 @@ const homeFeatures = [
   {
     icon: ShoppingCart,
     title: 'Sales & purchase analytics (where enabled)',
-    body: 'When your tenant enables commercial modules, procurement and revenue-side visibility can sit next to operations. Founders and finance controllers see margin and vendor performance in the same workspace as shipment activity.',
+    body: 'When your tenant enables commercial modules, procurement and revenue-side charts sit next to operations—founders and finance controllers see margin and vendor performance in the same workspace as shipment activity, grounded in live data instead of parallel spreadsheets.',
     bullets: [
       'Tighter alignment between ops reality and commercial decisions',
       'Less spreadsheet reconciliation for procurement RFQ logistics software flows',
@@ -122,6 +124,51 @@ export default function HomePage() {
       />
       <HeroSection />
       <IndiaMarketSection />
+      <section
+        className='border-y border-[var(--app-border)] bg-[var(--app-card)] py-10 md:py-12'
+        aria-label='Where to see product screenshots'>
+        <div className='marketing-container flex flex-col gap-6 md:flex-row md:items-center md:justify-between'>
+          <div className='max-w-xl'>
+            <p className='text-[10px] font-bold uppercase tracking-wider text-[var(--app-muted)]'>
+              Product UI on the site
+            </p>
+            <p className='mt-2 text-base leading-relaxed text-[var(--app-foreground)]'>
+              We surface real in-app screenshots across the site—MIS and access on{' '}
+              <Link
+                href='/features'
+                className='font-semibold text-[var(--app-primary)] underline-offset-2 hover:underline'>
+                Features
+              </Link>
+              , hub execution on{' '}
+              <Link
+                href='/solutions'
+                className='font-semibold text-[var(--app-primary)] underline-offset-2 hover:underline'>
+                Solutions
+              </Link>
+              , and commercial analytics next to plans on{' '}
+              <Link
+                href='/pricing'
+                className='font-semibold text-[var(--app-primary)] underline-offset-2 hover:underline'>
+                Pricing
+              </Link>
+              —so each page earns its visual instead of stacking everything on the
+              homepage.
+            </p>
+          </div>
+          <div className='flex flex-shrink-0 flex-wrap gap-3'>
+            <LinkButton href='/features' variant='secondary' size='section'>
+              Explore Features
+            </LinkButton>
+            <LinkButton
+              href='/solutions'
+              variant='secondary'
+              size='section'
+              secondaryTone='muted'>
+              See Solutions
+            </LinkButton>
+          </div>
+        </div>
+      </section>
       <section className='py-16 md:py-20'>
         <div className='marketing-container space-y-14'>
           <SectionHeading
