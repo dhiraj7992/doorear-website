@@ -7,8 +7,8 @@ import HeaderLink from './Navigation/HeaderLink'
 import MobileHeaderLink from './Navigation/MobileHeaderLink'
 import { headerItem } from '@/app/types/menu'
 
-const MAA_LOGIN_URL = 'https://doorear-frontend.vercel.app/login'
-const MAA_SIGNUP_URL = 'https://doorear-frontend.vercel.app/signup'
+const MAA_LOGIN_URL = 'https://app.doorear.com/login'
+const MAA_SIGNUP_URL = 'https://app.doorear.com/signup'
 
 const Header: React.FC = () => {
   const [headerData, setHeaderData] = useState<headerItem[]>([])
