@@ -13,11 +13,11 @@ export function getSiteUrl(): string {
 
 export const APP_LOGIN_URL =
   process.env.NEXT_PUBLIC_APP_LOGIN_URL ??
-  'https://doorear-frontend.vercel.app/login'
+  'https://app.doorear.com/login'
 
 export const APP_SIGNUP_URL =
   process.env.NEXT_PUBLIC_APP_SIGNUP_URL ??
-  'https://doorear-frontend.vercel.app/signup'
+  'https://app.doorear.com/signup'
 
 export const NAV_LINKS = [
   { label: 'Home', href: '/' },
