@@ -16,7 +16,7 @@ const Banner = () => {
                 all in one powerful, intuitive platform. With Doorear, your logistics works smarter for you.
               </p>
               <div className='mx-auto lg:mx-0'>
-                <Link href={'https://app.doorear/signup'}>
+                <Link href={'https://app.doorear.com/signup'}>
                   <button className='text-white text-xl font-medium py-4 px-8 rounded-full transition duration-300 border border-primary bg-primary hover:bg-transparent hover:cursor-pointer hover:text-primary'>
                     Get started
                   </button>
