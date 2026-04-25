@@ -1,0 +1,16 @@
+{
+  "totalBudget": 50,
+  "google": {
+    "spend": 40,
+    "clicks": 35,
+    "leads": 3,
+    "qualifiedLeads": 2
+  },
+  "linkedin": {
+    "spend": 10,
+    "clicks": 10,
+    "leads": 1,
+    "qualifiedLeads": 0
+  },
+  "updatedAt": "2026-04-25T00:00:00.000Z"
+}

@@ -13,6 +13,7 @@ import {
   ShieldCheck,
   Sparkles,
 } from 'lucide-react'
+import { trackEvent } from '@/lib/analytics'
 import MarketingHeroDecorations from './MarketingHeroDecorations'
 import { APP_SIGNUP_URL } from './site-config'
 
@@ -65,6 +66,12 @@ export default function HeroSection() {
                 href={APP_SIGNUP_URL}
                 variant='primary'
                 size='hero'
+                onClick={() =>
+                  trackEvent('marketing_signup_click', {
+                    source: 'home_hero',
+                    cta: 'get_started',
+                  })
+                }
                 className='group'>
                 Get Started
                 <ArrowRight className='h-4 w-4 transition group-hover:translate-x-0.5' />
@@ -73,6 +80,12 @@ export default function HeroSection() {
                 href='/contact'
                 variant='secondary'
                 size='hero'
+                onClick={() =>
+                  trackEvent('marketing_demo_click', {
+                    source: 'home_hero',
+                    cta: 'book_demo',
+                  })
+                }
                 secondaryTone='card'>
                 Book Demo
               </LinkButton>

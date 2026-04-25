@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next'
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google'
 import './globals.css'
 import ScrollToTop from '@/app/components/ScrollToTop'
 import { SiteShell } from '@/components/Layout/site-shell'
@@ -9,6 +10,10 @@ import {
 } from '@/components/marketing/site-config'
 
 const siteUrl = getSiteUrl()
+const defaultOgImage = `${siteUrl}/images/marketing/hero-logistics.jpg`
+const defaultGaId = 'G-Y5V5FBK5K8'
+const defaultGtmId = 'GTM-MD5MQRD5'
+const defaultSearchConsoleToken = 'TS1nFTNz7RZCUCqNhXxF2a7ZTkzulxzMlCPzjOK79pY'
 
 export const viewport: Viewport = {
   themeColor: '#0f172a',
@@ -38,15 +43,29 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} | Courier management software & logistics operations platform`,
     description: SITE_DESCRIPTION,
+    images: [
+      {
+        url: defaultOgImage,
+        width: 1200,
+        height: 630,
+        alt: `${SITE_NAME} logistics operations platform`,
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: `${SITE_NAME} | Logistics management software`,
     description: SITE_DESCRIPTION,
+    images: [defaultOgImage],
   },
   robots: {
     index: true,
     follow: true,
+  },
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
+      defaultSearchConsoleToken,
   },
   icons: {
     icon: [{ url: '/images/logo/D.svg', type: 'image/svg+xml' }],
@@ -59,12 +78,17 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? defaultGaId
+  const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? defaultGtmId
+
   return (
     <html lang='en' suppressHydrationWarning>
       <body className='min-h-screen flex flex-col'>
         <SiteShell>{children}</SiteShell>
         <ScrollToTop />
       </body>
+      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
+      {gaId ? <GoogleAnalytics gaId={gaId} /> : null}
     </html>
   )
 }

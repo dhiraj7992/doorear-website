@@ -1,11 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui'
+import { trackEvent } from '@/lib/analytics'
 
 const FORM_ENDPOINT = 'https://formsubmit.co/ajax/arshvasani9@gmail.com'
 
 export default function MarketingContactForm() {
+  const router = useRouter()
+  const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -16,11 +20,36 @@ export default function MarketingContactForm() {
   const [showThanks, setShowThanks] = useState(false)
   const [loader, setLoader] = useState(false)
   const [isFormValid, setIsFormValid] = useState(false)
+  const [utmData, setUtmData] = useState({
+    utm_source: '',
+    utm_medium: '',
+    utm_campaign: '',
+    utm_term: '',
+    utm_content: '',
+    referrer: '',
+    landing_page: '',
+  })
 
   useEffect(() => {
     const isValid = Object.values(formData).every((v) => v.trim() !== '')
     setIsFormValid(isValid)
   }, [formData])
+
+  useEffect(() => {
+    setUtmData({
+      utm_source: searchParams.get('utm_source') ?? '',
+      utm_medium: searchParams.get('utm_medium') ?? '',
+      utm_campaign: searchParams.get('utm_campaign') ?? '',
+      utm_term: searchParams.get('utm_term') ?? '',
+      utm_content: searchParams.get('utm_content') ?? '',
+      referrer:
+        typeof document !== 'undefined' && document.referrer
+          ? document.referrer
+          : '',
+      landing_page:
+        typeof window !== 'undefined' ? window.location.href : '/contact',
+    })
+  }, [searchParams])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -42,10 +71,24 @@ export default function MarketingContactForm() {
           Email: formData.email,
           PhoneNo: formData.phnumber,
           Message: formData.Message,
+          UTMSource: utmData.utm_source,
+          UTMMedium: utmData.utm_medium,
+          UTMCampaign: utmData.utm_campaign,
+          UTMTerm: utmData.utm_term,
+          UTMContent: utmData.utm_content,
+          Referrer: utmData.referrer,
+          LandingPage: utmData.landing_page,
         }),
       })
       const data = await res.json()
       if (data.success) {
+        trackEvent('marketing_contact_submit', {
+          source: 'contact_page_form',
+          form: 'marketing_contact',
+          utm_source: utmData.utm_source || 'direct',
+          utm_medium: utmData.utm_medium || 'none',
+          utm_campaign: utmData.utm_campaign || 'none',
+        })
         setShowThanks(true)
         setFormData({
           firstname: '',
@@ -54,7 +97,10 @@ export default function MarketingContactForm() {
           phnumber: '',
           Message: '',
         })
-        setTimeout(() => setShowThanks(false), 5000)
+        setTimeout(() => {
+          setShowThanks(false)
+          router.push('/thank-you?type=demo')
+        }, 1200)
       }
     } catch {
       /* handled by UI state */

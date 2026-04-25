@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { LinkButton, PageContainer } from '@/components/ui'
+import { trackEvent } from '@/lib/analytics'
 import { APP_SIGNUP_URL } from './site-config'
 
 type CTABlockProps = {
@@ -50,12 +51,24 @@ export default function CTABlock({
             <LinkButton
               href={primaryHref}
               variant='primary'
+              onClick={() =>
+                trackEvent('marketing_signup_click', {
+                  source: 'cta_block',
+                  cta: primaryLabel.toLowerCase().replace(/\s+/g, '_'),
+                })
+              }
               size='cta'>
               {primaryLabel}
             </LinkButton>
             <LinkButton
               href={secondaryHref}
               variant='secondary'
+              onClick={() =>
+                trackEvent('marketing_demo_click', {
+                  source: 'cta_block',
+                  cta: secondaryLabel.toLowerCase().replace(/\s+/g, '_'),
+                })
+              }
               size='cta'
               secondaryTone='surface'>
               {secondaryLabel}

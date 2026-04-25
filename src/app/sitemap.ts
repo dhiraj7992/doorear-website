@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getSiteUrl } from '@/components/marketing/site-config'
-import { getAllSlugs } from '@/lib/blog-posts'
+import { blogPosts } from '@/lib/blog-posts'
+import { locationPages } from '@/lib/location-pages'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl()
@@ -14,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/about',
     '/contact',
     '/blog',
+    '/locations',
     '/documentation',
   ].map((path) => ({
     url: `${base}${path}`,
@@ -22,12 +24,19 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === '' ? 1 : 0.8,
   }))
 
-  const blogRoutes: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
-    url: `${base}/blog/${slug}`,
-    lastModified,
+  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+    url: `${base}/blog/${post.slug}`,
+    lastModified: new Date(post.datePublished),
     changeFrequency: 'monthly',
     priority: 0.7,
   }))
 
-  return [...staticRoutes, ...blogRoutes]
+  const locationRoutes: MetadataRoute.Sitemap = locationPages.map((location) => ({
+    url: `${base}/locations/${location.slug}`,
+    lastModified,
+    changeFrequency: 'monthly',
+    priority: 0.75,
+  }))
+
+  return [...staticRoutes, ...blogRoutes, ...locationRoutes]
 }

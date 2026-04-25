@@ -20,7 +20,7 @@ import {
 } from '@/components/marketing/HomeSections'
 import Link from 'next/link'
 import { LinkButton } from '@/components/ui'
-import { SITE_NAME } from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
   title: 'Logistics Management Software for Courier & 3PL Teams',
@@ -116,8 +116,43 @@ const homeFeatures = [
 ]
 
 export default function HomePage() {
+  const siteUrl = getSiteUrl()
+  const orgJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: siteUrl,
+    logo: `${siteUrl}/images/logo/logo.png`,
+    sameAs: ['https://www.linkedin.com/in/doorear-tech-664b1a405'],
+  }
+
+  const softwareJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: SITE_NAME,
+    applicationCategory: 'BusinessApplication',
+    operatingSystem: 'Web',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      description: 'Free trial available',
+    },
+    description:
+      'Courier management software and logistics operations platform for Indian operators.',
+    url: siteUrl,
+  }
+
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+      />
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
