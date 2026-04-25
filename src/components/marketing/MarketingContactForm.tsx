@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui'
 import { trackEvent } from '@/lib/analytics'
 
@@ -9,7 +9,6 @@ const FORM_ENDPOINT = 'https://formsubmit.co/ajax/arshvasani9@gmail.com'
 
 export default function MarketingContactForm() {
   const router = useRouter()
-  const searchParams = useSearchParams()
   const [formData, setFormData] = useState({
     firstname: '',
     lastname: '',
@@ -36,20 +35,18 @@ export default function MarketingContactForm() {
   }, [formData])
 
   useEffect(() => {
+    if (typeof window === 'undefined') return
+    const params = new URLSearchParams(window.location.search)
     setUtmData({
-      utm_source: searchParams.get('utm_source') ?? '',
-      utm_medium: searchParams.get('utm_medium') ?? '',
-      utm_campaign: searchParams.get('utm_campaign') ?? '',
-      utm_term: searchParams.get('utm_term') ?? '',
-      utm_content: searchParams.get('utm_content') ?? '',
-      referrer:
-        typeof document !== 'undefined' && document.referrer
-          ? document.referrer
-          : '',
-      landing_page:
-        typeof window !== 'undefined' ? window.location.href : '/contact',
+      utm_source: params.get('utm_source') ?? '',
+      utm_medium: params.get('utm_medium') ?? '',
+      utm_campaign: params.get('utm_campaign') ?? '',
+      utm_term: params.get('utm_term') ?? '',
+      utm_content: params.get('utm_content') ?? '',
+      referrer: document.referrer || '',
+      landing_page: window.location.href,
     })
-  }, [searchParams])
+  }, [])
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
