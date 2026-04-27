@@ -5,18 +5,31 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import CTABlock from '@/components/marketing/CTABlock'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import { MotionInView } from '@/components/marketing/MotionInView'
-import { SITE_NAME } from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
-  title: 'Solutions for Courier, 3PL & Multi-Branch Networks',
+  title: 'Courier & 3PL Solutions for Multi-Branch Networks',
   description:
-    'Doorear supports mid-size and growing courier / 3PL operators, operations heads, founders, finance, and procurement—3PL operations platform with branch-scoped control.',
+    'Doorear supports mid-size and growing courier and 3PL operators in India: branch-aware execution, role-based access, operational visibility, and commercial clarity in one workspace.',
+  keywords: [
+    'courier software solutions',
+    '3PL operations platform',
+    'multi branch courier software',
+    'logistics operations platform India',
+    'branch scoped access courier',
+  ],
   alternates: { canonical: '/solutions' },
   openGraph: {
     title: `Solutions | ${SITE_NAME} logistics operations platform`,
     description:
       'Operational visibility for hubs, commercial insight for leadership, and secure tenancy for enterprise teams.',
     url: '/solutions',
+    type: 'website',
+  },
+  twitter: {
+    title: `Solutions | ${SITE_NAME}`,
+    description:
+      'Built for operators, hub managers, finance, and procurement teams running real courier networks.',
   },
 }
 
@@ -62,8 +75,23 @@ const secondary = [
 ]
 
 export default function SolutionsPage() {
+  const siteUrl = getSiteUrl()
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: `${SITE_NAME} Solutions`,
+    description:
+      'Solutions page for courier and 3PL operators using Doorear across multi-branch networks.',
+    url: `${siteUrl}/solutions`,
+    inLanguage: 'en',
+  }
+
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       <MarketingPageHero
         eyebrow='Solutions · Audiences'
         title={

@@ -13,18 +13,35 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import PricingPlanCards, {
   type PricingPlan,
 } from '@/components/marketing/PricingPlanCards'
-import { APP_SIGNUP_URL, SITE_NAME } from '@/components/marketing/site-config'
+import {
+  APP_SIGNUP_URL,
+  getSiteUrl,
+  SITE_NAME,
+} from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
-  title: 'Pricing — Plans, Shipments, Seats & Top-ups',
+  title: 'Pricing Plans — Shipments, Seats, and Top-ups',
   description:
     'Doorear subscription plans with Free trial, Standard ($116/mo), Enterprise ($407/mo), and Custom—users, monthly shipments, and $1 shipment top-ups as shown in product.',
+  keywords: [
+    'courier software pricing',
+    'logistics SaaS pricing',
+    'shipment top up pricing',
+    '3PL software plans',
+    'doorear pricing',
+  ],
   alternates: { canonical: '/pricing' },
   openGraph: {
     title: `Pricing | ${SITE_NAME}`,
     description:
       'Transparent allowances for users and shipments, optional top-ups, and honest billing coordination for Indian enterprises.',
     url: '/pricing',
+    type: 'website',
+  },
+  twitter: {
+    title: `Pricing | ${SITE_NAME}`,
+    description:
+      'Compare plan allowances, shipment limits, seats, and top-up economics for growing courier teams.',
   },
 }
 
@@ -104,8 +121,23 @@ const comparison = [
 ]
 
 export default function PricingPage() {
+  const siteUrl = getSiteUrl()
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: `${SITE_NAME} Pricing`,
+    description:
+      'Pricing plans for Doorear including seat allowances, shipment limits, and top-up options.',
+    url: `${siteUrl}/pricing`,
+    inLanguage: 'en',
+  }
+
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       <MarketingPageHero
         eyebrow='Pricing · Plans & upgrade'
         title={

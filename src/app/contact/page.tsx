@@ -3,18 +3,34 @@ import { Clock, Mail, MessageSquare } from 'lucide-react'
 import MarketingContactForm from '@/components/marketing/MarketingContactForm'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import { MotionInView } from '@/components/marketing/MotionInView'
-import { APP_SIGNUP_URL, SITE_NAME } from '@/components/marketing/site-config'
+import {
+  APP_SIGNUP_URL,
+  getSiteUrl,
+  SITE_NAME,
+} from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
-  title: 'Contact — Book a Demo or Talk to Sales',
+  title: 'Contact Sales — Book a Demo',
   description:
     'Reach the Doorear team at doorear.com: book a demo, ask about multi branch courier software fit, or discuss procurement, accounts, and subscription plans for your network.',
+  keywords: [
+    'contact doorear',
+    'book courier software demo',
+    'logistics software sales contact',
+    'courier management software consultation',
+  ],
   alternates: { canonical: '/contact' },
   openGraph: {
     title: `Contact | ${SITE_NAME}`,
     description:
       'Talk to us about hubs, permissions, MIS, GST-oriented invoicing support, shipment top-ups, and honest billing.',
     url: '/contact',
+    type: 'website',
+  },
+  twitter: {
+    title: `Contact | ${SITE_NAME}`,
+    description:
+      'Book a rollout discussion for branches, MIS, permissions, and subscription planning.',
   },
 }
 
@@ -37,8 +53,23 @@ const bullets = [
 ]
 
 export default function ContactPage() {
+  const siteUrl = getSiteUrl()
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ContactPage',
+    name: `${SITE_NAME} Contact`,
+    description:
+      'Contact Doorear for demos, pricing, and rollout planning for courier and logistics operations.',
+    url: `${siteUrl}/contact`,
+    inLanguage: 'en',
+  }
+
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       <MarketingPageHero
         eyebrow='Contact · Sales & onboarding'
         title={

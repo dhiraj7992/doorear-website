@@ -6,6 +6,11 @@ import { locationPages } from '@/lib/location-pages'
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl()
   const lastModified = new Date()
+  const safeDate = (value?: string): Date => {
+    if (!value) return lastModified
+    const parsed = new Date(value)
+    return Number.isNaN(parsed.getTime()) ? lastModified : parsed
+  }
 
   const staticRoutes: MetadataRoute.Sitemap = [
     '',
@@ -14,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/pricing',
     '/about',
     '/contact',
+    '/privacy-policy',
     '/blog',
     '/locations',
     '/documentation',
@@ -26,7 +32,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${base}/blog/${post.slug}`,
-    lastModified: new Date(post.datePublished),
+    lastModified: safeDate(post.datePublished),
     changeFrequency: 'monthly',
     priority: 0.7,
   }))

@@ -11,6 +11,20 @@ export function getSiteUrl(): string {
   return 'https://doorear.com'
 }
 
+export function getSupportUrl(): string {
+  if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_SUPPORT_URL) {
+    return process.env.NEXT_PUBLIC_SUPPORT_URL
+  }
+  return `${getSiteUrl()}/contact`
+}
+
+export function getOgImageUrl(): string {
+  if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_OG_IMAGE_URL) {
+    return process.env.NEXT_PUBLIC_OG_IMAGE_URL
+  }
+  return `${getSiteUrl()}/images/marketing/hero-logistics.jpg`
+}
+
 export const APP_LOGIN_URL =
   process.env.NEXT_PUBLIC_APP_LOGIN_URL ??
   'https://app.doorear.com/login'

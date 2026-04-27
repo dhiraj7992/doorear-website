@@ -4,13 +4,16 @@ import './globals.css'
 import ScrollToTop from '@/app/components/ScrollToTop'
 import { SiteShell } from '@/components/Layout/site-shell'
 import {
+  getOgImageUrl,
   getSiteUrl,
+  getSupportUrl,
   SITE_DESCRIPTION,
   SITE_NAME,
 } from '@/components/marketing/site-config'
 
 const siteUrl = getSiteUrl()
-const defaultOgImage = `${siteUrl}/images/marketing/hero-logistics.jpg`
+const supportUrl = getSupportUrl()
+const defaultOgImage = getOgImageUrl()
 const defaultGaId = 'G-Y5V5FBK5K8'
 const defaultGtmId = 'GTM-MD5MQRD5'
 const defaultSearchConsoleToken = 'TS1nFTNz7RZCUCqNhXxF2a7ZTkzulxzMlCPzjOK79pY'
@@ -23,6 +26,7 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
+  applicationName: SITE_NAME,
   title: {
     default: `${SITE_NAME} | Logistics & Courier Management Software`,
     template: `%s | ${SITE_NAME}`,
@@ -31,6 +35,11 @@ export const metadata: Metadata = {
   keywords: [
     'logistics management software',
     'courier management software',
+    'logistics app',
+    'courier app',
+    'shipment tracking app',
+    'logistics software app',
+    'courier booking app',
     'shipment booking software',
     'logistics operations platform',
     'multi branch courier software',
@@ -71,6 +80,7 @@ export const metadata: Metadata = {
     icon: [{ url: '/images/logo/D.svg', type: 'image/svg+xml' }],
     apple: '/images/logo/logo.png',
   },
+  category: 'technology',
 }
 
 export default function RootLayout({
@@ -80,10 +90,46 @@ export default function RootLayout({
 }>) {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? defaultGaId
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? defaultGtmId
+  const websiteJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE_NAME,
+    url: siteUrl,
+    description: SITE_DESCRIPTION,
+    inLanguage: 'en',
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: siteUrl,
+      logo: `${siteUrl}/images/logo/logo.png`,
+    },
+  }
+  const organizationJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: siteUrl,
+    logo: `${siteUrl}/images/logo/logo.png`,
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        contactType: 'customer support',
+        url: supportUrl,
+      },
+    ],
+  }
 
   return (
     <html lang='en' suppressHydrationWarning>
       <body className='min-h-screen flex flex-col'>
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+        />
+        <script
+          type='application/ld+json'
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         {gtmId ? (
           <noscript>
             <iframe
@@ -96,39 +142,39 @@ export default function RootLayout({
         ) : null}
         <SiteShell>{children}</SiteShell>
         <ScrollToTop />
-      </body>
-      {gtmId ? (
-        <Script
-          id='gtm-base'
-          strategy='afterInteractive'
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        {gtmId ? (
+          <Script
+            id='gtm-base'
+            strategy='afterInteractive'
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','${gtmId}');`,
-          }}
-        />
-      ) : null}
-      {gaId ? (
-        <>
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-            strategy='afterInteractive'
+            }}
           />
-          <Script
-            id='ga4-base'
-            strategy='afterInteractive'
-            dangerouslySetInnerHTML={{
-              __html: `window.dataLayer = window.dataLayer || [];
+        ) : null}
+        {gaId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy='afterInteractive'
+            />
+            <Script
+              id='ga4-base'
+              strategy='afterInteractive'
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 window.gtag = gtag;
 gtag('js', new Date());
 gtag('config', '${gaId}');`,
-            }}
-          />
-        </>
-      ) : null}
+              }}
+            />
+          </>
+        ) : null}
+      </body>
     </html>
   )
 }

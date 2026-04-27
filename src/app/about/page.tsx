@@ -3,18 +3,31 @@ import { Compass, HeartHandshake, Layers, Sparkles } from 'lucide-react'
 import CTABlock from '@/components/marketing/CTABlock'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import { MotionInView } from '@/components/marketing/MotionInView'
-import { SITE_NAME } from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
-  title: 'About Doorear — Logistics Operations for Indian Couriers',
+  title: 'About Doorear — Courier & Logistics Platform',
   description:
     'Learn why Doorear exists: a logistics operations platform and courier management software for branch-heavy Indian networks—transparent, operational, and enterprise-ready.',
+  keywords: [
+    'about doorear',
+    'courier management software India',
+    'logistics operations platform',
+    'multi branch courier software',
+    '3PL SaaS platform',
+  ],
   alternates: { canonical: '/about' },
   openGraph: {
     title: `About | ${SITE_NAME} courier platform`,
     description:
       'Professional, trustworthy product DNA—primary blue, operational clarity, and honest subscription positioning.',
     url: '/about',
+    type: 'website',
+  },
+  twitter: {
+    title: `About | ${SITE_NAME}`,
+    description:
+      'Why Doorear exists and how it supports branch-heavy courier and 3PL operations.',
   },
 }
 
@@ -42,8 +55,23 @@ const pillars = [
 ]
 
 export default function AboutPage() {
+  const siteUrl = getSiteUrl()
+  const webPageJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'AboutPage',
+    name: `About ${SITE_NAME}`,
+    description:
+      'About page for Doorear logistics operations platform and courier management software.',
+    url: `${siteUrl}/about`,
+    inLanguage: 'en',
+  }
+
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+      />
       <MarketingPageHero
         eyebrow='Company · About'
         title={

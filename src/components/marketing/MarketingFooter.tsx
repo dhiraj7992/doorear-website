@@ -85,7 +85,9 @@ export default function MarketingFooter() {
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
                 <li>
-                  <Link href='/' className='text-white/75 hover:text-white'>
+                  <Link
+                    href='/privacy-policy'
+                    className='text-white/75 hover:text-white'>
                     Privacy policy
                   </Link>
                 </li>
