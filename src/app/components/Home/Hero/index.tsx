@@ -9,7 +9,7 @@ const Banner = () => {
           <div className='lg:col-span-7 flex flex-col justify-center relative'>
             <div className='flex flex-col gap-5'>
               <h1 className='text-6xl max-w-2xl leading-16 text-midnight_text text-center lg:text-start mx-auto lg:mx-0 pt-5'>
-                Smarter Logistics Starts Here.
+                Smarter Logistic Starts Here.
               </h1>
               <p className='text-black/75 text-lg font-normal text-center lg:text-start max-w-lg mx-auto lg:mx-0'>
                 Track your shipments, manage bookings, and stay in control of every delivery,<br></br>
