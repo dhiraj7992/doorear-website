@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui'
 import { trackEvent } from '@/lib/analytics'
 
-const FORM_ENDPOINT = '/api/contact'
+const FORM_ENDPOINT = 'https://formsubmit.co/ajax/doorear.info@gmail.com'
 
 export default function MarketingContactForm() {
   const router = useRouter()
