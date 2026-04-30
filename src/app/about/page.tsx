@@ -97,9 +97,10 @@ export default function AboutPage() {
         }
         extra='Our mission: give mid-market and growing Indian networks operational discipline without rigid tools that ignore branch reality, PIN coverage, or how finance closes the month.'
         image={{
-          src: '/images/marketing/page-about.jpg',
+          src: '/images/insights/profile-account.png',
           alt: 'Business team collaboration — strategy and partnership',
         }}
+        imagePresentation='productUi'
         imageCaption='Transparent partnerships with operators: software that respects how your network actually runs.'
         cta={{ href: '/contact', label: 'Talk to us' }}
       />

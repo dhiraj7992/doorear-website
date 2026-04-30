@@ -187,10 +187,10 @@ export default function FeaturesPageView() {
           </>
         }
         image={{
-          src: '/images/insights/MIS_report.png',
+          src: '/images/marketing/web-ops-1.jpg',
           alt: `Doorear product screenshot: MIS and operational reporting in ${SITE_NAME}`,
         }}
-        imagePresentation='productUi'
+        imagePresentation='default'
         imageCaption='Operational MIS: pipeline health, delays, and branch throughput—the kind of screen leadership and hub heads use in daily standups.'
         cta={{ href: '/contact', label: 'Book a feature walkthrough' }}
       />

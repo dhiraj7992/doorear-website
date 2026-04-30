@@ -31,12 +31,14 @@ export default function LocationsIndexPage() {
     <>
       <MarketingPageHero
         eyebrow='Locations · India'
-        title='Courier operations pages by city'
+        title='Courier management software & logistics operations platform by city'
         description='Choose your city to see how Doorear aligns booking, hubs, delivery runs, and MIS for branch-heavy courier and 3PL networks.'
+        extra='Each city page speaks to real lane pressure, branch coordination, and SLA expectations in that market. Use these pages to evaluate rollout fit, then map branches, users, and shipment limits with our team before go-live.'
         image={{
-          src: '/images/marketing/page-solutions.jpg',
+          src: '/images/marketing/web-ops-2.jpg',
           alt: 'Indian city operations and branch rollout planning',
         }}
+        imagePresentation='default'
         cta={{ href: '/contact', label: 'Discuss your rollout' }}
       />
       <section className='border-b border-[var(--app-border)] bg-[var(--app-surface)] py-16 md:py-20'>

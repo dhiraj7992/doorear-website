@@ -91,9 +91,10 @@ export default function ContactPage() {
         }
         extra='We respond with concrete next steps and honest scope—not generic brochures or integration promises your tenant has not deployed.'
         image={{
-          src: '/images/marketing/page-contact.jpg',
+          src: '/images/marketing/web-ops-5.jpg',
           alt: 'Open communication and partnership — contact Doorear',
         }}
+        imagePresentation='default'
         imageCaption='Sales & onboarding for Indian courier and 3PL operators—branch rollouts, MIS workshops, and finance alignment.'
         cta={{ href: '#contact-form', label: 'Send a message' }}
         secondaryCta={{ href: APP_SIGNUP_URL, label: 'Get Started' }}

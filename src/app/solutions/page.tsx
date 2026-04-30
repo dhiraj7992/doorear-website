@@ -115,7 +115,7 @@ export default function SolutionsPage() {
           </>
         }
         image={{
-          src: '/images/insights/Hub_operations.png',
+          src: '/images/insights/company-setup.png',
           alt: 'Doorear product screenshot: hub and inward operations workspace',
         }}
         imagePresentation='productUi'

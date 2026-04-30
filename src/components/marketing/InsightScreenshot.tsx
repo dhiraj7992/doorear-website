@@ -114,10 +114,18 @@ export function InsightSpotlightBlock({
       whileHover={
         reduceMotion ? undefined : { y: -3, transition: { duration: 0.22 } }
       }
-      className='will-change-transform'>
+      className='relative will-change-transform'>
+      <span
+        className='marketing-floating-chip pointer-events-none absolute -left-3 -top-3'
+        aria-hidden
+      />
       <InsightBrowserFrame chromeLabel={chromeLabel}>
         <InsightProductShot src={imageSrc} alt={imageAlt} />
       </InsightBrowserFrame>
+      <span
+        className='marketing-floating-chip marketing-floating-chip-alt pointer-events-none absolute -bottom-3 -right-3'
+        aria-hidden
+      />
     </motion.div>
   )
 

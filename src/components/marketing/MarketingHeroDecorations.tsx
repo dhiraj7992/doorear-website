@@ -25,6 +25,14 @@ export default function MarketingHeroDecorations() {
         className='pointer-events-none absolute bottom-0 left-1/4 z-0 h-72 w-72 rounded-full bg-blue-400/8 blur-3xl'
         aria-hidden
       />
+      <div
+        className='marketing-floating-cube pointer-events-none absolute left-[14%] top-[24%] z-0'
+        aria-hidden
+      />
+      <div
+        className='marketing-floating-cube marketing-floating-cube-alt pointer-events-none absolute right-[18%] top-[20%] z-0'
+        aria-hidden
+      />
     </>
   )
 }

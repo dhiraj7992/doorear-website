@@ -74,9 +74,10 @@ export default async function LocationCityPage({ params }: Props) {
         description={`Doorear helps operators in ${location.city} run bookings, hub operations, delivery runs, and MIS in one branch-aware platform.`}
         extra={`Designed for ${location.titleQualifier}.`}
         image={{
-          src: '/images/marketing/page-features.jpg',
+          src: '/images/marketing/web-ops-3.jpg',
           alt: `${location.city} courier and logistics operations workflow`,
         }}
+        imagePresentation='default'
         cta={{ href: '/contact', label: `Book ${location.city} demo` }}
       />
       <section className='border-b border-[var(--app-border)] bg-[var(--app-surface)] py-16 md:py-20'>

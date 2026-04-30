@@ -11,6 +11,7 @@ export type MarketingPageHeroProps = {
   title: React.ReactNode
   description: React.ReactNode
   extra?: React.ReactNode
+  imageWrapperClassName?: string
   image: { src: string; alt: string }
   imageCaption?: string
   /**
@@ -28,6 +29,7 @@ export default function MarketingPageHero({
   title,
   description,
   extra,
+  imageWrapperClassName,
   image,
   imageCaption,
   imagePresentation = 'default',
@@ -109,7 +111,7 @@ export default function MarketingPageHero({
             initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.55, delay: 0.1 }}
-            className='relative self-start'
+            className={`relative mt-5 self-start ${imageWrapperClassName ?? ''}`}
           >
             <div className='hero-image-glow absolute -inset-3 rounded-[2rem] bg-gradient-to-br from-[var(--app-primary)]/25 via-transparent to-amber-500/18 blur-2xl' />
             <div
@@ -136,8 +138,8 @@ export default function MarketingPageHero({
                 height={560}
                 className={
                   isProductUi
-                    ? 'h-auto w-full object-cover object-left object-top transition duration-700 ease-out motion-safe:hover:scale-[1.01]'
-                    : 'h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.02]'
+                    ? 'hero-image-modern h-auto w-full object-cover object-left object-top transition duration-700 ease-out motion-safe:hover:scale-[1.01]'
+                    : 'hero-image-modern h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.02]'
                 }
                 sizes='(max-width: 1024px) 100vw, 42vw'
                 priority

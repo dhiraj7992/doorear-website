@@ -10,8 +10,11 @@ import {
   Gauge,
   Landmark,
   MapPin,
+  PackageCheck,
+  Sparkle,
   ShieldCheck,
   Sparkles,
+  Truck,
 } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 import MarketingHeroDecorations from './MarketingHeroDecorations'
@@ -96,37 +99,112 @@ export default function HeroSection() {
             initial={reduceMotion ? false : { opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6, delay: 0.12 }}
-            className='relative self-start'>
+            className='relative mt-5 self-start'>
             <div className='hero-image-glow absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-[var(--app-primary)]/25 via-transparent to-amber-500/18 blur-2xl' />
-            <div className='group relative overflow-hidden rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] shadow-2xl shadow-slate-900/15 ring-1 ring-[var(--app-primary)]/10'>
+            <div className='relative rounded-[2rem] border border-[var(--app-border)]/80 bg-gradient-to-b from-white to-slate-50 p-3 shadow-[0_30px_90px_-38px_rgba(37,99,235,0.42)]'>
+              <div
+                className='pointer-events-none absolute right-10 top-10 h-28 w-28 rounded-full bg-[var(--app-primary)]/10 blur-2xl'
+                aria-hidden
+              />
+              <div
+                className='pointer-events-none absolute -bottom-6 left-6 h-24 w-24 rounded-full bg-amber-400/20 blur-2xl'
+                aria-hidden
+              />
+              <div className='group relative overflow-hidden rounded-2xl border border-[var(--app-primary)]/20 bg-[var(--app-card)] shadow-[0_26px_65px_-34px_rgba(15,23,42,0.45)] ring-1 ring-[var(--app-primary)]/15 transition-transform duration-500 hover:-translate-y-0.5'>
               <Image
-                src='/images/marketing/hero-logistics.jpg'
-                alt='Warehouse and logistics operations — pallets, coordination, and movement'
+                src='/images/insights/hero-command-centre.png'
+                alt='Doorear MIS and operations insight screen'
                 width={900}
                 height={640}
-                className='h-auto w-full object-cover transition duration-700 ease-out group-hover:scale-[1.03]'
+                className='hero-image-modern h-[320px] w-full object-cover object-left transition duration-700 ease-out group-hover:scale-[1.03] md:h-[350px] lg:h-[390px]'
                 priority
                 sizes='(max-width: 1024px) 100vw, 45vw'
               />
-              <span className='sr-only'>
-                Hero photograph: warehouse and pallet logistics scene (stock
-                image).
-              </span>
-              <div className='absolute inset-0 bg-gradient-to-t from-[var(--app-sidebar)]/85 via-[var(--app-sidebar)]/20 to-transparent' />
-              <div className='absolute bottom-0 left-0 right-0 p-6 md:p-8'>
-                <p className='text-xs font-semibold uppercase tracking-wider text-white/70'>
-                  Operations snapshot
-                </p>
-                <p className='mt-2 text-lg font-semibold leading-snug text-white'>
-                  Book orders, watch OFD and POD progress, and keep finance
-                  artifacts tied to the same tenant as shipments.
-                </p>
-                <Link
-                  href='/features'
-                  className='mt-4 inline-flex items-center gap-1 text-sm font-semibold text-white/95 underline-offset-4 hover:underline'>
-                  Explore capabilities
-                  <ArrowRight className='h-4 w-4' />
-                </Link>
+              <div
+                className='pointer-events-none absolute left-0 top-0 h-11 w-40 rounded-br-xl bg-white/50 backdrop-blur-md'
+                aria-hidden
+              />
+              <motion.div
+                initial={reduceMotion ? false : { y: 8, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.45, delay: 0.2 }}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -3, rotate: -1.5, transition: { duration: 0.2 } }
+                }
+                className='absolute -right-4 top-8 w-[34%] min-w-[128px] max-w-[210px] rotate-[-3deg] rounded-2xl border border-white/30 bg-[var(--app-card)]/95 p-2 shadow-xl backdrop-blur-md'>
+                <div className='rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] p-1'>
+                  <Image
+                    src='/images/insights/pricing-workspace.png'
+                    alt='Pricing workspace screenshot'
+                    width={320}
+                    height={500}
+                    className='h-auto w-full rounded-lg object-cover object-left'
+                    sizes='220px'
+                  />
+                </div>
+              </motion.div>
+              <motion.div
+                initial={reduceMotion ? false : { y: 10, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.45, delay: 0.28 }}
+                whileHover={
+                  reduceMotion
+                    ? undefined
+                    : { y: -3, rotate: 1.5, transition: { duration: 0.2 } }
+                }
+                className='absolute -left-4 bottom-8 w-[38%] min-w-[140px] max-w-[230px] rotate-[2.5deg] rounded-2xl border border-white/30 bg-[var(--app-card)]/95 p-2 shadow-xl backdrop-blur-md'>
+                <Image
+                  src='/images/insights/integrations-setup.png'
+                  alt='Integrations setup screenshot'
+                  width={420}
+                  height={260}
+                  className='h-auto w-full rounded-xl object-cover object-left'
+                  sizes='260px'
+                />
+              </motion.div>
+              {!reduceMotion ? (
+                <div
+                  className='pointer-events-none absolute inset-x-0 top-5 overflow-hidden'
+                  aria-hidden>
+                  <motion.div
+                    initial={{ x: '-5%' }}
+                    animate={{ x: '105%' }}
+                    transition={{ duration: 7.2, repeat: Infinity, ease: 'linear' }}
+                    className='flex w-max items-center gap-2 rounded-full border border-white/30 bg-[var(--app-sidebar)]/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/90 backdrop-blur-sm'>
+                    <Truck className='h-3.5 w-3.5' />
+                    Live linehaul
+                    <span className='h-1.5 w-1.5 rounded-full bg-emerald-300' />
+                    In transit
+                  </motion.div>
+                  <motion.div
+                    initial={{ x: '110%' }}
+                    animate={{ x: '-10%' }}
+                    transition={{ duration: 8.8, repeat: Infinity, ease: 'linear' }}
+                    className='mt-2 flex w-max items-center gap-2 rounded-full border border-white/30 bg-[var(--app-primary)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/95 backdrop-blur-sm'>
+                    <PackageCheck className='h-3.5 w-3.5' />
+                    OFD scan stream
+                  </motion.div>
+                </div>
+              ) : null}
+              <span className='sr-only'>Doorear product interface preview.</span>
+            </div>
+              <div className='mt-3 grid grid-cols-2 gap-2'>
+                <div className='rounded-xl border border-[var(--app-border)] bg-white px-3 py-2 text-xs font-semibold text-[var(--app-muted)] shadow-sm'>
+                  <span className='inline-flex items-center gap-1.5'>
+                    <Sparkle className='h-3.5 w-3.5 text-[var(--app-primary)]' />
+                    Delivery SLA
+                  </span>
+                  <p className='mt-1 text-base font-bold text-[var(--app-foreground)]'>98.2%</p>
+                </div>
+                <div className='rounded-xl border border-[var(--app-border)] bg-white px-3 py-2 text-xs font-semibold text-[var(--app-muted)] shadow-sm'>
+                  <span className='inline-flex items-center gap-1.5'>
+                    <Truck className='h-3.5 w-3.5 text-[var(--app-primary)]' />
+                    Active hubs
+                  </span>
+                  <p className='mt-1 text-base font-bold text-[var(--app-foreground)]'>24 branches</p>
+                </div>
               </div>
             </div>
           </motion.div>

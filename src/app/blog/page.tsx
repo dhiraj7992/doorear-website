@@ -67,9 +67,10 @@ export default function BlogIndexPage() {
           </>
         }
         image={{
-          src: '/images/marketing/page-blog.jpg',
+          src: '/images/marketing/web-ops-6.jpg',
           alt: 'Desk with analytics and planning — strategy and writing',
         }}
+        imagePresentation='default'
         imageCaption='Long-form guides aligned to real modules: bookings, hubs, MIS, procurement, and billing transparency.'
         cta={{ href: '/contact', label: 'Suggest a topic' }}
         secondaryCta={{ href: '/pricing', label: 'View pricing' }}
