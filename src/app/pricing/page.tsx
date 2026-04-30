@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Check } from 'lucide-react'
@@ -121,6 +122,8 @@ const comparison = [
 ]
 
 export default function PricingPage() {
+  notFound()
+
   const siteUrl = getSiteUrl()
   const webPageJsonLd = {
     '@context': 'https://schema.org',
