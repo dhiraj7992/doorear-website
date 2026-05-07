@@ -1,11 +1,11 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { LinkButton } from '@/components/ui'
 import { motion, useReducedMotion } from 'framer-motion'
 import {
   ArrowRight,
+  Bot,
   Building2,
   Gauge,
   Landmark,
@@ -18,6 +18,7 @@ import {
 } from 'lucide-react'
 import { trackEvent } from '@/lib/analytics'
 import MarketingHeroDecorations from './MarketingHeroDecorations'
+import HeroMotionVisual from './HeroMotionVisual'
 import { APP_SIGNUP_URL } from './site-config'
 
 export default function HeroSection() {
@@ -36,8 +37,7 @@ export default function HeroSection() {
               className='inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-card)]/90 px-3 py-1.5 text-xs font-medium text-[var(--app-muted)] shadow-sm backdrop-blur-sm'>
               <Sparkles className='h-3.5 w-3.5 text-amber-600' aria-hidden />
               <span>
-                doorear.com — logistics operations for Indian courier &amp; 3PL
-                networks
+                AI-ready logistics operations for Indian courier &amp; 3PL networks
               </span>
             </motion.div>
             <motion.h1
@@ -45,9 +45,9 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.05 }}
               className='mt-6 text-4xl font-bold leading-[1.1] tracking-tight text-[var(--app-foreground)] md:text-5xl lg:text-[3.25rem]'>
-              Run bookings, hubs &amp; last-mile delivery on one{' '}
+              Run bookings, hubs &amp; last-mile delivery with{' '}
               <span className='bg-gradient-to-r from-[var(--app-primary)] to-blue-600 bg-clip-text text-transparent'>
-                logistics operations platform
+                AI-assisted operations clarity
               </span>
             </motion.h1>
             <motion.p
@@ -55,11 +55,29 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
               className='mt-6 max-w-xl text-lg leading-relaxed text-[var(--app-muted)]'>
-              Doorear helps teams book and track shipments, coordinate network
-              execution, and read MIS the way dispatchers actually work—across
-              branches, GST-ready company profiles, and granular roles—without
-              duct-taping spreadsheets to legacy tools.
+              Doorear helps teams book and track shipments, coordinate network execution, and read MIS the
+              way dispatchers actually work—then layers assistive AI to surface risk, prioritize exceptions,
+              and speed up decisions across branches, roles, and GST-ready company profiles.
             </motion.p>
+            <motion.div
+              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.13 }}
+              className='mt-7 flex flex-wrap items-center gap-2 text-xs font-semibold text-[var(--app-muted)]'
+            >
+              <span className='inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-card)] px-3 py-1.5'>
+                <Bot className='h-4 w-4 text-[var(--app-primary)]' aria-hidden />
+                AI exception copilot
+              </span>
+              <span className='inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-card)] px-3 py-1.5'>
+                <Sparkle className='h-4 w-4 text-amber-600' aria-hidden />
+                SLA risk signals
+              </span>
+              <span className='inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-[var(--app-card)] px-3 py-1.5'>
+                <PackageCheck className='h-4 w-4 text-emerald-600' aria-hidden />
+                Stage-aware audit trail
+              </span>
+            </motion.div>
             <motion.div
               initial={reduceMotion ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -110,102 +128,7 @@ export default function HeroSection() {
                 className='pointer-events-none absolute -bottom-6 left-6 h-24 w-24 rounded-full bg-amber-400/20 blur-2xl'
                 aria-hidden
               />
-              <div className='group relative overflow-hidden rounded-2xl border border-[var(--app-primary)]/20 bg-[var(--app-card)] shadow-[0_26px_65px_-34px_rgba(15,23,42,0.45)] ring-1 ring-[var(--app-primary)]/15 transition-transform duration-500 hover:-translate-y-0.5'>
-              <Image
-                src='/images/insights/hero-command-centre.png'
-                alt='Doorear MIS and operations insight screen'
-                width={900}
-                height={640}
-                className='hero-image-modern h-[320px] w-full object-cover object-left transition duration-700 ease-out group-hover:scale-[1.03] md:h-[350px] lg:h-[390px]'
-                priority
-                sizes='(max-width: 1024px) 100vw, 45vw'
-              />
-              <div
-                className='pointer-events-none absolute left-0 top-0 h-11 w-40 rounded-br-xl bg-white/50 backdrop-blur-md'
-                aria-hidden
-              />
-              <motion.div
-                initial={reduceMotion ? false : { y: 8, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.45, delay: 0.2 }}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : { y: -3, rotate: -1.5, transition: { duration: 0.2 } }
-                }
-                className='absolute -right-4 top-8 w-[34%] min-w-[128px] max-w-[210px] rotate-[-3deg] rounded-2xl border border-white/30 bg-[var(--app-card)]/95 p-2 shadow-xl backdrop-blur-md'>
-                <div className='rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] p-1'>
-                  <Image
-                    src='/images/insights/pricing-workspace.png'
-                    alt='Pricing workspace screenshot'
-                    width={320}
-                    height={500}
-                    className='h-auto w-full rounded-lg object-cover object-left'
-                    sizes='220px'
-                  />
-                </div>
-              </motion.div>
-              <motion.div
-                initial={reduceMotion ? false : { y: 10, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.45, delay: 0.28 }}
-                whileHover={
-                  reduceMotion
-                    ? undefined
-                    : { y: -3, rotate: 1.5, transition: { duration: 0.2 } }
-                }
-                className='absolute -left-4 bottom-8 w-[38%] min-w-[140px] max-w-[230px] rotate-[2.5deg] rounded-2xl border border-white/30 bg-[var(--app-card)]/95 p-2 shadow-xl backdrop-blur-md'>
-                <Image
-                  src='/images/insights/integrations-setup.png'
-                  alt='Integrations setup screenshot'
-                  width={420}
-                  height={260}
-                  className='h-auto w-full rounded-xl object-cover object-left'
-                  sizes='260px'
-                />
-              </motion.div>
-              {!reduceMotion ? (
-                <div
-                  className='pointer-events-none absolute inset-x-0 top-5 overflow-hidden'
-                  aria-hidden>
-                  <motion.div
-                    initial={{ x: '-5%' }}
-                    animate={{ x: '105%' }}
-                    transition={{ duration: 7.2, repeat: Infinity, ease: 'linear' }}
-                    className='flex w-max items-center gap-2 rounded-full border border-white/30 bg-[var(--app-sidebar)]/55 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/90 backdrop-blur-sm'>
-                    <Truck className='h-3.5 w-3.5' />
-                    Live linehaul
-                    <span className='h-1.5 w-1.5 rounded-full bg-emerald-300' />
-                    In transit
-                  </motion.div>
-                  <motion.div
-                    initial={{ x: '110%' }}
-                    animate={{ x: '-10%' }}
-                    transition={{ duration: 8.8, repeat: Infinity, ease: 'linear' }}
-                    className='mt-2 flex w-max items-center gap-2 rounded-full border border-white/30 bg-[var(--app-primary)]/60 px-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/95 backdrop-blur-sm'>
-                    <PackageCheck className='h-3.5 w-3.5' />
-                    OFD scan stream
-                  </motion.div>
-                </div>
-              ) : null}
-              <span className='sr-only'>Doorear product interface preview.</span>
-            </div>
-              <div className='mt-3 grid grid-cols-2 gap-2'>
-                <div className='rounded-xl border border-[var(--app-border)] bg-white px-3 py-2 text-xs font-semibold text-[var(--app-muted)] shadow-sm'>
-                  <span className='inline-flex items-center gap-1.5'>
-                    <Sparkle className='h-3.5 w-3.5 text-[var(--app-primary)]' />
-                    Delivery SLA
-                  </span>
-                  <p className='mt-1 text-base font-bold text-[var(--app-foreground)]'>98.2%</p>
-                </div>
-                <div className='rounded-xl border border-[var(--app-border)] bg-white px-3 py-2 text-xs font-semibold text-[var(--app-muted)] shadow-sm'>
-                  <span className='inline-flex items-center gap-1.5'>
-                    <Truck className='h-3.5 w-3.5 text-[var(--app-primary)]' />
-                    Active hubs
-                  </span>
-                  <p className='mt-1 text-base font-bold text-[var(--app-foreground)]'>24 branches</p>
-                </div>
-              </div>
+              <HeroMotionVisual />
             </div>
           </motion.div>
 

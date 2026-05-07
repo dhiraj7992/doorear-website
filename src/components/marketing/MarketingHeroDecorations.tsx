@@ -33,6 +33,14 @@ export default function MarketingHeroDecorations() {
         className='marketing-floating-cube marketing-floating-cube-alt pointer-events-none absolute right-[18%] top-[20%] z-0'
         aria-hidden
       />
+      <div
+        className='marketing-floating-chip pointer-events-none absolute left-[8%] top-[62%] z-0'
+        aria-hidden
+      />
+      <div
+        className='marketing-floating-chip marketing-floating-chip-alt pointer-events-none absolute right-[10%] top-[68%] z-0'
+        aria-hidden
+      />
     </>
   )
 }

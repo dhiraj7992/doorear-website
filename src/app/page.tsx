@@ -10,6 +10,7 @@ import {
   Users,
 } from 'lucide-react'
 import HeroSection from '@/components/marketing/HeroSection'
+import TrustedByStrip from '@/components/marketing/TrustedByStrip'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import FeatureGrid from '@/components/marketing/FeatureGrid'
 import CTABlock from '@/components/marketing/CTABlock'
@@ -18,6 +19,8 @@ import {
   IndiaMarketSection,
   WorkflowSection,
 } from '@/components/marketing/HomeSections'
+import AISection from '@/components/marketing/AISection'
+import AIDemoSection from '@/components/marketing/AIDemoSection'
 import Link from 'next/link'
 import { LinkButton } from '@/components/ui'
 import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
@@ -158,7 +161,10 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
       />
       <HeroSection />
+      <TrustedByStrip />
       <IndiaMarketSection />
+      <AISection />
+      <AIDemoSection />
       <section
         className='border-y border-[var(--app-border)] bg-[var(--app-card)] py-10 md:py-12'
         aria-label='Where to see product screenshots'>

@@ -29,11 +29,8 @@ export default function PricingPage() {
         eyebrow='Pricing · INR plans'
         title='Choose a plan and estimate usage instantly'
         description='Use the calculator below to compare billing cycles, add users, shipment packs, and support SLA tiers. Everything updates in real time with no backend calls.'
-        image={{
-          src: '/images/insights/pricing-workspace.png',
-          alt: 'Doorear pricing and plans view',
-        }}
-        imagePresentation='productUi'
+        motionVisual={{ variant: 'pricing' }}
+        imagePresentation='default'
         imageCaption='Interactive estimate for planning budgets and capacity.'
       />
       <PricingCalculatorSection />

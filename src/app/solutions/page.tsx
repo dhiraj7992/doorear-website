@@ -114,11 +114,8 @@ export default function SolutionsPage() {
             shipment top-ups) match how Indian enterprises buy.
           </>
         }
-        image={{
-          src: '/images/insights/company-setup.png',
-          alt: 'Doorear product screenshot: hub and inward operations workspace',
-        }}
-        imagePresentation='productUi'
+        motionVisual={{ variant: 'companySetup' }}
+        imagePresentation='default'
         imageCaption='Hub & inward operations: queues, handoffs, and execution views supervisors use before SLAs slip—left navigation shows how modules map to your network.'
         cta={{ href: '/contact', label: 'Discuss your branch model' }}
       />

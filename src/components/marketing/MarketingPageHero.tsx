@@ -5,6 +5,7 @@ import { LinkButton } from '@/components/ui'
 import { motion, useReducedMotion } from 'framer-motion'
 import { ArrowRight, Sparkles } from 'lucide-react'
 import MarketingHeroDecorations from './MarketingHeroDecorations'
+import ProductMotionVisual, { type ProductMotionVariant } from './ProductMotionVisual'
 
 export type MarketingPageHeroProps = {
   eyebrow: string
@@ -12,7 +13,9 @@ export type MarketingPageHeroProps = {
   description: React.ReactNode
   extra?: React.ReactNode
   imageWrapperClassName?: string
-  image: { src: string; alt: string }
+  image?: { src: string; alt: string }
+  /** Replace the static screenshot with a motion “product illustration” (Lottie-style, lightweight). */
+  motionVisual?: { variant: ProductMotionVariant }
   imageCaption?: string
   /**
    * `productUi` — real app screenshots: no heavy gradient overlay, `object-left` so the
@@ -31,6 +34,7 @@ export default function MarketingPageHero({
   extra,
   imageWrapperClassName,
   image,
+  motionVisual,
   imageCaption,
   imagePresentation = 'default',
   cta,
@@ -38,6 +42,7 @@ export default function MarketingPageHero({
 }: MarketingPageHeroProps) {
   const reduceMotion = useReducedMotion()
   const isProductUi = imagePresentation === 'productUi'
+  const showMotion = Boolean(motionVisual)
 
   return (
     <section className='relative overflow-hidden border-b border-[var(--app-border)] bg-[var(--app-surface)]'>
@@ -131,19 +136,26 @@ export default function MarketingPageHero({
                   <span className='w-10 shrink-0' />
                 </div>
               ) : null}
-              <Image
-                src={image.src}
-                alt={image.alt}
-                width={900}
-                height={560}
-                className={
-                  isProductUi
-                    ? 'hero-image-modern h-auto w-full object-cover object-left object-top transition duration-700 ease-out motion-safe:hover:scale-[1.01]'
-                    : 'hero-image-modern h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.02]'
-                }
-                sizes='(max-width: 1024px) 100vw, 42vw'
-                priority
-              />
+              {showMotion ? (
+                <ProductMotionVisual
+                  variant={motionVisual!.variant}
+                  aspectClassName='aspect-[16/10]'
+                />
+              ) : image ? (
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={900}
+                  height={560}
+                  className={
+                    isProductUi
+                      ? 'hero-image-modern h-auto w-full object-cover object-left object-top transition duration-700 ease-out motion-safe:hover:scale-[1.01]'
+                      : 'hero-image-modern h-auto w-full object-cover transition duration-700 ease-out hover:scale-[1.02]'
+                  }
+                  sizes='(max-width: 1024px) 100vw, 42vw'
+                  priority
+                />
+              ) : null}
               {!isProductUi ? (
                 <div className='absolute inset-0 bg-gradient-to-t from-[var(--app-sidebar)]/78 via-[var(--app-sidebar)]/10 to-transparent' />
               ) : null}

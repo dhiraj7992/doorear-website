@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react'
 import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
+import ProductMotionVisual, { type ProductMotionVariant } from './ProductMotionVisual'
 
 /** Preserves the product’s left navigation rail in screenshots (SaaS “full UI” previews). */
 const shotClass =
@@ -73,6 +74,7 @@ export function InsightSpotlightBlock({
   chromeLabel,
   imageSrc,
   imageAlt,
+  motionVisual,
   imageSide = 'right',
   children,
   /** When true, omit inner `marketing-container` (use inside a parent that already constrains width). */
@@ -85,6 +87,7 @@ export function InsightSpotlightBlock({
   chromeLabel: string
   imageSrc: string
   imageAlt: string
+  motionVisual?: { variant: ProductMotionVariant }
   imageSide?: 'left' | 'right'
   children?: ReactNode
   flush?: boolean
@@ -120,7 +123,11 @@ export function InsightSpotlightBlock({
         aria-hidden
       />
       <InsightBrowserFrame chromeLabel={chromeLabel}>
-        <InsightProductShot src={imageSrc} alt={imageAlt} />
+        {motionVisual ? (
+          <ProductMotionVisual variant={motionVisual.variant} />
+        ) : (
+          <InsightProductShot src={imageSrc} alt={imageAlt} />
+        )}
       </InsightBrowserFrame>
       <span
         className='marketing-floating-chip marketing-floating-chip-alt pointer-events-none absolute -bottom-3 -right-3'

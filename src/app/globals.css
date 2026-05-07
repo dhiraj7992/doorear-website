@@ -141,6 +141,73 @@ body {
   transform-style: preserve-3d;
 }
 
+.hero-illus-route {
+  filter: drop-shadow(0 10px 18px rgba(37, 99, 235, 0.14));
+}
+
+.hero-illus-route-primary {
+  animation: hero-illus-dash 9.2s linear infinite;
+}
+
+.hero-illus-route-soft {
+  filter: blur(0.2px);
+  animation: hero-illus-dash 11.5s linear infinite reverse;
+}
+
+.hero-illus-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.95rem;
+  width: 0.95rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(255, 255, 255, 0.95),
+    rgba(37, 99, 235, 0.92) 55%,
+    rgba(37, 99, 235, 0.2)
+  );
+  box-shadow:
+    0 18px 40px -24px rgba(37, 99, 235, 0.9),
+    0 0 0 7px rgba(37, 99, 235, 0.12);
+  offset-path: path('M80 380 C 160 292, 240 420, 320 332 S 470 245, 560 196');
+  offset-distance: 0%;
+  animation: hero-illus-dot 6.9s ease-in-out infinite;
+}
+
+.hero-route-path {
+  opacity: 0.9;
+  filter: drop-shadow(0 10px 18px rgba(37, 99, 235, 0.22));
+  animation: hero-route-dash 8.5s linear infinite;
+}
+
+.hero-route-path-soft {
+  filter: blur(0.2px);
+  animation-duration: 10.5s;
+  animation-direction: reverse;
+}
+
+.hero-route-dot {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0.9rem;
+  width: 0.9rem;
+  border-radius: 9999px;
+  background: radial-gradient(
+    circle at 35% 35%,
+    rgba(255, 255, 255, 0.9),
+    rgba(37, 99, 235, 0.9) 55%,
+    rgba(37, 99, 235, 0.2)
+  );
+  box-shadow:
+    0 18px 40px -24px rgba(37, 99, 235, 0.9),
+    0 0 0 6px rgba(37, 99, 235, 0.12);
+  offset-path: path('M120 470 C 230 390, 340 520, 450 430 S 670 310, 780 250');
+  offset-distance: 0%;
+  animation: hero-route-dot 6.8s ease-in-out infinite;
+}
+
 .marketing-floating-cube {
   height: 2.75rem;
   width: 2.75rem;
@@ -213,6 +280,78 @@ body {
   }
 }
 
+@keyframes hero-route-dash {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.82;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -120;
+    opacity: 0.82;
+  }
+}
+
+@keyframes hero-route-dot {
+  0% {
+    offset-distance: 0%;
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  55% {
+    transform: scale(1.02);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    transform: scale(0.95);
+    opacity: 0;
+  }
+}
+
+@keyframes hero-illus-dash {
+  0% {
+    stroke-dashoffset: 0;
+    opacity: 0.78;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: -140;
+    opacity: 0.78;
+  }
+}
+
+@keyframes hero-illus-dot {
+  0% {
+    offset-distance: 0%;
+    transform: scale(0.94);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.03);
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    offset-distance: 100%;
+    transform: scale(0.94);
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .marketing-hero-mesh {
     animation: none;
@@ -221,4 +360,18 @@ body {
   .marketing-floating-chip {
     animation: none;
   }
+  .hero-route-path,
+  .hero-route-dot {
+    animation: none;
+  }
+  .hero-illus-route-primary,
+  .hero-illus-route-soft,
+  .hero-illus-dot {
+    animation: none;
+  }
+}
+
+/* Marketing marquee helper */
+.doorear-marquee {
+  will-change: transform;
 }

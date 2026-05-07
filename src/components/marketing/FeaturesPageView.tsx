@@ -186,10 +186,7 @@ export default function FeaturesPageView() {
             navigation included—followed by the full capability matrix.
           </>
         }
-        image={{
-          src: '/images/marketing/web-ops-1.jpg',
-          alt: `Doorear product screenshot: MIS and operational reporting in ${SITE_NAME}`,
-        }}
+        motionVisual={{ variant: 'ops' }}
         imagePresentation='default'
         imageCaption='Operational MIS: pipeline health, delays, and branch throughput—the kind of screen leadership and hub heads use in daily standups.'
         cta={{ href: '/contact', label: 'Book a feature walkthrough' }}
@@ -216,6 +213,7 @@ export default function FeaturesPageView() {
                 chromeLabel='User access'
                 imageSrc='/images/insights/User_access.png'
                 imageAlt={`Doorear user access and roles — ${SITE_NAME}`}
+                motionVisual={{ variant: 'userAccess' }}
                 imageSide='right'
               />
 
