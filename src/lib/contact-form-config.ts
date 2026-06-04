@@ -7,6 +7,11 @@ export const DEFAULT_CONTACT_FORM_RECIPIENT = 'yy.dhiraj@gmail.com'
  */
 export const DEFAULT_FORM_SUBMIT_INBOX = 'doorear.info@gmail.com'
 
+/** FormSubmit only accepts submissions tied to the activated apex origin. */
+export const FORM_SUBMIT_ORIGIN = 'https://doorear.com'
+
+export const FORM_SUBMIT_AJAX_URL = `https://formsubmit.co/ajax/${encodeURIComponent(DEFAULT_FORM_SUBMIT_INBOX)}`
+
 export function getContactFormRecipient(): string {
   const fromEnv = process.env.CONTACT_FORM_RECIPIENT?.trim()
   return fromEnv && fromEnv.includes('@') ? fromEnv : DEFAULT_CONTACT_FORM_RECIPIENT
@@ -14,7 +19,23 @@ export function getContactFormRecipient(): string {
 
 export function getFormSubmitInbox(): string {
   const fromEnv = process.env.CONTACT_FORM_FORMSUBMIT_INBOX?.trim()
-  return fromEnv && fromEnv.includes('@') ? fromEnv : DEFAULT_FORM_SUBMIT_INBOX
+  const inbox =
+    fromEnv && fromEnv.includes('@') ? fromEnv : DEFAULT_FORM_SUBMIT_INBOX
+  // Not activated on FormSubmit — always relay through the activated inbox.
+  if (inbox.toLowerCase() === DEFAULT_CONTACT_FORM_RECIPIENT.toLowerCase()) {
+    return DEFAULT_FORM_SUBMIT_INBOX
+  }
+  return inbox
+}
+
+export function getFormSubmitOrigin(): string {
+  return FORM_SUBMIT_ORIGIN
+}
+
+export function isFormSubmitOk(data: unknown): boolean {
+  if (!data || typeof data !== 'object') return false
+  const success = (data as { success?: unknown }).success
+  return success === true || success === 'true'
 }
 
 export type ContactFormPayload = {
@@ -79,8 +100,8 @@ export function buildFormSubmitBody(
     _subject: `Doorear lead: ${data.fullName || data.email || 'New inquiry'}`,
     _template: 'table',
     _captcha: 'false',
-    _cc: cc,
-    _replyto: data.email || undefined,
+    ...(cc ? { _cc: cc } : {}),
+    ...(data.email ? { _replyto: data.email } : {}),
     Name: data.firstName,
     'Last name': data.lastName,
     Email: data.email,

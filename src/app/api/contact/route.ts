@@ -4,8 +4,6 @@ import {
   isValidContactEmail,
   sendContactEmail,
 } from '@/lib/send-contact-email'
-import { getSiteUrl } from '@/components/marketing/site-config'
-
 export async function POST(req: NextRequest) {
   let raw: ContactFormPayload
   try {
@@ -43,10 +41,7 @@ export async function POST(req: NextRequest) {
       : 'doorear.com contact form'
 
   try {
-    const result = await sendContactEmail(raw, {
-      source: formSource,
-      siteUrl: getSiteUrl(),
-    })
+    const result = await sendContactEmail(raw, { source: formSource })
 
     if (!result.ok) {
       return NextResponse.json(

@@ -3,6 +3,8 @@ import {
   buildFormSubmitBody,
   getContactFormRecipient,
   getFormSubmitInbox,
+  getFormSubmitOrigin,
+  isFormSubmitOk,
   normalizeContactPayload,
   type ContactFormPayload,
 } from '@/lib/contact-form-config'
@@ -141,9 +143,7 @@ async function sendViaWeb3Forms(
 }
 
 function isFormSubmitSuccess(result: unknown): boolean {
-  if (!result || typeof result !== 'object') return false
-  const success = (result as { success?: unknown }).success
-  return success === true || success === 'true'
+  return isFormSubmitOk(result)
 }
 
 function formSubmitActivationMessage(message: string): boolean {
@@ -152,12 +152,13 @@ function formSubmitActivationMessage(message: string): boolean {
 
 async function sendViaFormSubmit(
   raw: ContactFormPayload,
-  source: string,
-  siteUrl: string
+  source: string
 ): Promise<ContactEmailResult> {
   const inbox = getFormSubmitInbox()
   const notify = getContactFormRecipient()
+  const origin = getFormSubmitOrigin()
   const body = buildFormSubmitBody(raw, { source })
+  const payload = JSON.stringify(body)
 
   const response = await fetch(
     `https://formsubmit.co/ajax/${encodeURIComponent(inbox)}`,
@@ -166,15 +167,22 @@ async function sendViaFormSubmit(
       headers: {
         'Content-Type': 'application/json',
         Accept: 'application/json',
-        Origin: siteUrl,
-        Referer: `${siteUrl}/contact`,
+        Origin: origin,
+        Referer: `${origin}/contact`,
       },
-      body: JSON.stringify(body),
+      body: payload,
       cache: 'no-store',
     }
   )
 
-  const result: unknown = await response.json().catch(() => ({}))
+  const rawText = await response.text()
+  let result: unknown = {}
+  try {
+    result = rawText ? JSON.parse(rawText) : {}
+  } catch {
+    result = { message: rawText.slice(0, 200) }
+  }
+
   if (response.ok && isFormSubmitSuccess(result)) return { ok: true }
 
   const message =
@@ -183,7 +191,9 @@ async function sendViaFormSubmit(
     'message' in result &&
     typeof (result as { message: string }).message === 'string'
       ? (result as { message: string }).message
-      : 'Could not send your message. Please try again or email us directly.'
+      : rawText
+        ? rawText.slice(0, 200)
+        : 'Could not send your message. Please try again or email us directly.'
 
   if (formSubmitActivationMessage(message)) {
     return {
@@ -205,9 +215,9 @@ async function sendViaFormSubmit(
 /** FormSubmit.co (Option A); optional SMTP / Web3Forms when env vars are set. */
 export async function sendContactEmail(
   raw: ContactFormPayload,
-  options: { source: string; siteUrl: string }
+  options: { source: string }
 ): Promise<ContactEmailResult> {
-  const formSubmit = await sendViaFormSubmit(raw, options.source, options.siteUrl)
+  const formSubmit = await sendViaFormSubmit(raw, options.source)
   if (formSubmit.ok) return formSubmit
 
   if (smtpConfigured()) {

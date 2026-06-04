@@ -9,10 +9,14 @@ export const ORGANIZATION_SAME_AS = [
 ] as const
 
 export function getSiteUrl(): string {
+  const fallback = 'https://doorear.com'
   if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_SITE_URL) {
-    return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')
+    const url = process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '')
+    // Canonical host for SEO, FormSubmit, and OG tags (www redirects to apex).
+    if (/^https?:\/\/www\.doorear\.com/i.test(url)) return fallback
+    return url
   }
-  return 'https://doorear.com'
+  return fallback
 }
 
 export function getSupportUrl(): string {

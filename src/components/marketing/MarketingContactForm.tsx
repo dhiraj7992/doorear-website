@@ -4,8 +4,14 @@ import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui'
 import { trackEvent } from '@/lib/analytics'
+import {
+  buildFormSubmitBody,
+  FORM_SUBMIT_AJAX_URL,
+  isFormSubmitOk,
+  type ContactFormPayload,
+} from '@/lib/contact-form-config'
 
-const FORM_ENDPOINT = '/api/contact'
+const API_ENDPOINT = '/api/contact'
 
 export default function MarketingContactForm() {
   const router = useRouter()
@@ -68,28 +74,67 @@ export default function MarketingContactForm() {
       return
     }
 
+    const payload: ContactFormPayload = {
+      firstname: formData.firstname,
+      lastname: formData.lastname,
+      email: formData.email,
+      phnumber: formData.phnumber,
+      message: formData.Message,
+      source: 'marketing_contact_page',
+      UTMSource: utmData.utm_source,
+      UTMMedium: utmData.utm_medium,
+      UTMCampaign: utmData.utm_campaign,
+      UTMTerm: utmData.utm_term,
+      UTMContent: utmData.utm_content,
+      Referrer: utmData.referrer,
+      LandingPage: utmData.landing_page,
+    }
+
     try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify({
-          firstname: formData.firstname,
-          lastname: formData.lastname,
-          email: formData.email,
-          phnumber: formData.phnumber,
-          message: formData.Message,
-          source: 'marketing_contact_page',
-          UTMSource: utmData.utm_source,
-          UTMMedium: utmData.utm_medium,
-          UTMCampaign: utmData.utm_campaign,
-          UTMTerm: utmData.utm_term,
-          UTMContent: utmData.utm_content,
-          Referrer: utmData.referrer,
-          LandingPage: utmData.landing_page,
-        }),
+      let sent = false
+      let lastMessage = 'Something went wrong. Please try again in a moment.'
+
+      const formBody = buildFormSubmitBody(payload, {
+        source: 'marketing_contact_page',
       })
-      const data = (await res.json()) as { success?: boolean; message?: string }
-      if (res.ok && data.success) {
+      const directRes = await fetch(FORM_SUBMIT_AJAX_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+        },
+        body: JSON.stringify(formBody),
+      })
+      const directData: unknown = await directRes.json().catch(() => ({}))
+      if (directRes.ok && isFormSubmitOk(directData)) {
+        sent = true
+      } else if (
+        typeof directData === 'object' &&
+        directData &&
+        'message' in directData &&
+        typeof (directData as { message: string }).message === 'string'
+      ) {
+        lastMessage = (directData as { message: string }).message
+      }
+
+      if (!sent) {
+        const res = await fetch(API_ENDPOINT, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(payload),
+        })
+        const data = (await res.json()) as { success?: boolean; message?: string }
+        if (res.ok && data.success) {
+          sent = true
+        } else if (data.message) {
+          lastMessage = data.message
+        }
+      }
+
+      if (sent) {
         trackEvent('marketing_contact_submit', {
           source: 'contact_page_form',
           form: 'marketing_contact',
@@ -110,9 +155,7 @@ export default function MarketingContactForm() {
           router.push('/thank-you?type=demo')
         }, 1200)
       } else {
-        setErrorMessage(
-          data.message ?? 'Something went wrong. Please try again in a moment.'
-        )
+        setErrorMessage(lastMessage)
       }
     } catch {
       setErrorMessage('Network error. Check your connection and try again.')
