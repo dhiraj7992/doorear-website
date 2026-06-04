@@ -2,7 +2,11 @@
 export const SITE_NAME = 'Doorear'
 
 export const SITE_DESCRIPTION =
-  'Doorear is courier management software and a logistics operations platform for Indian operators—book and track shipments, run hubs and last-mile delivery, MIS, procurement, and GST-aware accounts in one multi-branch workspace.'
+  'Doorear is a logistics marketplace and logistics operating system (LOS) that connects manufacturers, eCommerce companies, distributors, courier companies, transporters, and 3PL providers—bookings, hub ops, MIS, procurement, and GST-aware accounts on one unified platform for Indian supply chains.'
+
+export const ORGANIZATION_SAME_AS = [
+  'https://www.linkedin.com/in/doorear-tech-664b1a405',
+] as const
 
 export function getSiteUrl(): string {
   if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_SITE_URL) {

@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
+import FAQSection from '@/components/marketing/FAQSection'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import PricingCalculatorSection from '@/components/marketing/PricingCalculatorSection'
-import { SITE_NAME } from '@/components/marketing/site-config'
+import { pricingFaqs } from '@/components/marketing/faq-content'
+import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
+import { faqJsonLdFromItems, pricingSoftwareJsonLd } from '@/lib/seo-jsonld'
+import { PRICING_PLANS } from '@/components/marketing/pricing-calculator-config'
 
 export const metadata: Metadata = {
   title: 'Pricing + Plan & Usage Calculator',
@@ -23,8 +27,37 @@ export const metadata: Metadata = {
 }
 
 export default function PricingPage() {
+  const siteUrl = getSiteUrl()
+  const offers = PRICING_PLANS.filter((p) => !p.isContactSales).map((plan) => ({
+    name: plan.name,
+    price: plan.monthlyFee,
+    description: plan.description,
+  }))
+
+  const pricingJsonLd = pricingSoftwareJsonLd(offers)
+  const breadcrumbs = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
+      { '@type': 'ListItem', position: 2, name: 'Pricing', item: `${siteUrl}/pricing` },
+    ],
+  }
+
   return (
     <>
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pricingJsonLd) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLdFromItems(pricingFaqs)) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <MarketingPageHero
         eyebrow='Pricing · INR plans'
         title={
@@ -39,6 +72,7 @@ export default function PricingPage() {
         imageCaption='Interactive estimate for planning budgets and capacity.'
       />
       <PricingCalculatorSection />
+      <FAQSection items={pricingFaqs} title='Pricing FAQ' />
     </>
   )
 }

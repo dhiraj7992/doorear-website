@@ -4,6 +4,8 @@ export type BlogPost = {
   title: string
   description: string
   datePublished: string
+  dateModified?: string
+  heroImage?: string
   keywords: string[]
   sections: { heading: string; paragraphs: string[] }[]
 }
@@ -15,6 +17,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'Courier branch management and multi branch courier software practices for ops heads—users, permissions, and daily KPIs in one logistics operations platform.',
     datePublished: '2026-01-15',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-1.jpg',
     keywords: [
       'multi branch courier software',
       'courier branch management',
@@ -48,6 +52,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'From forward shipment booking and AWB-style orders to inward legs and delivery runs—what operators track in shipment booking software.',
     datePublished: '2026-01-22',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-logistics-hub.jpg',
     keywords: [
       'shipment booking software',
       'AWB booking system India',
@@ -80,6 +86,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'Serviceable PIN and location master validation before booking—fewer invalid routes and better cost control for Indian courier networks.',
     datePublished: '2026-02-03',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-3.jpg',
     keywords: [
       'logistics management software',
       'courier management software',
@@ -106,6 +114,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'Logistics MIS dashboard patterns for courier operators—pipeline health, delivery performance, and sales & purchase analytics where enabled.',
     datePublished: '2026-02-12',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-features-ai.jpg',
     keywords: [
       'logistics MIS dashboard',
       'logistics operations platform',
@@ -132,6 +142,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'RBAC, user invites, and optional enterprise sign-in—why multi-tenant isolation matters for 3PL and courier operators.',
     datePublished: '2026-02-20',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
     keywords: [
       'multi tenant logistics SaaS',
       'courier company admin software',
@@ -158,6 +170,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'GST logistics invoicing software support: company profile fields, invoicing terms, AWB products, tax invoices, and vouchers tied to the same tenant as operations.',
     datePublished: '2026-03-01',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-pricing-ai.jpg',
     keywords: [
       'GST logistics invoicing software',
       'logistics management software',
@@ -184,6 +198,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'Procurement RFQ logistics software for vendor collaboration—RFQs, proposals, agreements, and public quotes without extra portals.',
     datePublished: '2026-03-10',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-5.jpg',
     keywords: [
       'procurement RFQ logistics software',
       '3PL operations platform',
@@ -210,6 +226,8 @@ export const blogPosts: BlogPost[] = [
     description:
       'How plans, trials, limits, and offline payment intimation work—an honest enterprise-friendly story aligned with the product.',
     datePublished: '2026-03-18',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/doorear-plans-upgrade.png',
     keywords: [
       'Doorear logistics software',
       'multi tenant logistics SaaS',
@@ -238,4 +256,19 @@ export function getPostBySlug(slug: string): BlogPost | undefined {
 
 export function getAllSlugs(): string[] {
   return blogPosts.map((p) => p.slug)
+}
+
+export function getRelatedPosts(slug: string, limit = 3): BlogPost[] {
+  const current = getPostBySlug(slug)
+  if (!current) return []
+
+  const scored = blogPosts
+    .filter((p) => p.slug !== slug)
+    .map((p) => {
+      const overlap = p.keywords.filter((k) => current.keywords.includes(k)).length
+      return { post: p, score: overlap }
+    })
+    .sort((a, b) => b.score - a.score)
+
+  return scored.slice(0, limit).map((item) => item.post)
 }

@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   description:
     'Read Doorear product documentation for courier and logistics teams: setup guides, configuration, and module references.',
   alternates: { canonical: '/documentation' },
+  robots: {
+    index: false,
+    follow: false,
+  },
 }
 
 export default function Page() {

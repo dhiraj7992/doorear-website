@@ -84,8 +84,8 @@ export default function BlogArticleHero({ post }: Props) {
             <div className='hero-image-glow absolute -inset-3 rounded-3xl bg-gradient-to-br from-[var(--app-primary)]/25 to-amber-500/15 blur-2xl' />
             <div className='relative overflow-hidden rounded-2xl border border-[var(--app-border)] shadow-xl ring-1 ring-[var(--app-primary)]/10'>
               <Image
-                src='/images/marketing/web-ops-2.jpg'
-                alt='Planning and analytics workspace'
+                src={post.heroImage ?? '/images/marketing/web-ops-2.jpg'}
+                alt={post.title}
                 width={640}
                 height={420}
                 className='hero-image-modern h-auto w-full object-cover'

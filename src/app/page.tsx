@@ -13,31 +13,21 @@ import HomePlatformSection from '@/components/marketing/HomePlatformSection'
 import AISection from '@/components/marketing/AISection'
 import AIDemoSection from '@/components/marketing/AIDemoSection'
 import ProductUiCallout from '@/components/marketing/ProductUiCallout'
-import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
   title: 'Logistics Management Software for Courier & 3PL Teams',
-  description:
-    'Doorear is a logistics operations platform and courier management software—book and track shipments, coordinate hubs and last-mile delivery, run MIS and GST-aware accounts for Indian operators.',
+  description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {
-    title: `${SITE_NAME} | Logistics operations platform & courier management software`,
-    description:
-      'Book and track shipments, coordinate hubs and last-mile delivery, and run operational analytics from one secure workspace at doorear.com.',
+    title: `${SITE_NAME} | Logistics marketplace & operating system`,
+    description: SITE_DESCRIPTION,
     url: '/',
   },
 }
 
 export default function HomePage() {
   const siteUrl = getSiteUrl()
-  const orgJsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Organization',
-    name: SITE_NAME,
-    url: siteUrl,
-    logo: `${siteUrl}/images/logo/logo.png`,
-    sameAs: ['https://www.linkedin.com/in/doorear-tech-664b1a405'],
-  }
 
   const softwareJsonLd = {
     '@context': 'https://schema.org',
@@ -48,20 +38,15 @@ export default function HomePage() {
     offers: {
       '@type': 'Offer',
       price: '0',
-      priceCurrency: 'USD',
+      priceCurrency: 'INR',
       description: 'Free trial available',
     },
-    description:
-      'Courier management software and logistics operations platform for Indian operators.',
+    description: SITE_DESCRIPTION,
     url: siteUrl,
   }
 
   return (
     <>
-      <script
-        type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
-      />
       <script
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}

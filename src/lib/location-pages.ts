@@ -62,6 +62,39 @@ export const locationPages: LocationPage[] = [
       'Improve accountability from first mile through POD.',
     ],
   },
+  {
+    slug: 'pune',
+    city: 'Pune',
+    state: 'Maharashtra',
+    titleQualifier: 'manufacturing corridors and industrial outbound logistics',
+    painPoints: [
+      'Coordinate plant dispatch with regional hub and linehaul partners.',
+      'Validate PIN coverage before committing capacity on new lanes.',
+      'Give finance and ops shared visibility on shipment and billing records.',
+    ],
+  },
+  {
+    slug: 'kolkata',
+    city: 'Kolkata',
+    state: 'West Bengal',
+    titleQualifier: 'eastern India distribution and intercity linehaul',
+    painPoints: [
+      'Unify booking discipline across branches and franchise partners.',
+      'Track hub inward queues and delivery run performance in one MIS view.',
+      'Scale users and shipment allowances with transparent subscription controls.',
+    ],
+  },
+  {
+    slug: 'ahmedabad',
+    city: 'Ahmedabad',
+    state: 'Gujarat',
+    titleQualifier: 'textile, pharma, and SME freight networks',
+    painPoints: [
+      'Reduce booking errors across multi-branch SME courier operations.',
+      'Apply role-based access for hub teams and central dispatch.',
+      'Align GST-oriented billing artifacts with operational shipment activity.',
+    ],
+  },
 ]
 
 export function getLocationBySlug(slug: string) {

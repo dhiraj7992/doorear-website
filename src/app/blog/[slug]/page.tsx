@@ -4,11 +4,13 @@ import { notFound } from 'next/navigation'
 import {
   getAllSlugs,
   getPostBySlug,
-  type BlogPost,
+  getRelatedPosts,
 } from '@/lib/blog-posts'
 import BlogArticleHero from '@/components/marketing/BlogArticleHero'
+import BlogRelatedPosts from '@/components/marketing/BlogRelatedPosts'
 import { ScrollReveal, SectionShell } from '@/components/marketing/primitives'
-import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
+import { getOgImageUrl, getSiteUrl } from '@/components/marketing/site-config'
+import { articleJsonLd, breadcrumbJsonLd } from '@/lib/seo-jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -21,6 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = getPostBySlug(slug)
   if (!post) return { title: 'Not found' }
   const url = `${getSiteUrl()}/blog/${post.slug}`
+  const ogImage = `${getSiteUrl()}${post.heroImage ?? '/images/insights/analytics-ops.png'}`
   return {
     title: post.title,
     description: post.description,
@@ -32,39 +35,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: post.title,
       description: post.description,
       publishedTime: post.datePublished,
+      modifiedTime: post.dateModified ?? post.datePublished,
+      images: [{ url: ogImage, alt: post.title }],
     },
     twitter: {
       card: 'summary_large_image',
       title: post.title,
       description: post.description,
+      images: [post.heroImage ? ogImage : getOgImageUrl()],
     },
   }
-}
-
-function ArticleJsonLd({ post }: { post: BlogPost }) {
-  const base = getSiteUrl()
-  const data = {
-    '@context': 'https://schema.org',
-    '@type': 'Article',
-    headline: post.title,
-    description: post.description,
-    datePublished: post.datePublished,
-    author: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: SITE_NAME,
-    },
-    mainEntityOfPage: `${base}/blog/${post.slug}`,
-  }
-  return (
-    <script
-      type='application/ld+json'
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
-    />
-  )
 }
 
 export default async function BlogPostPage({ params }: Props) {
@@ -72,9 +52,23 @@ export default async function BlogPostPage({ params }: Props) {
   const post = getPostBySlug(slug)
   if (!post) notFound()
 
+  const related = getRelatedPosts(slug, 3)
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Blog', path: '/blog' },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ])
+
   return (
     <>
-      <ArticleJsonLd post={post} />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd(post)) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <BlogArticleHero post={post} />
       <SectionShell tone='surface' bordered spacing='default'>
         <div className='marketing-container max-w-3xl'>
@@ -96,6 +90,7 @@ export default async function BlogPostPage({ params }: Props) {
                   </section>
                 ))}
               </div>
+              <BlogRelatedPosts posts={related} />
               <div className='mt-12 rounded-2xl border border-[var(--app-border)] bg-gradient-to-br from-[var(--app-surface)] to-white/80 p-6'>
                 <h3 className='text-lg font-semibold text-[var(--app-foreground)]'>
                   Next steps

@@ -6,7 +6,17 @@ import { cn } from '@/lib/cn'
 import { marketingFaqs } from './faq-content'
 import { PremiumCard, ScrollReveal, SectionShell } from './primitives'
 
-export default function FAQSection() {
+type FaqItem = { q: string; a: string }
+
+type Props = {
+  items?: readonly FaqItem[]
+  title?: string
+}
+
+export default function FAQSection({
+  items = marketingFaqs,
+  title = 'Frequently asked questions',
+}: Props) {
   const [openIndex, setOpenIndex] = useState<number | null>(0)
 
   return (
@@ -14,11 +24,11 @@ export default function FAQSection() {
       <div className='marketing-container max-w-3xl'>
         <ScrollReveal>
           <h2 className='text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl'>
-            Frequently asked questions
+            {title}
           </h2>
         </ScrollReveal>
         <div className='mt-10 space-y-4'>
-          {marketingFaqs.map((item, i) => {
+          {items.map((item, i) => {
             const isOpen = openIndex === i
             return (
               <ScrollReveal key={item.q} delay={0.04 * i}>

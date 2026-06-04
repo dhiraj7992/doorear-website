@@ -7,7 +7,8 @@ import {
   locationPages,
   type LocationPage,
 } from '@/lib/location-pages'
-import { SITE_NAME } from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
+import { breadcrumbJsonLd } from '@/lib/seo-jsonld'
 
 type Props = {
   params: Promise<{ city: string }>
@@ -34,7 +35,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-function LocalBusinessJsonLd({ location }: { location: LocationPage }) {
+function ServiceJsonLd({ location }: { location: LocationPage }) {
+  const siteUrl = getSiteUrl()
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -47,7 +49,7 @@ function LocalBusinessJsonLd({ location }: { location: LocationPage }) {
     provider: {
       '@type': 'Organization',
       name: SITE_NAME,
-      url: 'https://doorear.com',
+      url: siteUrl,
     },
   }
 
@@ -64,9 +66,19 @@ export default async function LocationCityPage({ params }: Props) {
   const location = getLocationBySlug(city)
   if (!location) notFound()
 
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Locations', path: '/locations' },
+    { name: location.city, path: `/locations/${location.slug}` },
+  ])
+
   return (
     <>
-      <LocalBusinessJsonLd location={location} />
+      <ServiceJsonLd location={location} />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
       <MarketingPageHero
         eyebrow={`Location · ${location.city}`}
         title={

@@ -1,6 +1,26 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [
+      {
+        source: '/:path*',
+        has: [{ type: 'host', value: 'www.doorear.com' }],
+        destination: 'https://doorear.com/:path*',
+        permanent: true,
+      },
+      {
+        source: '/signin',
+        destination: 'https://app.doorear.com/login',
+        permanent: true,
+      },
+      {
+        source: '/signup',
+        destination: 'https://app.doorear.com/signup',
+        permanent: true,
+      },
+    ]
+  },
   async headers() {
     return [
       {

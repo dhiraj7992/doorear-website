@@ -15,7 +15,7 @@ const buyerPersonas = [
 export const metadata: Metadata = {
   title: 'Locations — Courier Software for Major Indian Cities',
   description:
-    'Explore Doorear logistics management software deployment fit across Delhi, Mumbai, Hyderabad, Bangalore, and Chennai courier networks.',
+    'Explore Doorear logistics marketplace and courier software deployment fit across Delhi, Mumbai, Hyderabad, Bangalore, Chennai, Pune, Kolkata, and Ahmedabad.',
   alternates: { canonical: '/locations' },
   openGraph: {
     title: `Locations | ${SITE_NAME}`,

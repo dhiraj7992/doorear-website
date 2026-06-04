@@ -44,11 +44,13 @@ export function InsightProductShot({
   alt,
   aspectClassName = 'aspect-[16/10]',
   sizes = '(max-width: 1024px) 100vw, min(720px, 50vw)',
+  priority = false,
 }: {
   src: string
   alt: string
   aspectClassName?: string
   sizes?: string
+  priority?: boolean
 }) {
   return (
     <div
@@ -59,7 +61,7 @@ export function InsightProductShot({
         fill
         className={shotClass}
         sizes={sizes}
-        priority={false}
+        priority={priority}
       />
     </div>
   )

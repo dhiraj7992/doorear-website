@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
+import FAQSection from '@/components/marketing/FAQSection'
 import FeaturesPageView from '@/components/marketing/FeaturesPageView'
+import RelatedGuidesSection from '@/components/marketing/RelatedGuidesSection'
+import { featuresFaqs } from '@/components/marketing/faq-content'
 import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
+import { breadcrumbJsonLd, faqJsonLdFromItems } from '@/lib/seo-jsonld'
 
 export const metadata: Metadata = {
   title: 'Courier Software Features — Booking, Hubs, MIS & Accounts',
@@ -12,6 +16,7 @@ export const metadata: Metadata = {
     'logistics MIS dashboard',
     'last mile delivery operations software',
     'GST logistics invoicing software',
+    'logistics operating system',
   ],
   alternates: { canonical: '/features' },
   openGraph: {
@@ -35,10 +40,14 @@ export default function FeaturesPage() {
     '@type': 'WebPage',
     name: `${SITE_NAME} Features`,
     description:
-      'Feature overview for Doorear courier management software and logistics operations platform.',
+      'Feature overview for Doorear logistics marketplace, operating system, and courier management software.',
     url: `${siteUrl}/features`,
-    inLanguage: 'en',
+    inLanguage: 'en-IN',
   }
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: 'Home', path: '/' },
+    { name: 'Features', path: '/features' },
+  ])
 
   return (
     <>
@@ -46,7 +55,17 @@ export default function FeaturesPage() {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+      />
+      <script
+        type='application/ld+json'
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLdFromItems(featuresFaqs)) }}
+      />
       <FeaturesPageView />
+      <RelatedGuidesSection />
+      <FAQSection items={featuresFaqs} title='Features FAQ' />
     </>
   )
 }

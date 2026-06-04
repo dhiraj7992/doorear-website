@@ -77,6 +77,7 @@ export default function HeroFloatingVisual() {
             alt={HERO_VISUAL.primaryAlt}
             aspectClassName='aspect-[16/10]'
             sizes='(max-width: 1024px) 88vw, 420px'
+            priority
           />
         </InsightBrowserFrame>
       </motion.div>

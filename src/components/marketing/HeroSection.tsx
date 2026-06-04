@@ -30,7 +30,7 @@ export default function HeroSection() {
               className='aigocy-eyebrow-pill inline-flex w-fit max-w-full items-center gap-2.5 rounded-full px-4 py-2 text-xs font-semibold text-[var(--app-foreground)]'>
               <span className='aigocy-pulse-dot h-2 w-2 shrink-0 rounded-full bg-[var(--app-primary)]' />
               <Sparkles className='h-3.5 w-3.5 shrink-0 text-amber-600' aria-hidden />
-              <span>AI-ready logistics for Indian courier &amp; 3PL networks</span>
+              <span>Logistics marketplace &amp; operating system for Indian supply chains</span>
             </motion.div>
 
             <motion.h1
@@ -38,8 +38,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.04 }}
               className='mt-4 text-[2.15rem] font-extrabold leading-[1.08] tracking-tight text-[var(--app-foreground)] sm:text-4xl md:text-5xl lg:mt-5 lg:text-[3.35rem] lg:leading-[1.06]'>
-              Run bookings, hubs &amp; last-mile with{' '}
-              <span className='aigocy-gradient-text'>AI-assisted clarity</span>
+              Logistics management software for{' '}
+              <span className='aigocy-gradient-text'>courier &amp; 3PL networks</span>
             </motion.h1>
 
             <motion.div
@@ -48,8 +48,9 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className='mt-5 max-w-xl text-lg leading-relaxed text-[var(--app-muted)] md:mt-6 md:text-xl md:leading-[1.6]'>
               <p>
-                Book and track shipments, coordinate hubs and delivery runs, and read MIS
-                the way dispatchers work—plus assistive AI for risk, exceptions, and
+                Doorear is a logistics marketplace and operating system—book and track
+                shipments, coordinate hubs and delivery runs, and read MIS the way
+                dispatchers work, with assistive AI for risk, exceptions, and
                 branch-aware decisions.
               </p>
             </motion.div>

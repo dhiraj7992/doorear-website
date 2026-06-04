@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import MarketingLogo from '@/components/marketing/MarketingLogo'
-import { NAV_LINKS, SITE_NAME } from './site-config'
+import { locationPages } from '@/lib/location-pages'
+import { solutionPages } from '@/lib/solution-pages'
+import { NAV_LINKS, SITE_DESCRIPTION, SITE_NAME } from './site-config'
 
 export default function MarketingFooter() {
   return (
@@ -16,12 +18,7 @@ export default function MarketingFooter() {
               <MarketingLogo />
             </div>
             <p className='mt-5 max-w-md text-sm leading-relaxed text-white/75'>
-              {SITE_NAME} is a cloud logistics operations platform for courier and
-              logistics companies in India—book and track shipments, coordinate
-              hubs and last-mile delivery, run MIS and commercial analytics, and
-              manage branches, coverage, fleet, partners, users, and roles from
-              one secure, multi-tenant workspace at{' '}
-              <span className='font-medium text-white'>doorear.com</span>.
+              {SITE_DESCRIPTION}
             </p>
             <p className='mt-4 text-xs leading-relaxed text-white/50'>
               GST-aware company profiles, PIN validation, subscription allowances
@@ -36,7 +33,7 @@ export default function MarketingFooter() {
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
                 {NAV_LINKS.filter((l) =>
-                  ['Features', 'Solutions', 'Pricing'].includes(l.label)
+                  ['Features', 'Solutions', 'Pricing', 'Locations'].includes(l.label)
                 ).map((item) => (
                   <li key={item.href}>
                     <Link
@@ -50,40 +47,57 @@ export default function MarketingFooter() {
             </div>
             <div>
               <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+                Solutions
+              </p>
+              <ul className='mt-4 space-y-2.5 text-sm'>
+                {solutionPages.map((page) => (
+                  <li key={page.slug}>
+                    <Link
+                      href={`/solutions/${page.slug}`}
+                      className='text-white/75 transition hover:text-white'>
+                      {page.eyebrow.replace(/^Solutions · /, '')}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Company
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
                 <li>
-                  <Link
-                    href='/about'
-                    className='text-white/75 transition hover:text-white'>
+                  <Link href='/about' className='text-white/75 transition hover:text-white'>
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href='/blog'
-                    className='text-white/75 transition hover:text-white'>
+                  <Link href='/blog' className='text-white/75 transition hover:text-white'>
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href='/contact'
-                    className='text-white/75 transition hover:text-white'>
+                  <Link href='/contact' className='text-white/75 transition hover:text-white'>
                     Contact
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href='/documentation'
-                    className='text-white/75 transition hover:text-white'>
-                    Documentation
-                  </Link>
-                </li>
+              </ul>
+              <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+                Cities
+              </p>
+              <ul className='mt-3 space-y-2 text-sm'>
+                {locationPages.slice(0, 5).map((loc) => (
+                  <li key={loc.slug}>
+                    <Link
+                      href={`/locations/${loc.slug}`}
+                      className='text-white/60 transition hover:text-white'>
+                      {loc.city}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
-            <div>
+            <div className='col-span-2 sm:col-span-1'>
               <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Legal
               </p>
@@ -96,19 +110,15 @@ export default function MarketingFooter() {
                   </Link>
                 </li>
                 <li>
-                  <Link href='/' className='text-white/75 transition hover:text-white'>
+                  <Link
+                    href='/terms-of-service'
+                    className='text-white/75 transition hover:text-white'>
                     Terms &amp; conditions
                   </Link>
                 </li>
               </ul>
-            </div>
-            <div className='col-span-2 sm:col-span-1'>
-              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Connect
-              </p>
-              <p className='mt-4 text-sm text-white/70'>
-                Sales &amp; onboarding for Indian courier / 3PL operators—branch
-                rollouts, MIS workshops, and finance alignment.
               </p>
               <Link
                 href='/contact'
@@ -124,8 +134,7 @@ export default function MarketingFooter() {
             reserved.
           </p>
           <p className='text-center text-white/40'>
-            Courier management software &amp; logistics operations platform for
-            Indian networks.
+            Logistics marketplace &amp; operating system for Indian supply chains.
           </p>
         </div>
       </div>

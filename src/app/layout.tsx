@@ -7,6 +7,7 @@ import {
   getOgImageUrl,
   getSiteUrl,
   getSupportUrl,
+  ORGANIZATION_SAME_AS,
   SITE_DESCRIPTION,
   SITE_NAME,
 } from '@/components/marketing/site-config'
@@ -14,9 +15,7 @@ import {
 const siteUrl = getSiteUrl()
 const supportUrl = getSupportUrl()
 const defaultOgImage = getOgImageUrl()
-const defaultGaId = 'G-Y5V5FBK5K8'
 const defaultGtmId = 'GTM-MD5MQRD5'
-const defaultSearchConsoleToken = 'TS1nFTNz7RZCUCqNhXxF2a7ZTkzulxzMlCPzjOK79pY'
 
 export const viewport: Viewport = {
   themeColor: '#0f172a',
@@ -24,25 +23,26 @@ export const viewport: Viewport = {
   initialScale: 1,
 }
 
+const googleVerification = process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: SITE_NAME,
   title: {
-    default: `${SITE_NAME} | Logistics & Courier Management Software`,
+    default: `${SITE_NAME} | Logistics Marketplace & Operating System`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    'logistics marketplace',
+    'logistics operating system',
     'logistics management software',
     'courier management software',
-    'logistics app',
-    'courier app',
-    'shipment tracking app',
-    'logistics software app',
-    'courier booking app',
+    'supply chain logistics platform',
     'shipment booking software',
     'logistics operations platform',
     'multi branch courier software',
+    '3PL operations platform',
     'Doorear logistics software',
   ],
   openGraph: {
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: siteUrl,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Courier management software & logistics operations platform`,
+    title: `${SITE_NAME} | Logistics marketplace & courier operations platform`,
     description: SITE_DESCRIPTION,
     images: [
       {
@@ -71,11 +71,9 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  verification: {
-    google:
-      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ??
-      defaultSearchConsoleToken,
-  },
+  ...(googleVerification
+    ? { verification: { google: googleVerification } }
+    : {}),
   icons: {
     icon: [{ url: '/images/logo/D.svg', type: 'image/svg+xml' }],
     apple: '/images/logo/logo.png',
@@ -88,7 +86,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? defaultGaId
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? defaultGtmId
   const websiteJsonLd = {
     '@context': 'https://schema.org',
@@ -96,12 +93,20 @@ export default function RootLayout({
     name: SITE_NAME,
     url: siteUrl,
     description: SITE_DESCRIPTION,
-    inLanguage: 'en',
+    inLanguage: 'en-IN',
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
       url: siteUrl,
       logo: `${siteUrl}/images/logo/logo.png`,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${siteUrl}/blog?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
     },
   }
   const organizationJsonLd = {
@@ -110,6 +115,9 @@ export default function RootLayout({
     name: SITE_NAME,
     url: siteUrl,
     logo: `${siteUrl}/images/logo/logo.png`,
+    description: SITE_DESCRIPTION,
+    sameAs: [...ORGANIZATION_SAME_AS],
+    areaServed: { '@type': 'Country', name: 'India' },
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -120,7 +128,7 @@ export default function RootLayout({
   }
 
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html lang='en-IN' suppressHydrationWarning>
       <body className='min-h-screen flex flex-col'>
         <script
           type='application/ld+json'
@@ -154,25 +162,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${gtmId}');`,
             }}
           />
-        ) : null}
-        {gaId ? (
-          <>
-            <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
-              strategy='afterInteractive'
-            />
-            <Script
-              id='ga4-base'
-              strategy='afterInteractive'
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-window.gtag = gtag;
-gtag('js', new Date());
-gtag('config', '${gaId}');`,
-              }}
-            />
-          </>
         ) : null}
       </body>
     </html>
