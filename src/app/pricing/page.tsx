@@ -27,7 +27,12 @@ export default function PricingPage() {
     <>
       <MarketingPageHero
         eyebrow='Pricing · INR plans'
-        title='Choose a plan and estimate usage instantly'
+        title={
+          <>
+            Choose a plan and{' '}
+            <span className='aigocy-gradient-text'>estimate usage</span> instantly
+          </>
+        }
         description='Use the calculator below to compare billing cycles, add users, shipment packs, and support SLA tiers. Everything updates in real time with no backend calls.'
         motionVisual={{ variant: 'pricing' }}
         imagePresentation='default'

@@ -4,8 +4,12 @@ import { NAV_LINKS, SITE_NAME } from './site-config'
 
 export default function MarketingFooter() {
   return (
-    <footer className='border-t border-[var(--app-border)] bg-[var(--app-sidebar)] text-white'>
-      <div className='marketing-container py-14'>
+    <footer className='aigocy-dark-band relative overflow-hidden border-t border-white/10'>
+      <div
+        className='pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#6493ea]/50 to-transparent'
+        aria-hidden
+      />
+      <div className='marketing-container py-16 md:py-20'>
         <div className='grid gap-12 md:grid-cols-2 lg:grid-cols-12'>
           <div className='lg:col-span-4'>
             <div className='inline-block max-w-full'>
@@ -27,7 +31,7 @@ export default function MarketingFooter() {
           </div>
           <div className='grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-4'>
             <div>
-              <p className='text-[10px] font-semibold uppercase tracking-wider text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Product
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
@@ -37,7 +41,7 @@ export default function MarketingFooter() {
                   <li key={item.href}>
                     <Link
                       href={item.href}
-                      className='text-white/75 transition hover:text-white hover:underline'>
+                      className='text-white/75 transition hover:translate-x-0.5 hover:text-white'>
                       {item.label}
                     </Link>
                   </li>
@@ -45,61 +49,61 @@ export default function MarketingFooter() {
               </ul>
             </div>
             <div>
-              <p className='text-[10px] font-semibold uppercase tracking-wider text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Company
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
                 <li>
                   <Link
                     href='/about'
-                    className='text-white/75 transition hover:text-white hover:underline'>
+                    className='text-white/75 transition hover:text-white'>
                     About
                   </Link>
                 </li>
                 <li>
                   <Link
                     href='/blog'
-                    className='text-white/75 transition hover:text-white hover:underline'>
+                    className='text-white/75 transition hover:text-white'>
                     Blog
                   </Link>
                 </li>
                 <li>
                   <Link
                     href='/contact'
-                    className='text-white/75 transition hover:text-white hover:underline'>
+                    className='text-white/75 transition hover:text-white'>
                     Contact
                   </Link>
                 </li>
                 <li>
                   <Link
                     href='/documentation'
-                    className='text-white/75 transition hover:text-white hover:underline'>
+                    className='text-white/75 transition hover:text-white'>
                     Documentation
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <p className='text-[10px] font-semibold uppercase tracking-wider text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Legal
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
                 <li>
                   <Link
                     href='/privacy-policy'
-                    className='text-white/75 hover:text-white'>
+                    className='text-white/75 transition hover:text-white'>
                     Privacy policy
                   </Link>
                 </li>
                 <li>
-                  <Link href='/' className='text-white/75 hover:text-white'>
+                  <Link href='/' className='text-white/75 transition hover:text-white'>
                     Terms &amp; conditions
                   </Link>
                 </li>
               </ul>
             </div>
             <div className='col-span-2 sm:col-span-1'>
-              <p className='text-[10px] font-semibold uppercase tracking-wider text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Connect
               </p>
               <p className='mt-4 text-sm text-white/70'>
@@ -108,7 +112,7 @@ export default function MarketingFooter() {
               </p>
               <Link
                 href='/contact'
-                className='mt-3 inline-flex rounded-lg bg-white/10 px-3 py-2 text-sm font-semibold text-white transition hover:bg-white/15'>
+                className='mt-4 inline-flex rounded-xl border border-white/15 bg-white/10 px-4 py-2.5 text-sm font-semibold text-white transition hover:border-[#6493ea]/40 hover:bg-white/15'>
                 Book Demo
               </Link>
             </div>

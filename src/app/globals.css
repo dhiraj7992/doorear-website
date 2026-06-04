@@ -62,7 +62,7 @@
     border-color: var(--color-gray-200, currentColor);
   }
 
-  section {
+  section:not([class*='py-']) {
     @apply py-10;
   }
 
@@ -374,4 +374,270 @@ body {
 /* Marketing marquee helper */
 .doorear-marquee {
   will-change: transform;
+}
+
+/* Premium marketing surfaces */
+.premium-glass-panel {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(248, 250, 252, 0.88) 50%,
+    rgba(37, 99, 235, 0.04) 100%
+  );
+  box-shadow:
+    0 24px 60px -32px rgba(15, 23, 42, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+}
+
+.hero-image-glow {
+  animation: hero-glow-pulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes hero-glow-pulse {
+  0% {
+    opacity: 0.75;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-image-glow {
+    animation: none;
+  }
+}
+
+/* —— Homepage AIGOCY-style layer (scoped; brand tokens unchanged) —— */
+.home-aigocy-theme {
+  --aigocy-glow: rgba(37, 99, 235, 0.45);
+  --aigocy-glow-soft: rgba(37, 99, 235, 0.12);
+}
+
+.home-aigocy-theme .marketing-hero-mesh {
+  background:
+    radial-gradient(ellipse 120% 80% at 5% -10%, rgba(37, 99, 235, 0.35), transparent 55%),
+    radial-gradient(ellipse 90% 60% at 95% 10%, rgba(100, 147, 234, 0.28), transparent 50%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(245, 158, 11, 0.16), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 70% 40%, rgba(37, 99, 235, 0.1), transparent 60%);
+  animation: aigocy-aurora 18s ease-in-out infinite alternate;
+}
+
+.home-aigocy-theme .marketing-hero-grid {
+  opacity: 0.55;
+  mask-image: radial-gradient(ellipse 90% 80% at 50% 20%, black 10%, transparent 72%);
+}
+
+.home-aigocy-theme .aigocy-hero-shell {
+  min-height: min(92vh, 920px);
+  background: linear-gradient(180deg, #ffffff 0%, var(--app-surface) 72%, var(--app-surface) 100%);
+}
+
+.home-aigocy-theme .home-hero-compact.aigocy-hero-shell {
+  --home-nav-h: 4.25rem;
+  min-height: calc(100dvh - var(--home-nav-h));
+  max-height: calc(100dvh - var(--home-nav-h));
+  background: linear-gradient(180deg, #ffffff 0%, var(--app-surface) 100%);
+}
+
+@media (max-width: 1023px) {
+  .home-aigocy-theme .home-hero-compact.aigocy-hero-shell {
+    --home-nav-h: 4rem;
+    min-height: auto;
+    max-height: none;
+  }
+}
+
+.home-aigocy-theme .home-hero-inner {
+  padding-block: clamp(0.75rem, 1.8vh, 1.25rem);
+}
+
+.home-aigocy-theme .home-hero-compact .marketing-hero-mesh {
+  opacity: 0.4;
+}
+
+.home-aigocy-theme .home-hero-compact .marketing-hero-grid {
+  opacity: 0.3;
+}
+
+.home-aigocy-theme .aigocy-gradient-text {
+  background: linear-gradient(120deg, var(--app-primary) 0%, #1d4ed8 45%, #6493ea 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.home-aigocy-theme .aigocy-eyebrow-pill {
+  border: 1px solid rgba(37, 99, 235, 0.22);
+  background: rgba(255, 255, 255, 0.75);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.8) inset,
+    0 12px 40px -20px var(--aigocy-glow);
+  backdrop-filter: blur(14px);
+}
+
+.home-aigocy-theme .aigocy-pulse-dot {
+  box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.45);
+  animation: aigocy-pulse-dot 2.4s ease-out infinite;
+}
+
+.home-aigocy-theme .aigocy-visual-frame {
+  border-radius: 2rem;
+  border: 1px solid rgba(37, 99, 235, 0.18);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.85));
+  box-shadow:
+    0 40px 100px -40px var(--aigocy-glow),
+    0 0 0 1px rgba(255, 255, 255, 0.6) inset;
+  backdrop-filter: blur(16px);
+}
+
+/* Homepage: layered floating UI on gradient canvas */
+.home-aigocy-theme .home-hero-compact .hero-floating-stage {
+  aspect-ratio: 1 / 1;
+  max-height: min(54vh, 420px);
+  min-height: 280px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .home-aigocy-theme .home-hero-compact .hero-floating-stage {
+    max-height: min(52vh, 400px);
+    min-height: 300px;
+  }
+}
+
+.home-aigocy-theme .hero-float-card {
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  animation: marketing-float-chip 7.2s ease-in-out infinite;
+}
+
+.home-aigocy-theme .hero-float-primary {
+  filter: drop-shadow(0 20px 40px rgba(15, 23, 42, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-aigocy-theme .hero-float-card {
+    animation: none;
+  }
+}
+
+.home-aigocy-theme .aigocy-floating-badge {
+  border: 1px solid rgba(37, 99, 235, 0.2);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 20px 50px -28px var(--aigocy-glow);
+  backdrop-filter: blur(12px);
+  animation: marketing-float-chip 7s ease-in-out infinite;
+}
+
+.home-aigocy-theme .aigocy-stat-card {
+  border-radius: 1.25rem;
+  border: 1px solid rgba(37, 99, 235, 0.14);
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(255, 255, 255, 0.78));
+  box-shadow:
+    0 16px 48px -32px rgba(15, 23, 42, 0.18),
+    0 0 0 1px rgba(255, 255, 255, 0.7) inset;
+  backdrop-filter: blur(10px);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.home-aigocy-theme .aigocy-stat-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(37, 99, 235, 0.28);
+  box-shadow:
+    0 24px 56px -28px var(--aigocy-glow),
+    0 0 0 1px rgba(255, 255, 255, 0.85) inset;
+}
+
+.home-aigocy-theme .aigocy-dark-band {
+  background: linear-gradient(180deg, var(--app-sidebar) 0%, #0b1220 100%);
+  color: #f8fafc;
+}
+
+.home-aigocy-theme .aigocy-dark-band .text-\[var\(--app-muted\)\],
+.home-aigocy-theme .aigocy-dark-band [class*='text-[var(--app-muted)]'] {
+  color: rgba(248, 250, 252, 0.72);
+}
+
+.home-aigocy-theme .aigocy-dark-band .text-\[var\(--app-foreground\)\],
+.home-aigocy-theme .aigocy-dark-band h2,
+.home-aigocy-theme .aigocy-dark-band h3 {
+  color: #f8fafc;
+}
+
+.home-aigocy-theme .aigocy-dark-card {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03));
+  box-shadow: 0 24px 60px -36px rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(14px);
+}
+
+.home-aigocy-theme .aigocy-dark-card:hover {
+  border-color: rgba(100, 147, 234, 0.45);
+  box-shadow: 0 28px 70px -32px rgba(37, 99, 235, 0.35);
+}
+
+.home-aigocy-theme .aigocy-section-eyebrow::before {
+  content: '';
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  margin-right: 0.65rem;
+  vertical-align: middle;
+  background: linear-gradient(90deg, var(--app-primary), transparent);
+}
+
+.home-aigocy-theme .aigocy-orb {
+  position: absolute;
+  border-radius: 9999px;
+  pointer-events: none;
+  filter: blur(60px);
+  animation: aigocy-orb-float 14s ease-in-out infinite;
+}
+
+@keyframes aigocy-aurora {
+  0% {
+    transform: scale(1) translate(0, 0);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: scale(1.06) translate(2%, -2%);
+    filter: hue-rotate(8deg);
+  }
+}
+
+@keyframes aigocy-pulse-dot {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(37, 99, 235, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+  }
+}
+
+@keyframes aigocy-orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(12px, -18px) scale(1.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-aigocy-theme .marketing-hero-mesh,
+  .home-aigocy-theme .aigocy-pulse-dot,
+  .home-aigocy-theme .aigocy-orb,
+  .home-aigocy-theme .aigocy-floating-badge {
+    animation: none;
+  }
 }

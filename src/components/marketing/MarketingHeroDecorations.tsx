@@ -2,7 +2,11 @@
  * Shared visual layer for marketing heroes: animated mesh, subtle grid, blur orbs.
  * Parent must be `relative overflow-hidden` with content in `relative z-10`.
  */
-export default function MarketingHeroDecorations() {
+export default function MarketingHeroDecorations({
+  intense = false,
+}: {
+  intense?: boolean
+}) {
   return (
     <>
       <div
@@ -10,15 +14,33 @@ export default function MarketingHeroDecorations() {
         aria-hidden
       />
       <div
-        className='marketing-hero-grid pointer-events-none absolute inset-0 z-0 opacity-[0.45]'
+        className='marketing-hero-grid pointer-events-none absolute inset-0 z-0'
+        aria-hidden
+      />
+      {intense ? (
+        <>
+          <div
+            className='aigocy-orb left-[8%] top-[12%] z-0 h-64 w-64 bg-[var(--app-primary)]/30'
+            aria-hidden
+          />
+          <div
+            className='aigocy-orb right-[5%] top-[8%] z-0 h-80 w-80 bg-[#6493ea]/35'
+            style={{ animationDelay: '-4s' }}
+            aria-hidden
+          />
+          <div
+            className='aigocy-orb bottom-[5%] left-[35%] z-0 h-72 w-72 bg-amber-500/20'
+            style={{ animationDelay: '-7s' }}
+            aria-hidden
+          />
+        </>
+      ) : null}
+      <div
+        className='pointer-events-none absolute -left-32 top-0 z-0 h-[32rem] w-[32rem] rounded-full bg-[var(--app-primary)]/14 blur-3xl'
         aria-hidden
       />
       <div
-        className='pointer-events-none absolute -left-32 top-0 z-0 h-[28rem] w-[28rem] rounded-full bg-[var(--app-primary)]/12 blur-3xl'
-        aria-hidden
-      />
-      <div
-        className='pointer-events-none absolute -right-20 top-1/4 z-0 h-80 w-80 rounded-full bg-amber-500/12 blur-3xl'
+        className='pointer-events-none absolute -right-24 top-1/4 z-0 h-96 w-96 rounded-full bg-amber-500/14 blur-3xl'
         aria-hidden
       />
       <div

@@ -1,59 +1,68 @@
-import { SITE_NAME } from './site-config'
+'use client'
 
-const faqs = [
-  {
-    q: `What is ${SITE_NAME} used for?`,
-    a: `${SITE_NAME} is a cloud logistics operations platform for courier and logistics companies: book and track shipments, coordinate hubs and last-mile delivery, run operational and commercial analytics, and manage branches, coverage, fleet, partners, users, and roles in one workspace.`,
-  },
-  {
-    q: `Does ${SITE_NAME} support multiple branches?`,
-    a: `Yes. Branch hierarchy and branch-scoped users mirror real networks so each site sees the right bookings, manifests, and delivery runs—core to multi branch courier software.`,
-  },
-  {
-    q: 'Can we control who books shipments vs. who sees analytics?',
-    a: 'Yes. Roles and granular permissions let you separate operational actions from sensitive analytics and company setup—reducing risk across teams.',
-  },
-  {
-    q: 'How does billing work for the subscription?',
-    a: 'Plans include trials, usage reminders, and renewal transparency. Where in-product payment checkout is not the default, teams coordinate offline with finance—see Pricing for details.',
-  },
-]
-
-export function faqJsonLd() {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: faqs.map((item) => ({
-      '@type': 'Question',
-      name: item.q,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.a,
-      },
-    })),
-  }
-}
+import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
+import { cn } from '@/lib/cn'
+import { marketingFaqs } from './faq-content'
+import { PremiumCard, ScrollReveal, SectionShell } from './primitives'
 
 export default function FAQSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0)
+
   return (
-    <section className='border-t border-[var(--app-border)] bg-[var(--app-card)] py-16 md:py-20'>
+    <SectionShell tone='card' bordered divider spacing='default'>
       <div className='marketing-container max-w-3xl'>
-        <h2 className='text-3xl font-bold tracking-tight text-[var(--app-foreground)]'>
-          Frequently asked questions
-        </h2>
-        <dl className='mt-10 space-y-8'>
-          {faqs.map((item) => (
-            <div key={item.q}>
-              <dt className='text-lg font-semibold text-[var(--app-foreground)]'>
-                {item.q}
-              </dt>
-              <dd className='mt-2 text-base leading-relaxed text-[var(--app-muted)]'>
-                {item.a}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <ScrollReveal>
+          <h2 className='text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl'>
+            Frequently asked questions
+          </h2>
+        </ScrollReveal>
+        <div className='mt-10 space-y-4'>
+          {marketingFaqs.map((item, i) => {
+            const isOpen = openIndex === i
+            return (
+              <ScrollReveal key={item.q} delay={0.04 * i}>
+                <PremiumCard
+                  as='div'
+                  glass
+                  hoverLift={false}
+                  className={cn(
+                    'p-0',
+                    isOpen && 'border-[var(--app-primary)]/25 shadow-md shadow-[var(--app-primary)]/5'
+                  )}>
+                  <button
+                    type='button'
+                    className='flex w-full items-start justify-between gap-4 px-6 py-5 text-left'
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenIndex(isOpen ? null : i)}>
+                    <span className='text-lg font-semibold text-[var(--app-foreground)]'>
+                      {item.q}
+                    </span>
+                    <ChevronDown
+                      className={cn(
+                        'mt-1 h-5 w-5 shrink-0 text-[var(--app-muted)] transition-transform duration-300',
+                        isOpen && 'rotate-180 text-[var(--app-primary)]'
+                      )}
+                      aria-hidden
+                    />
+                  </button>
+                  <div
+                    className={cn(
+                      'grid transition-[grid-template-rows] duration-300 ease-out',
+                      isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+                    )}>
+                    <div className='overflow-hidden'>
+                      <p className='border-t border-[var(--app-border)] px-6 pb-5 pt-4 text-base leading-relaxed text-[var(--app-muted)]'>
+                        {item.a}
+                      </p>
+                    </div>
+                  </div>
+                </PremiumCard>
+              </ScrollReveal>
+            )
+          })}
+        </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }

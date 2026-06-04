@@ -106,7 +106,7 @@ export function marketingButtonClasses({
   if (variant === 'primary') {
     return cn(
       root,
-      'bg-[var(--app-primary)] text-white hover:opacity-95',
+      'bg-[var(--app-primary)] text-white shadow-md shadow-blue-500/20 ring-1 ring-blue-600/20 hover:opacity-95 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98] motion-safe:hover:scale-[1.02]',
       primarySize[size],
       className
     )

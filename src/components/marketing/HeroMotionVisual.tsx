@@ -41,7 +41,7 @@ export default function HeroMotionVisual() {
   const reduceMotion = useReducedMotion()
 
   return (
-    <div className='relative overflow-hidden rounded-2xl border border-[var(--app-border)] bg-gradient-to-b from-white to-slate-50 shadow-[0_28px_75px_-44px_rgba(15,23,42,0.5)]'>
+    <div className='relative w-full overflow-hidden rounded-2xl border border-[var(--app-border)] bg-gradient-to-b from-white to-slate-50 shadow-[0_28px_75px_-44px_rgba(15,23,42,0.5)]'>
       <div
         className='pointer-events-none absolute inset-0 opacity-[0.9]'
         aria-hidden

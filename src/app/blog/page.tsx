@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { blogPosts } from '@/lib/blog-posts'
 import BlogPostList from '@/components/marketing/BlogPostList'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
-import { MotionInView } from '@/components/marketing/MotionInView'
+import { ScrollReveal, SectionShell } from '@/components/marketing/primitives'
 import { SITE_NAME } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
@@ -30,10 +30,7 @@ export default function BlogIndexPage() {
         eyebrow='Resources · Blog'
         title={
           <>
-            Insights for{' '}
-            <span className='bg-gradient-to-r from-[var(--app-primary)] to-blue-600 bg-clip-text text-transparent'>
-              logistics &amp; courier
-            </span>{' '}
+            Insights for <span className='aigocy-gradient-text'>logistics &amp; courier</span>{' '}
             leaders
           </>
         }
@@ -76,12 +73,10 @@ export default function BlogIndexPage() {
         secondaryCta={{ href: '/pricing', label: 'View pricing' }}
       />
 
-      <section className='border-b border-[var(--app-border)] bg-[var(--app-surface)] py-16 md:py-24'>
+      <SectionShell tone='surface' bordered spacing='default'>
         <div className='marketing-container'>
-          <MotionInView>
-            <BlogPostList posts={sorted} />
-          </MotionInView>
-          <MotionInView className='mt-14 text-center' delay={0.1}>
+          <BlogPostList posts={sorted} />
+          <ScrollReveal className='mt-14 text-center' delay={0.1}>
             <p className='text-sm text-[var(--app-muted)]'>
               {SITE_NAME} — logistics software for Indian courier &amp; 3PL
               networks ·{' '}
@@ -89,9 +84,9 @@ export default function BlogIndexPage() {
                 doorear.com
               </span>
             </p>
-          </MotionInView>
+          </ScrollReveal>
         </div>
-      </section>
+      </SectionShell>
     </>
   )
 }

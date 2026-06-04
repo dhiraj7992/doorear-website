@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
 import { Check, LifeBuoy, PackagePlus, Users } from 'lucide-react'
-import { MotionInView } from '@/components/marketing/MotionInView'
 import SectionHeading from '@/components/marketing/SectionHeading'
+import { ScrollReveal, SectionShell } from '@/components/marketing/primitives'
 import { APP_SIGNUP_URL } from '@/components/marketing/site-config'
 import { LinkButton } from '@/components/ui'
 import { cn } from '@/lib/cn'
@@ -87,17 +87,16 @@ export default function PricingCalculatorSection() {
   }, [billingCycle, extraUsers, packQuantity, selectedPack, selectedPlan, selectedSupportTier])
 
   return (
-    <section className='relative border-b border-[var(--app-border)] bg-[var(--app-surface)] py-16 md:py-20'>
+    <SectionShell tone='surface' bordered spacing='default'>
       <div className='marketing-container'>
-        <MotionInView>
-          <SectionHeading
-            eyebrow='Pricing · Plan & usage calculator'
-            title='Estimate your monthly or annual spend in seconds'
-            description='Choose a plan, add expected users and shipment packs, then compare monthly vs annual billing. Calculations are instant and run fully on the client.'
-          />
-        </MotionInView>
+        <SectionHeading
+          aigocy
+          eyebrow='Pricing · Plan & usage calculator'
+          title='Estimate your monthly or annual spend in seconds'
+          description='Choose a plan, add expected users and shipment packs, then compare monthly vs annual billing. Calculations are instant and run fully on the client.'
+        />
 
-        <MotionInView className='mt-10'>
+        <ScrollReveal className='mt-10'>
           <div className='grid gap-6 lg:grid-cols-4'>
             {PRICING_PLANS.map((plan) => {
               const isSelected = selectedPlanId === plan.id
@@ -105,7 +104,7 @@ export default function PricingCalculatorSection() {
                 <article
                   key={plan.id}
                   className={cn(
-                    'rounded-2xl border bg-[var(--app-card)] p-6 shadow-sm transition',
+                    'premium-glass-panel rounded-2xl border p-6 shadow-sm transition',
                     plan.highlight
                       ? 'border-[var(--app-primary)] ring-2 ring-[var(--app-primary)]/15'
                       : 'border-[var(--app-border)]',
@@ -171,9 +170,9 @@ export default function PricingCalculatorSection() {
               )
             })}
           </div>
-        </MotionInView>
+        </ScrollReveal>
 
-        <MotionInView className='mt-10'>
+        <ScrollReveal className='mt-10'>
           <div className='grid gap-6 xl:grid-cols-12'>
             <div className='xl:col-span-7 space-y-6'>
               <div className='rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] p-6 shadow-sm'>
@@ -411,8 +410,8 @@ export default function PricingCalculatorSection() {
               </div>
             </div>
           </div>
-        </MotionInView>
+        </ScrollReveal>
       </div>
-    </section>
+    </SectionShell>
   )
 }

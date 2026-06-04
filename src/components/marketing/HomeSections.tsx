@@ -14,27 +14,22 @@ import {
   Radio,
   Truck,
 } from 'lucide-react'
+import { IconBadge, PremiumCard, ScrollReveal, SectionShell } from './primitives'
 import { APP_SIGNUP_URL } from './site-config'
 
 export function IndiaMarketSection() {
-  const reduceMotion = useReducedMotion()
   return (
-    <section className='border-y border-[var(--app-border)] bg-[var(--app-card)] py-16 md:py-20'>
+    <SectionShell tone='card' bordered spacing='default' divider>
       <div className='marketing-container'>
-        <div className='grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16'>
-          <motion.div
-            initial={reduceMotion ? false : { opacity: 0, x: -12 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: '-80px' }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className='text-[10px] font-semibold uppercase tracking-wider text-[var(--app-muted)]'>
+        <div className='grid gap-12 lg:grid-cols-2 lg:items-center lg:gap-20'>
+          <ScrollReveal>
+            <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--app-muted)]'>
               India logistics context
             </p>
-            <h2 className='mt-2 text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl'>
+            <h2 className='mt-3 text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]'>
               Built for branch-heavy courier &amp; 3PL realities
             </h2>
-            <p className='mt-5 text-base leading-relaxed text-[var(--app-muted)]'>
+            <p className='mt-5 text-base leading-relaxed text-[var(--app-muted)] md:text-lg'>
               India&apos;s courier, express and parcel segment is expanding as
               e‑commerce and B2B freight digitize. Networks compete on lane
               coverage, SLA adherence, and cost per shipment—yet many mid-market
@@ -54,11 +49,11 @@ export function IndiaMarketSection() {
             </p>
             <Link
               href='/solutions'
-              className='mt-6 inline-flex items-center gap-1 text-sm font-semibold text-[var(--app-primary)] hover:underline'>
+              className='mt-6 inline-flex items-center gap-1 text-sm font-semibold text-[var(--app-primary)] transition hover:gap-2 hover:underline'>
               See who we serve
               <ArrowRight className='h-4 w-4' />
             </Link>
-          </motion.div>
+          </ScrollReveal>
           <div className='grid gap-4 sm:grid-cols-2'>
             {[
               {
@@ -84,27 +79,27 @@ export function IndiaMarketSection() {
             ].map((card, i) => {
               const Icon = card.icon
               return (
-                <motion.div
+                <PremiumCard
                   key={card.title}
-                  initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: reduceMotion ? 0 : 0.06 * i, duration: 0.4 }}
-                  className='rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface)] p-5 shadow-sm'>
-                  <Icon className='h-5 w-5 text-[var(--app-primary)]' strokeWidth={2} />
+                  as='div'
+                  glass
+                  reveal
+                  revealDelay={0.05 * i}
+                  className='p-5'>
+                  <IconBadge icon={Icon} size='sm' />
                   <h3 className='mt-3 text-sm font-semibold text-[var(--app-foreground)]'>
                     {card.title}
                   </h3>
                   <p className='mt-2 text-xs leading-relaxed text-[var(--app-muted)]'>
                     {card.text}
                   </p>
-                </motion.div>
+                </PremiumCard>
               )
             })}
           </div>
         </div>
       </div>
-    </section>
+    </SectionShell>
   )
 }
 
@@ -138,49 +133,61 @@ const steps = [
 export function WorkflowSection() {
   const reduceMotion = useReducedMotion()
   return (
-    <section className='py-16 md:py-20'>
+    <SectionShell spacing='default'>
       <div className='marketing-container'>
-        <div className='mx-auto max-w-2xl text-center'>
-          <p className='text-[10px] font-semibold uppercase tracking-wider text-[var(--app-muted)]'>
+        <ScrollReveal className='mx-auto max-w-2xl text-center'>
+          <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--app-muted)]'>
             End-to-end flow
           </p>
-          <h2 className='mt-2 text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl'>
+          <h2 className='mt-3 text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]'>
             From booking intent to proof of delivery
           </h2>
-          <p className='mt-4 text-base text-[var(--app-muted)]'>
+          <p className='mt-4 text-base text-[var(--app-muted)] md:text-lg'>
             Doorear connects operational steps your teams already perform—now with
             a single audit trail, fewer manual exports, and permissions that match
             responsibility.
           </p>
+        </ScrollReveal>
+        <div className='relative mt-14'>
+          <div
+            className='pointer-events-none absolute left-0 right-0 top-[4.5rem] hidden h-px bg-gradient-to-r from-transparent via-[var(--app-primary)]/20 to-transparent lg:block'
+            aria-hidden
+          />
+          <div className='grid gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-5'>
+            {steps.map((s, i) => {
+              const Icon = s.icon
+              return (
+                <PremiumCard
+                  key={s.n}
+                  reveal
+                  revealDelay={0.07 * i}
+                  className='relative p-6 lg:p-7'>
+                  <span className='text-xs font-bold tabular-nums text-[var(--app-primary)]'>
+                    {s.n}
+                  </span>
+                  <div className='mt-3'>
+                    <IconBadge icon={Icon} size='lg' />
+                  </div>
+                  <h3 className='mt-4 text-lg font-semibold text-[var(--app-foreground)]'>
+                    {s.title}
+                  </h3>
+                  <p className='mt-2 text-sm leading-relaxed text-[var(--app-muted)]'>
+                    {s.body}
+                  </p>
+                  {i < steps.length - 1 && !reduceMotion ? (
+                    <motion.span
+                      className='absolute -right-3 top-1/2 hidden h-2 w-2 rounded-full bg-[var(--app-primary)]/40 lg:block'
+                      animate={{ scale: [1, 1.2, 1], opacity: [0.5, 1, 0.5] }}
+                      transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.4 }}
+                      aria-hidden
+                    />
+                  ) : null}
+                </PremiumCard>
+              )
+            })}
+          </div>
         </div>
-        <div className='mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-4'>
-          {steps.map((s, i) => {
-            const Icon = s.icon
-            return (
-              <motion.article
-                key={s.n}
-                initial={reduceMotion ? false : { opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: reduceMotion ? 0 : 0.07 * i }}
-                className='relative rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] p-6 shadow-sm'>
-                <span className='text-xs font-bold tabular-nums text-[var(--app-primary)]'>
-                  {s.n}
-                </span>
-                <div className='mt-3 flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[var(--app-primary)]/15 to-transparent'>
-                  <Icon className='h-5 w-5 text-[var(--app-primary)]' />
-                </div>
-                <h3 className='mt-4 text-lg font-semibold text-[var(--app-foreground)]'>
-                  {s.title}
-                </h3>
-                <p className='mt-2 text-sm leading-relaxed text-[var(--app-muted)]'>
-                  {s.body}
-                </p>
-              </motion.article>
-            )
-          })}
-        </div>
-        <div className='mt-12 flex flex-wrap justify-center gap-4'>
+        <ScrollReveal className='mt-14 flex flex-wrap justify-center gap-4' delay={0.1}>
           <LinkButton
             href={APP_SIGNUP_URL}
             variant='primary'
@@ -194,8 +201,8 @@ export function WorkflowSection() {
             secondaryTone='surface'>
             View plans &amp; limits
           </LinkButton>
-        </div>
+        </ScrollReveal>
       </div>
-    </section>
+    </SectionShell>
   )
 }

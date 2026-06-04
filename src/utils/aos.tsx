@@ -6,8 +6,10 @@ import 'aos/dist/aos.css';
 const Aoscompo = ({children}:any) => {
     useEffect(() => {
         AOS.init({
-            duration: 800,
-            once: false,
+            duration: 600,
+            once: true,
+            offset: 48,
+            easing: 'ease-out-cubic',
         })
     }, [])
   return (

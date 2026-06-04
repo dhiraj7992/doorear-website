@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
-import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
-import { MotionInView } from '@/components/marketing/MotionInView'
+import LocationCitySections from '@/components/marketing/LocationCitySections'
 import {
   getLocationBySlug,
   locationPages,
@@ -70,7 +69,12 @@ export default async function LocationCityPage({ params }: Props) {
       <LocalBusinessJsonLd location={location} />
       <MarketingPageHero
         eyebrow={`Location · ${location.city}`}
-        title={`${location.city} logistics management software for courier teams`}
+        title={
+          <>
+            <span className='aigocy-gradient-text'>{location.city}</span> logistics
+            management software for courier teams
+          </>
+        }
         description={`Doorear helps operators in ${location.city} run bookings, hub operations, delivery runs, and MIS in one branch-aware platform.`}
         extra={`Designed for ${location.titleQualifier}.`}
         image={{
@@ -80,45 +84,7 @@ export default async function LocationCityPage({ params }: Props) {
         imagePresentation='default'
         cta={{ href: '/contact', label: `Book ${location.city} demo` }}
       />
-      <section className='border-b border-[var(--app-border)] bg-[var(--app-surface)] py-16 md:py-20'>
-        <div className='marketing-container max-w-4xl space-y-8'>
-          <MotionInView>
-            <h2 className='text-2xl font-bold text-[var(--app-foreground)] md:text-3xl'>
-              Why operators in {location.city} choose Doorear
-            </h2>
-            <ul className='mt-4 space-y-3 text-base leading-relaxed text-[var(--app-muted)]'>
-              {location.painPoints.map((point) => (
-                <li key={point}>- {point}</li>
-              ))}
-            </ul>
-          </MotionInView>
-
-          <MotionInView delay={0.08}>
-            <div className='rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] p-7 shadow-sm'>
-              <h3 className='text-lg font-semibold text-[var(--app-foreground)]'>
-                Deployment fit in {location.state}
-              </h3>
-              <p className='mt-3 text-sm leading-relaxed text-[var(--app-muted)]'>
-                Build a phased rollout for branches, users, and shipment allowances.
-                Start with high-volume lanes and expand after SLA and billing controls
-                stabilize.
-              </p>
-              <div className='mt-4 flex flex-wrap gap-4 text-sm font-semibold'>
-                <Link
-                  href='/contact'
-                  className='text-[var(--app-primary)] hover:underline'>
-                  Talk to sales
-                </Link>
-                <Link
-                  href='/pricing'
-                  className='text-[var(--app-primary)] hover:underline'>
-                  See pricing
-                </Link>
-              </div>
-            </div>
-          </MotionInView>
-        </div>
-      </section>
+      <LocationCitySections location={location} />
     </>
   )
 }

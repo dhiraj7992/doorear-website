@@ -17,7 +17,7 @@ import SectionHeading from '@/components/marketing/SectionHeading'
 import FeatureGrid from '@/components/marketing/FeatureGrid'
 import CTABlock from '@/components/marketing/CTABlock'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
-import { MotionInView } from '@/components/marketing/MotionInView'
+import { IconBadge, PremiumCard, ScrollReveal, SectionShell } from '@/components/marketing/primitives'
 import {
   InsightSpotlightBlock,
 } from '@/components/marketing/InsightScreenshot'
@@ -171,9 +171,7 @@ export default function FeaturesPageView() {
         title={
           <>
             Logistics management software for Indian courier &amp;{' '}
-            <span className='bg-gradient-to-r from-[var(--app-primary)] to-blue-600 bg-clip-text text-transparent'>
-              3PL operations
-            </span>
+            <span className='aigocy-gradient-text'>3PL operations</span>
           </>
         }
         description={
@@ -192,8 +190,8 @@ export default function FeaturesPageView() {
         cta={{ href: '/contact', label: 'Book a feature walkthrough' }}
       />
 
-      <div className='border-b border-[var(--app-border)] bg-[var(--app-surface)]'>
-        <div className='marketing-container py-12 md:py-14'>
+      <SectionShell tone='surface' bordered spacing='compact' className='py-12 md:py-14'>
+        <div className='marketing-container'>
           <div className='grid gap-10 xl:grid-cols-[minmax(0,13.5rem)_minmax(0,1fr)] xl:items-start xl:gap-14'>
             <FeaturesInPageNav />
             <div className='min-w-0 space-y-0'>
@@ -221,6 +219,8 @@ export default function FeaturesPageView() {
                 id='feature-matrix'
                 className='scroll-mt-28 border-b border-[var(--app-border)] py-14 md:py-16'>
                 <SectionHeading
+                  aigocy
+                  align='left'
                   eyebrow='Capabilities'
                   title='Translate operational work into measurable business value'
                   description='Each module maps to how dispatchers, hub managers, and leadership actually run the day—from AWB booking workflows to fleet and hub visibility.'
@@ -234,15 +234,13 @@ export default function FeaturesPageView() {
                 id='feature-usage'
                 className='scroll-mt-28 relative overflow-hidden py-14 md:py-16'>
                 <div
-                  className='pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[var(--app-primary)]/5 blur-3xl'
+                  className='pointer-events-none absolute right-0 top-0 h-64 w-64 rounded-full bg-[var(--app-primary)]/10 blur-3xl'
                   aria-hidden
                 />
-                <MotionInView className='relative'>
+                <ScrollReveal className='relative'>
                   <div className='grid gap-10 lg:grid-cols-2 lg:items-start'>
-                    <div>
-                      <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-[var(--app-primary)]/10 text-[var(--app-primary)]'>
-                        <Coins className='h-6 w-6' strokeWidth={2} />
-                      </div>
+                    <PremiumCard as='div' glass className='p-8 md:p-10'>
+                      <IconBadge icon={Coins} size='lg' />
                       <h2 className='mt-5 text-2xl font-bold text-[var(--app-foreground)]'>
                         Shipment allowances &amp; top-ups (cost optimization)
                       </h2>
@@ -274,8 +272,8 @@ export default function FeaturesPageView() {
                         className='mt-8 inline-flex font-semibold text-[var(--app-primary)] hover:underline'>
                         See plan limits &amp; top-up economics →
                       </Link>
-                    </div>
-                    <div className='rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface)] p-8 shadow-sm md:p-10'>
+                    </PremiumCard>
+                    <PremiumCard as='div' glass className='p-8 md:p-10'>
                       <h3 className='text-lg font-bold text-[var(--app-foreground)]'>
                         Accounts &amp; finance artifacts
                       </h3>
@@ -301,14 +299,14 @@ export default function FeaturesPageView() {
                         for numbers straight from the Plans &amp; upgrade
                         experience.
                       </p>
-                    </div>
+                    </PremiumCard>
                   </div>
-                </MotionInView>
+                </ScrollReveal>
               </section>
             </div>
           </div>
         </div>
-      </div>
+      </SectionShell>
 
       <CTABlock
         title='Match features to your rollout plan'

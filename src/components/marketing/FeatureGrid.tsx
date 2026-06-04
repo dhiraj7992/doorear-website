@@ -1,4 +1,8 @@
+'use client'
+
 import type { LucideIcon } from 'lucide-react'
+import { cn } from '@/lib/cn'
+import { IconBadge, PremiumCard } from './primitives'
 
 export type FeatureItem = {
   icon: LucideIcon
@@ -10,44 +14,60 @@ export type FeatureItem = {
 type FeatureGridProps = {
   items: FeatureItem[]
   columns?: 2 | 3
+  /** AIGOCY-style asymmetric grid (homepage) */
+  bento?: boolean
 }
 
-export default function FeatureGrid({ items, columns = 3 }: FeatureGridProps) {
-  const grid =
-    columns === 2
+export default function FeatureGrid({
+  items,
+  columns = 3,
+  bento = false,
+}: FeatureGridProps) {
+  const grid = bento
+    ? 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3 auto-rows-fr'
+    : columns === 2
       ? 'md:grid-cols-2'
       : 'sm:grid-cols-2 lg:grid-cols-3'
+
   return (
-    <div className={`grid gap-6 ${grid}`}>
-      {items.map((item) => {
+    <div className={`grid gap-6 lg:gap-7 ${grid}`}>
+      {items.map((item, i) => {
         const Icon = item.icon
+        const bentoClass =
+          bento && i === 0
+            ? 'md:col-span-2 lg:row-span-2 lg:min-h-[280px]'
+            : bento && i === 1
+              ? 'lg:col-start-3'
+              : ''
         return (
-        <article
-          key={item.title}
-          className='group rounded-2xl border border-[var(--app-border)] bg-[var(--app-card)] p-6 shadow-sm transition hover:border-[var(--app-primary)]/25 hover:shadow-md'>
-          <div className='flex h-10 w-10 items-center justify-center rounded-xl bg-[var(--app-primary)]/10 text-[var(--app-primary)] transition group-hover:bg-[var(--app-primary)]/15'>
-            <Icon className='h-5 w-5' strokeWidth={2} aria-hidden />
-          </div>
-          <h3 className='mt-4 text-lg font-semibold text-[var(--app-foreground)]'>
-            {item.title}
-          </h3>
-          <p className='mt-2 text-sm leading-relaxed text-[var(--app-muted)]'>
-            {item.body}
-          </p>
-          {item.bullets && item.bullets.length > 0 ? (
-            <ul className='mt-4 space-y-2 border-t border-[var(--app-border)] pt-4 text-xs leading-relaxed text-[var(--app-foreground)]/90'>
-              {item.bullets.map((b) => (
-                <li key={b} className='flex gap-2'>
-                  <span
-                    className='mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--app-primary)]'
-                    aria-hidden
-                  />
-                  <span>{b}</span>
-                </li>
-              ))}
-            </ul>
-          ) : null}
-        </article>
+          <PremiumCard
+            key={item.title}
+            as='article'
+            glass
+            reveal
+            revealDelay={Math.min(i * 0.05, 0.35)}
+            className={cn('p-6 lg:p-7', bentoClass)}>
+            <IconBadge icon={Icon} size='md' />
+            <h3 className='mt-4 text-lg font-semibold tracking-tight text-[var(--app-foreground)]'>
+              {item.title}
+            </h3>
+            <p className='mt-2.5 text-sm leading-relaxed text-[var(--app-muted)]'>
+              {item.body}
+            </p>
+            {item.bullets && item.bullets.length > 0 ? (
+              <ul className='mt-5 space-y-2.5 border-t border-[var(--app-border)] pt-5 text-xs leading-relaxed text-[var(--app-foreground)]/90'>
+                {item.bullets.map((b) => (
+                  <li key={b} className='flex gap-2.5'>
+                    <span
+                      className='mt-1.5 h-1 w-1 shrink-0 rounded-full bg-[var(--app-primary)]'
+                      aria-hidden
+                    />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </PremiumCard>
         )
       })}
     </div>
