@@ -13,10 +13,24 @@ const dataFilePath = path.join(
   'marketing-dashboard.json'
 )
 
+function parseDashboardJson(content: string): MarketingDashboardData {
+  const trimmed = content.trim()
+  try {
+    return JSON.parse(trimmed) as MarketingDashboardData
+  } catch {
+    // Recover from accidental duplicate JSON objects appended to the file
+    const split = trimmed.indexOf('}\n{')
+    if (split !== -1) {
+      return JSON.parse(trimmed.slice(0, split + 1)) as MarketingDashboardData
+    }
+    throw new Error('Invalid marketing-dashboard.json')
+  }
+}
+
 async function readDashboardData(): Promise<MarketingDashboardData> {
   try {
     const content = await fs.readFile(dataFilePath, 'utf-8')
-    return JSON.parse(content) as MarketingDashboardData
+    return parseDashboardJson(content)
   } catch {
     return DEFAULT_MARKETING_DASHBOARD_DATA
   }

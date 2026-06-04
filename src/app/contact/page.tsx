@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description:
     'Reach the Doorear team at doorear.com: book a demo, ask about multi branch courier software fit, or discuss procurement, accounts, and subscription plans for your network.',
   keywords: [
-    'contact doorear',
+    'contact Doorear',
     'book courier software demo',
     'logistics software sales contact',
     'courier management software consultation',

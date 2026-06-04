@@ -252,7 +252,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'what-is-logistics-operating-system',
     title: 'What is a logistics operating system (LOS)?',
     description:
-      'A logistics operating system unifies bookings, hub execution, MIS, procurement, and billing for Indian supply chains—how DoorEar differs from courier apps and generic TMS tools.',
+      'A logistics operating system unifies bookings, hub execution, MIS, procurement, and billing for Indian supply chains—how Doorear differs from courier apps and generic TMS tools.',
     datePublished: '2026-04-01',
     dateModified: '2026-06-04',
     heroImage: '/images/marketing/hero-logistics.jpg',
@@ -266,7 +266,7 @@ export const blogPosts: BlogPost[] = [
         heading: 'Definition: more than tracking',
         paragraphs: [
           'A logistics operating system (LOS) is the operational layer where bookings, hub handoffs, delivery runs, analytics, and commercial workflows run in one multi-tenant workspace. It is not a consumer parcel tracker or a spreadsheet with a login screen.',
-          'DoorEar is built as a LOS for mid-market Indian networks—branch hierarchy, PIN validation, GST-oriented billing support, and optional procurement modules when you enable them.',
+          'Doorear is built as a LOS for mid-market Indian networks—branch hierarchy, PIN validation, GST-oriented billing support, and optional procurement modules when you enable them.',
         ],
       },
       {
@@ -287,7 +287,7 @@ export const blogPosts: BlogPost[] = [
     slug: 'logistics-marketplace-vs-courier-software',
     title: 'Logistics marketplace vs courier software: which do you need?',
     description:
-      'Compare a logistics marketplace and operating system with standalone courier management software—when shippers, 3PLs, and transporters should choose DoorEar’s unified model.',
+      'Compare a logistics marketplace and operating system with standalone courier management software—when shippers, 3PLs, and transporters should choose Doorear\'s unified model.',
     datePublished: '2026-04-08',
     dateModified: '2026-06-04',
     heroImage: '/images/marketing/page-solutions.jpg',
@@ -306,13 +306,301 @@ export const blogPosts: BlogPost[] = [
       {
         heading: 'Marketplace + operating system',
         paragraphs: [
-          'A logistics marketplace connects shippers and logistics providers—but execution still needs discipline. DoorEar combines network positioning with an operator workspace so partners do not fall back to WhatsApp and spreadsheets after the intro call.',
+          'A logistics marketplace connects shippers and logistics providers—but execution still needs discipline. Doorear combines network positioning with an operator workspace so partners do not fall back to WhatsApp and spreadsheets after the intro call.',
         ],
       },
       {
         heading: 'Practical decision guide',
         paragraphs: [
           'Choose courier software positioning when you are a single tenant scaling branches. Choose marketplace + LOS when you connect manufacturers, eCommerce brands, transporters, and 3PL partners who all need role-scoped visibility on shared lanes.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'multi-carrier-shipping-software-india',
+    title: 'Multi carrier shipping software: one workspace for Indian B2B networks',
+    description:
+      'How multi carrier shipping software reduces portal sprawl—AWB discipline, hub execution, PIN validation, and branch MIS when you ship across partners.',
+    datePublished: '2026-05-01',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-logistics-hub.jpg',
+    keywords: [
+      'multi carrier shipping software',
+      'multi carrier shipping software India',
+      'multi carrier logistics software',
+    ],
+    sections: [
+      {
+        heading: 'Why multi-carrier breaks without a system of record',
+        paragraphs: [
+          'Each carrier portal trains teams to work differently—bookings, status language, and exception handling diverge. Finance then reconciles volumes that ops cannot explain lane by lane.',
+          'Multi carrier shipping software should unify execution: one AWB story, hub stages, and MIS. See the Doorear solution page for multi-carrier shipping.',
+        ],
+      },
+      {
+        heading: 'Validate before you commit capacity',
+        paragraphs: [
+          'PIN validation and branch-scoped booking rules prevent bad routes from entering sortation—especially when partner coverage rules differ.',
+        ],
+      },
+      {
+        heading: 'Rollout without big-bang risk',
+        paragraphs: [
+          'Start with a defined hub set, success criteria for booking-to-POD, and permission boundaries per branch. Expand partner lanes once supervisors trust daily MIS.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'courier-aggregator-platform-b2b-india',
+    title: 'Courier aggregator platform for B2B operators (not consumer label shopping)',
+    description:
+      'What a courier aggregator platform should deliver for 3PLs and enterprise shippers—partner coordination, manifests, and hub accountability in India.',
+    datePublished: '2026-05-03',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
+    keywords: [
+      'courier aggregator platform',
+      'courier aggregator platform India',
+      'courier aggregation software',
+    ],
+    sections: [
+      {
+        heading: 'Aggregation is execution, not only rates',
+        paragraphs: [
+          'Consumer aggregators optimize label purchase. B2B operators need branch-aware bookings, inward queues, delivery runs, and partner-scoped visibility.',
+          'Doorear positions courier aggregation inside a logistics operating system—explore the courier aggregator platform solution page.',
+        ],
+      },
+      {
+        heading: 'Partner MIS finance can trust',
+        paragraphs: [
+          'When partner volumes share one tenant, month-end conversations reference shipment activity and billing artifacts—not parallel spreadsheets.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'logistics-marketplace-india-b2b-guide',
+    title: 'Logistics marketplace India: B2B networks vs consumer shipping',
+    description:
+      'How a logistics marketplace India teams can use connects shippers and carriers with bookings, hub ops, and role-scoped visibility.',
+    datePublished: '2026-05-06',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions.jpg',
+    keywords: [
+      'logistics marketplace India',
+      'logistics marketplace platform',
+      'B2B logistics network India',
+    ],
+    sections: [
+      {
+        heading: 'Marketplace without execution discipline fails',
+        paragraphs: [
+          'Introductions between shippers and 3PLs are easy; shared operational truth is hard. A marketplace layer needs bookings, hub handoffs, and MIS in one workspace.',
+        ],
+      },
+      {
+        heading: 'Who benefits from a B2B marketplace model',
+        paragraphs: [
+          'Manufacturers, eCommerce ops, transporters, and 3PL partners running branch-heavy Indian networks—see the logistics marketplace India solution page on Doorear.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'transport-management-platform-courier-3pl',
+    title: 'Transport management platform for courier & 3PL execution',
+    description:
+      'Transport management platform capabilities that matter for Indian courier networks—bags, manifests, inward legs, delivery runs, and branch hierarchy.',
+    datePublished: '2026-05-08',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/hero-logistics-hub.jpg',
+    keywords: [
+      'transport management platform',
+      'transport management platform India',
+      'TMS software India courier',
+    ],
+    sections: [
+      {
+        heading: 'TMS language vs courier reality',
+        paragraphs: [
+          'Fleet-heavy TMS marketing often underserves hub sort, franchise branches, and AWB-style booking discipline. Courier-first transport management maps stages operators actually run.',
+        ],
+      },
+      {
+        heading: 'Stages supervisors can audit',
+        paragraphs: [
+          'Bags, manifests, inward legs, and delivery runs create accountability from booking through POD—review the transport management platform solution on Doorear.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'shipment-tracking-software-b2b-operators',
+    title: 'Shipment tracking software for operators—not only customer pings',
+    description:
+      'B2B shipment tracking software ties AWB lifecycle stages to hub and OFD MIS so CS, dispatch, and leadership share one consignment record.',
+    datePublished: '2026-05-10',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-5.jpg',
+    keywords: [
+      'shipment tracking software',
+      'shipment tracking software India',
+      'B2B shipment tracking platform',
+    ],
+    sections: [
+      {
+        heading: 'Tracking that matches hub reality',
+        paragraphs: [
+          'Customer-facing status pages help CS—but supervisors need inward queues, OFD progress, and POD gaps before escalations arrive.',
+        ],
+      },
+      {
+        heading: 'One record across teams',
+        paragraphs: [
+          'Doorear shipment tracking software keeps booking, hub, and delivery stages in one tenant. See the shipment tracking feature page for rollout questions.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'rfq-management-software-logistics-india',
+    title: 'RFQ management software inside your logistics workspace',
+    description:
+      'RFQ management software for logistics procurement—structured RFQs, proposals, and agreements next to operational shipment data.',
+    datePublished: '2026-05-12',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-5.jpg',
+    keywords: [
+      'RFQ management software',
+      'RFQ management software logistics',
+      'logistics RFQ software India',
+    ],
+    sections: [
+      {
+        heading: 'Stop losing versions in email',
+        paragraphs: [
+          'RFQ threads without audit trails delay lane decisions. Software structures reduce chaos—but procurement modules must be enabled for your tenant.',
+        ],
+      },
+      {
+        heading: 'Commercial + ops alignment',
+        paragraphs: [
+          'When analytics modules are on, commercial teams reference operational performance beside RFQs. Explore RFQ management software on Doorear.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'logistics-partner-management-software-guide',
+    title: 'Logistics partner management: onboard carriers without WhatsApp chaos',
+    description:
+      'Logistics partner management software patterns—branch-scoped access, hub accountability, and MIS for multi-partner courier networks in India.',
+    datePublished: '2026-05-15',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
+    keywords: [
+      'logistics partner management',
+      'logistics partner management software',
+      'carrier partner management platform',
+    ],
+    sections: [
+      {
+        heading: 'Relationships need operational truth',
+        paragraphs: [
+          'Partner SLAs discussed without shared data become arguments. Partner management ties bookings, hub handoffs, and volume visibility to one workspace.',
+        ],
+      },
+      {
+        heading: 'RBAC for partner-heavy networks',
+        paragraphs: [
+          'Branch hierarchy limits cross-network noise while central ops retains control-tower views—see logistics partner management on Doorear.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'courier-franchise-software-multi-branch',
+    title: 'Courier franchise software for central ops and local branches',
+    description:
+      'Courier franchise software that balances franchise booking autonomy with headquarters MIS, PIN validation, and permission boundaries.',
+    datePublished: '2026-05-18',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-logistics-hub.jpg',
+    keywords: [
+      'courier franchise software',
+      'courier franchise management software India',
+      'franchise courier operations platform',
+    ],
+    sections: [
+      {
+        heading: 'Franchise scale needs validation upstream',
+        paragraphs: [
+          'Local booking freedom without PIN and branch rules creates hub rework. Franchise software should enforce discipline before sortation.',
+        ],
+      },
+      {
+        heading: 'Central MIS without micromanaging every scan',
+        paragraphs: [
+          'Head office needs throughput, OFD, and delay patterns by franchise point—review the courier franchise software solution page.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'last-mile-delivery-platform-india-b2b',
+    title: 'Last mile delivery platform: from hub sort to POD',
+    description:
+      'Last mile delivery platform capabilities for Indian B2B networks—delivery runs, OFD tracking, POD, and hub handoffs in one lifecycle.',
+    datePublished: '2026-05-20',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-features-ai.jpg',
+    keywords: [
+      'last mile delivery platform',
+      'last mile delivery platform India',
+      'last mile logistics software B2B',
+    ],
+    sections: [
+      {
+        heading: 'Last mile is a stage, not a bolt-on link',
+        paragraphs: [
+          'Platforms that only generate tracking URLs miss inward bottlenecks and OFD planning. Execution software connects hub sort to delivery runs and POD.',
+        ],
+      },
+      {
+        heading: 'Peak season readiness',
+        paragraphs: [
+          'Branch throughput views and shipment top-ups help supervisors during spikes—see the last mile delivery platform solution on Doorear.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'supply-chain-visibility-platform-india',
+    title: 'Supply chain visibility platform for branch-heavy logistics',
+    description:
+      'Supply chain visibility platform MIS for Indian networks—pipeline health, OFD, delays, and branch KPIs without monthly spreadsheet exports.',
+    datePublished: '2026-05-22',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-features-ai.jpg',
+    keywords: [
+      'supply chain visibility platform',
+      'supply chain visibility platform India',
+      'logistics control tower software',
+    ],
+    sections: [
+      {
+        heading: 'Visibility for daily standups',
+        paragraphs: [
+          'Leadership should discover delays from dashboards—not only after customer escalations. Operational MIS tuned for control-room rhythm beats analyst turnaround.',
+        ],
+      },
+      {
+        heading: 'Branch-scoped truth',
+        paragraphs: [
+          'Hub managers and central ops need the same metrics language with scoped data—explore the supply chain visibility platform solution page.',
         ],
       },
     ],

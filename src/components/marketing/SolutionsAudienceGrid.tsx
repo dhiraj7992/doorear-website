@@ -68,7 +68,7 @@ export function SolutionsAudienceGrid({ pages }: { pages: SolutionPage[] }) {
     <SolutionPagesGrid
       pages={pages}
       title='Solutions by audience'
-      description='DoorEar connects manufacturers, eCommerce brands, transporters, and 3PL operators on a unified logistics marketplace and operating system.'
+      description='Doorear connects manufacturers, eCommerce brands, transporters, and 3PL operators on a unified logistics marketplace and operating system.'
       iconKey='users'
     />
   )

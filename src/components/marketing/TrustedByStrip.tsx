@@ -77,7 +77,7 @@ export default function TrustedByStrip() {
             </div>
           ) : (
             <motion.div
-              className='doorear-marquee flex w-max gap-3'
+              className='Doorear-marquee flex w-max gap-3'
               initial={{ x: 0 }}
               animate={{ x: '-50%' }}
               transition={{ duration: 28, repeat: Infinity, ease: 'linear' }}

@@ -10,13 +10,13 @@ import { breadcrumbJsonLd, faqJsonLdFromItems } from '@/lib/seo-jsonld'
 export const metadata: Metadata = {
   title: 'Courier Software Features — Booking, Hubs, MIS & Accounts',
   description:
-    'Explore Doorear features for Indian courier and 3PL teams: shipment booking software, hub and last-mile operations, logistics MIS dashboard, GST-oriented accounts, procurement RFQ workflows, and shipment top-ups.',
+    'Explore Doorear features: shipment tracking software, RFQ management, booking and hub ops, logistics MIS, GST-oriented accounts, and procurement workflows for Indian courier and 3PL networks.',
   keywords: [
+    'shipment tracking software',
+    'RFQ management software',
     'courier management software features',
     'shipment booking software',
     'logistics MIS dashboard',
-    'last mile delivery operations software',
-    'GST logistics invoicing software',
     'logistics operating system',
   ],
   alternates: { canonical: '/features' },

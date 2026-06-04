@@ -11,6 +11,7 @@ import BlogRelatedPosts from '@/components/marketing/BlogRelatedPosts'
 import { ScrollReveal, SectionShell } from '@/components/marketing/primitives'
 import { getOgImageUrl, getSiteUrl } from '@/components/marketing/site-config'
 import { articleJsonLd, breadcrumbJsonLd } from '@/lib/seo-jsonld'
+import { getRankingLinkByBlogSlug } from '@/lib/ranking-landing-links'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -53,6 +54,7 @@ export default async function BlogPostPage({ params }: Props) {
   if (!post) notFound()
 
   const related = getRelatedPosts(slug, 3)
+  const rankingLink = getRankingLinkByBlogSlug(slug)
   const breadcrumbs = breadcrumbJsonLd([
     { name: 'Home', path: '/' },
     { name: 'Blog', path: '/blog' },
@@ -97,16 +99,27 @@ export default async function BlogPostPage({ params }: Props) {
                 </h3>
                 <p className='mt-2 text-sm leading-relaxed text-[var(--app-muted)]'>
                   Want this operational model for your network?{' '}
+                  {rankingLink ? (
+                    <>
+                      See{' '}
+                      <Link
+                        href={rankingLink.href}
+                        className='font-semibold text-[var(--app-primary)] hover:underline'>
+                        {rankingLink.label}
+                      </Link>
+                      ,{' '}
+                    </>
+                  ) : null}
                   <Link
                     href='/contact'
                     className='font-semibold text-[var(--app-primary)] hover:underline'>
-                    Book a demo
-                  </Link>{' '}
-                  or explore{' '}
+                    book a demo
+                  </Link>
+                  , or explore{' '}
                   <Link
-                    href='/features'
+                    href='/solutions'
                     className='font-semibold text-[var(--app-primary)] hover:underline'>
-                    features
+                    all solutions
                   </Link>
                   .
                 </p>

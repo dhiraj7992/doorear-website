@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description:
     'Learn why Doorear exists: a logistics operations platform and courier management software for branch-heavy Indian networks—transparent, operational, and enterprise-ready.',
   keywords: [
-    'about doorear',
+    'about Doorear',
     'courier management software India',
     'logistics operations platform',
     'multi branch courier software',

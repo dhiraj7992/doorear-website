@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import CTABlock from '@/components/marketing/CTABlock'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
+import PageFaqSection from '@/components/marketing/PageFaqSection'
 import RelatedGuidesSection from '@/components/marketing/RelatedGuidesSection'
 import SolutionAudienceSections from '@/components/marketing/SolutionAudienceSections'
 import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
@@ -88,6 +89,7 @@ export default async function SolutionAudiencePage({ params }: Props) {
         slugs={solution.relatedBlogSlugs}
         title='Guides for this audience'
       />
+      <PageFaqSection slug={solution.slug} />
       <CTABlock
         title={`See Doorear for ${solution.titleHighlight}`}
         description='Book a demo to map branches, permissions, and rollout phases to your network—with honest scope on modules and integrations deployed for your tenant.'

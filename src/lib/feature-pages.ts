@@ -16,19 +16,20 @@ export type FeaturePage = {
 export const featurePages: FeaturePage[] = [
   {
     slug: 'procurement-rfq',
-    metaTitle: 'RFQ Management Software for Logistics',
+    metaTitle: 'RFQ Management Software | Logistics India',
     description:
-      'Doorear RFQ management for logistics teams—structured RFQs, proposals, agreements, and public quotes in the same tenant as bookings, hubs, and MIS.',
+      'RFQ management software for logistics teams on Doorear—structured RFQs, proposals, agreements, and public quotes in the same tenant as bookings, hub ops, and MIS.',
     keywords: [
+      'RFQ management software',
       'RFQ management software logistics',
-      'procurement RFQ logistics software India',
-      'logistics RFQ to agreement workflow',
+      'logistics RFQ software India',
+      'procurement RFQ logistics',
     ],
-    eyebrow: 'Features · Procurement & RFQ',
-    title: 'RFQ management from',
+    eyebrow: 'Features · RFQ management',
+    title: 'RFQ management software from',
     titleHighlight: 'request to signed agreement',
     intro:
-      'Stop losing vendor negotiations in email threads. When procurement is enabled, Doorear runs RFQs, proposals, and agreements alongside operational shipment data—so commercial teams and ops share one workspace.',
+      'RFQ management software should sit next to the shipments and lanes it governs—not in a disconnected procurement portal. When enabled, Doorear runs RFQs, proposals, and agreements alongside operational data so commercial and ops teams share one workspace.',
     painPoints: [
       'RFQ versions scattered across inboxes with no audit trail.',
       'Commercial terms disconnected from operational lane performance.',
@@ -39,7 +40,10 @@ export const featurePages: FeaturePage[] = [
       'Public quote support when customers need shareable commercial artifacts.',
       'Operational context next to procurement when analytics modules are enabled.',
     ],
-    relatedBlogSlugs: ['procurement-rfq-proposals-agreements-logistics'],
+    relatedBlogSlugs: [
+      'rfq-management-software-logistics-india',
+      'procurement-rfq-proposals-agreements-logistics',
+    ],
     heroImage: '/images/marketing/web-ops-5.jpg',
   },
   {
@@ -72,6 +76,39 @@ export const featurePages: FeaturePage[] = [
       'subscription-plans-offline-billing-transparency',
     ],
     heroImage: '/images/marketing/page-about-ai.jpg',
+  },
+  {
+    slug: 'shipment-tracking',
+    metaTitle: 'Shipment Tracking Software | B2B India',
+    description:
+      'Shipment tracking software for Indian logistics operators—stage-aware AWB lifecycle, hub and OFD visibility, POD records, and branch-scoped MIS on Doorear.',
+    keywords: [
+      'shipment tracking software',
+      'shipment tracking software India',
+      'B2B shipment tracking platform',
+      'AWB tracking software logistics',
+    ],
+    eyebrow: 'Features · Shipment tracking',
+    title: 'Shipment tracking software with',
+    titleHighlight: 'ops-grade lifecycle visibility',
+    intro:
+      'Shipment tracking software for operators means more than a customer-facing status page—it means supervisors see booking, inward, OFD, and POD stages with audit discipline. Doorear tracks consignments through hub handoffs and delivery runs in one tenant.',
+    painPoints: [
+      'Tracking updates lag because hubs and dispatch use different tools.',
+      'Customer-facing status does not match internal hub reality.',
+      'Exceptions and POD gaps discovered only after billing disputes.',
+    ],
+    benefits: [
+      'Stage-aware shipment lifecycle from booking through proof of delivery.',
+      'Operational MIS for delays, OFD, and branch throughput—not only pings.',
+      'Single consignment record for CS, hubs, finance, and leadership.',
+    ],
+    relatedBlogSlugs: [
+      'shipment-tracking-software-b2b-operators',
+      'booking-to-delivery-shipment-lifecycle-doorear',
+      'logistics-mis-dashboard-operations-teams',
+    ],
+    heroImage: '/images/marketing/web-ops-5.jpg',
   },
 ]
 

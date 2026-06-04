@@ -77,3 +77,37 @@ export function faqJsonLdFromItems(items: readonly { q: string; a: string }[]) {
     })),
   }
 }
+
+export function definedTermSetJsonLd(
+  terms: { slug: string; term: string; shortDefinition: string }[]
+) {
+  const base = getSiteUrl()
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    name: `${SITE_NAME} Logistics Glossary`,
+    description: 'Definitions for logistics, courier, and supply chain terms used by Doorear.',
+    hasDefinedTerm: terms.map((t) => ({
+      '@type': 'DefinedTerm',
+      name: t.term,
+      description: t.shortDefinition,
+      url: `${base}/glossary/${t.slug}`,
+    })),
+  }
+}
+
+export function definedTermJsonLd(term: {
+  slug: string
+  term: string
+  definition: string
+}) {
+  const base = getSiteUrl()
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: term.term,
+    description: term.definition,
+    url: `${base}/glossary/${term.slug}`,
+    inDefinedTermSet: `${base}/glossary`,
+  }
+}

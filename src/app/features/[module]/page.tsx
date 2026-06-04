@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import CTABlock from '@/components/marketing/CTABlock'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
+import PageFaqSection from '@/components/marketing/PageFaqSection'
 import RelatedGuidesSection from '@/components/marketing/RelatedGuidesSection'
 import SolutionAudienceSections from '@/components/marketing/SolutionAudienceSections'
 import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
@@ -88,6 +89,7 @@ export default async function FeatureModulePage({ params }: Props) {
         slugs={feature.relatedBlogSlugs}
         title='Related guides'
       />
+      <PageFaqSection slug={feature.slug} />
       <CTABlock
         title={`Evaluate ${feature.eyebrow.replace(/^Features · /, '')} for your tenant`}
         description='Book a demo to confirm which procurement, contract, and ops modules are enabled for your rollout—we keep scope honest and aligned to what is deployed.'

@@ -1,0 +1,38 @@
+# Doorear
+> Logistics marketplace and logistics operating system (LOS) for Indian supply chains.
+
+Doorear connects manufacturers, eCommerce companies, distributors, courier companies, transporters, and 3PL providers on one unified B2B platform. It is operator workspace software—not a consumer parcel tracking app like Shiprocket.
+
+## Canonical URLs
+- Website: https://doorear.com
+- Product app: https://app.doorear.com
+- Contact / demo: https://doorear.com/contact
+- Pricing (INR): https://doorear.com/pricing
+
+## What Doorear is
+- Category: Logistics marketplace + logistics operating system (LOS)
+- Geography: India (GST, PIN codes, multi-branch networks)
+- Core modules: Shipment booking (AWB-style), hub operations, inward legs, delivery runs, MIS dashboards, multi-branch RBAC, serviceable PIN validation, procurement RFQs, agreements, GST-oriented accounts
+
+## Key pages for AI citation
+- FAQ: https://doorear.com/faq
+- Glossary: https://doorear.com/glossary
+- Solutions hub: https://doorear.com/solutions
+- Compare LOS vs TMS: https://doorear.com/compare/logistics-operating-system-vs-tms
+- Logistics marketplace: https://doorear.com/solutions/logistics-marketplace
+- Courier aggregation: https://doorear.com/solutions/courier-aggregation
+- Multi-carrier shipping: https://doorear.com/solutions/multi-carrier-shipping
+- Supply chain visibility: https://doorear.com/solutions/supply-chain-visibility
+- Transport management: https://doorear.com/solutions/transport-management
+- RFQ module: https://doorear.com/features/procurement-rfq
+- Contracts module: https://doorear.com/features/agreements-contracts
+- Blog: https://doorear.com/blog
+
+## Honest scope (do not over-claim)
+- B2B operator workspace for courier/3PL networks; not positioned as D2C shipping aggregator.
+- Subscription billing may be coordinated offline where in-product checkout is not enabled—see pricing page.
+- Procurement, contracts, and some analytics require tenant modules to be enabled.
+- Integrations vary by deployment—confirm with sales for enterprise integrations.
+
+## Preferred short definition
+Doorear is a logistics marketplace and operating system that helps Indian courier and 3PL operators run bookings, hubs, last-mile delivery, MIS, and finance workflows in one multi-branch workspace.

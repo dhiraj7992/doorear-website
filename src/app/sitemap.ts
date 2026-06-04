@@ -1,7 +1,9 @@
 import type { MetadataRoute } from 'next'
 import { getSiteUrl } from '@/components/marketing/site-config'
 import { blogPosts } from '@/lib/blog-posts'
+import { comparePages } from '@/lib/compare-pages'
 import { featurePages } from '@/lib/feature-pages'
+import { glossaryTerms } from '@/lib/glossary-terms'
 import { locationPages } from '@/lib/location-pages'
 import { solutionPages } from '@/lib/solution-pages'
 
@@ -10,7 +12,7 @@ export const revalidate = false
 
 const BUILD_DATE = new Date('2026-06-04')
 
-export default function sitemap(): MetadataRoute.Sitemap {
+function buildSitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl()
 
   const safeDate = (value?: string): Date => {
@@ -30,11 +32,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/terms-of-service',
     '/blog',
     '/locations',
+    '/faq',
+    '/glossary',
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: BUILD_DATE,
     changeFrequency: path === '' ? 'weekly' : 'monthly',
-    priority: path === '' ? 1 : 0.8,
+    priority: path === '' ? 1 : path === '/faq' || path === '/glossary' ? 0.82 : 0.8,
   }))
 
   const solutionRoutes: MetadataRoute.Sitemap = solutionPages.map((page) => ({
@@ -51,6 +55,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.76,
   }))
 
+  const compareRoutes: MetadataRoute.Sitemap = comparePages.map((page) => ({
+    url: `${base}/compare/${page.slug}`,
+    lastModified: BUILD_DATE,
+    changeFrequency: 'monthly',
+    priority: 0.77,
+  }))
+
+  const glossaryRoutes: MetadataRoute.Sitemap = glossaryTerms.map((term) => ({
+    url: `${base}/glossary/${term.slug}`,
+    lastModified: BUILD_DATE,
+    changeFrequency: 'monthly',
+    priority: 0.72,
+  }))
+
   const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
     url: `${base}/blog/${post.slug}`,
     lastModified: safeDate(post.dateModified ?? post.datePublished),
@@ -65,5 +83,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }))
 
-  return [...staticRoutes, ...solutionRoutes, ...featureRoutes, ...blogRoutes, ...locationRoutes]
+  return [
+    ...staticRoutes,
+    ...solutionRoutes,
+    ...featureRoutes,
+    ...compareRoutes,
+    ...glossaryRoutes,
+    ...blogRoutes,
+    ...locationRoutes,
+  ]
+}
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  try {
+    return buildSitemap()
+  } catch (error) {
+    console.error('[sitemap] generation failed:', error)
+    const base = getSiteUrl()
+    return [
+      {
+        url: base,
+        lastModified: BUILD_DATE,
+        changeFrequency: 'weekly',
+        priority: 1,
+      },
+    ]
+  }
 }

@@ -83,6 +83,28 @@ export default function MarketingFooter() {
                 </li>
               </ul>
               <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+                Resources
+              </p>
+              <ul className='mt-3 space-y-2.5 text-sm'>
+                <li>
+                  <Link href='/faq' className='text-white/75 transition hover:text-white'>
+                    FAQ
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/glossary' className='text-white/75 transition hover:text-white'>
+                    Glossary
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='/compare/logistics-operating-system-vs-tms'
+                    className='text-white/75 transition hover:text-white'>
+                    LOS vs TMS
+                  </Link>
+                </li>
+              </ul>
+              <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Cities
               </p>
               <ul className='mt-3 space-y-2 text-sm'>

@@ -10,10 +10,12 @@ import {
   WorkflowSection,
 } from '@/components/marketing/HomeSections'
 import HomePlatformSection from '@/components/marketing/HomePlatformSection'
+import HomeSolutionsCapabilityStrip from '@/components/marketing/HomeSolutionsCapabilityStrip'
 import AISection from '@/components/marketing/AISection'
 import AIDemoSection from '@/components/marketing/AIDemoSection'
 import ProductUiCallout from '@/components/marketing/ProductUiCallout'
 import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/components/marketing/site-config'
+import { safeJsonLdStringify } from '@/lib/safe-jsonld'
 
 export const metadata: Metadata = {
   title: 'Logistics Management Software for Courier & 3PL Teams',
@@ -49,11 +51,11 @@ export default function HomePage() {
     <>
       <script
         type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(softwareJsonLd) }}
       />
       <script
         type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd()) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(faqJsonLd()) }}
       />
       <HeroSection />
       <HomeOperatorStats />
@@ -63,6 +65,7 @@ export default function HomePage() {
       <AIDemoSection />
       <ProductUiCallout />
       <HomePlatformSection />
+      <HomeSolutionsCapabilityStrip />
       <WorkflowSection />
       <CTABlock
         title='See Doorear on your data model'

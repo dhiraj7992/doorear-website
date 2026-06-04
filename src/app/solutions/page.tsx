@@ -99,13 +99,13 @@ export default function SolutionsPage() {
       <SolutionPagesGrid
         pages={capabilitySolutionPages}
         title='Solutions by capability'
-        description='Own the keywords that matter—courier aggregation, multi-carrier execution, supply chain visibility, and transport management—for mid-market Indian logistics networks.'
+        description='Courier aggregator, multi carrier shipping, logistics marketplace India, transport management, supply chain visibility, partner management, franchise ops, and last mile—built for mid-market Indian networks.'
         iconKey='layers'
       />
       <SolutionPagesGrid
         pages={audienceSolutionPages}
         title='Solutions by audience'
-        description='DoorEar connects manufacturers, eCommerce brands, transporters, and 3PL operators on a unified logistics marketplace and operating system.'
+        description='Doorear connects manufacturers, eCommerce brands, transporters, and 3PL operators on a unified logistics marketplace and operating system.'
         iconKey='users'
       />
       <SolutionsPageSections />

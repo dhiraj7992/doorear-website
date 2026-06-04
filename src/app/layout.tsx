@@ -11,6 +11,7 @@ import {
   SITE_DESCRIPTION,
   SITE_NAME,
 } from '@/components/marketing/site-config'
+import { safeJsonLdStringify } from '@/lib/safe-jsonld'
 
 const siteUrl = getSiteUrl()
 const supportUrl = getSupportUrl()
@@ -132,11 +133,11 @@ export default function RootLayout({
       <body className='min-h-screen flex flex-col'>
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(websiteJsonLd) }}
         />
         <script
           type='application/ld+json'
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(organizationJsonLd) }}
         />
         {gtmId ? (
           <noscript>

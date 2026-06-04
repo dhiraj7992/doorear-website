@@ -11,8 +11,9 @@ export default function FeatureModulesStrip() {
             Deep-dive modules
           </h2>
           <p className='mt-3 max-w-2xl text-sm leading-relaxed text-[var(--app-muted)] md:text-base'>
-            Procurement RFQ and contract workflows live inside the same tenant as
-            bookings and hub ops—explore how each module maps to your rollout.
+            RFQ management, shipment tracking, and contract workflows live inside
+            the same tenant as bookings and hub ops—explore how each module maps
+            to your rollout.
           </p>
           <ul className='mt-8 grid gap-4 md:grid-cols-2'>
             {featurePages.map((feature) => (
