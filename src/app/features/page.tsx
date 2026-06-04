@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import FAQSection from '@/components/marketing/FAQSection'
+import FeatureModulesStrip from '@/components/marketing/FeatureModulesStrip'
 import FeaturesPageView from '@/components/marketing/FeaturesPageView'
 import RelatedGuidesSection from '@/components/marketing/RelatedGuidesSection'
 import { featuresFaqs } from '@/components/marketing/faq-content'
@@ -64,6 +65,7 @@ export default function FeaturesPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLdFromItems(featuresFaqs)) }}
       />
       <FeaturesPageView />
+      <FeatureModulesStrip />
       <RelatedGuidesSection />
       <FAQSection items={featuresFaqs} title='Features FAQ' />
     </>

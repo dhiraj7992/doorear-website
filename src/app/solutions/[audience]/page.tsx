@@ -76,7 +76,7 @@ export default async function SolutionAudiencePage({ params }: Props) {
         }
         description={solution.intro}
         image={{
-          src: '/images/marketing/page-solutions.jpg',
+          src: solution.heroImage ?? '/images/marketing/page-solutions.jpg',
           alt: `${solution.metaTitle} — Doorear logistics platform`,
         }}
         imagePresentation='default'

@@ -10,6 +10,8 @@ export type SolutionPage = {
   painPoints: string[]
   benefits: string[]
   relatedBlogSlugs: string[]
+  heroImage?: string
+  kind?: 'audience' | 'capability'
 }
 
 export const solutionPages: SolutionPage[] = [
@@ -160,10 +162,148 @@ export const solutionPages: SolutionPage[] = [
     ],
     relatedBlogSlugs: [
       'roles-permissions-bookings-billing-safety',
-      'subscription-plans-offline-billing-transparency',
+      'logistics-marketplace-vs-courier-software',
+      'what-is-logistics-operating-system',
     ],
+    kind: 'audience',
+  },
+  {
+    slug: 'courier-aggregation',
+    metaTitle: 'Courier Aggregation Platform for B2B Networks',
+    description:
+      'Doorear is a B2B courier aggregation platform for Indian operators—onboard partner carriers, run branch-scoped bookings, and manage hub handoffs from one logistics operating system.',
+    keywords: [
+      'courier aggregator platform India',
+      'courier aggregation software B2B',
+      'connect multiple courier partners one platform',
+    ],
+    eyebrow: 'Solutions · Courier aggregation',
+    title: 'Aggregate courier partners on a',
+    titleHighlight: 'single operator workspace',
+    intro:
+      'Enterprise shippers and 3PLs need more than a consumer shipping widget—they need branch-aware booking, manifests, and MIS across partner networks. Doorear aggregates courier execution inside your operating system, not just rate shopping.',
+    painPoints: [
+      'Partner bookings scattered across WhatsApp, email, and partner portals.',
+      'No unified MIS when multiple courier brands serve the same network.',
+      'Finance cannot reconcile partner volumes against a single allowance model.',
+    ],
+    benefits: [
+      'One workspace for bookings, hub ops, and partner-scoped visibility.',
+      'Branch hierarchy and RBAC that mirror how your network actually runs.',
+      'Operational analytics alongside subscription and shipment top-up controls.',
+    ],
+    relatedBlogSlugs: [
+      'multi-branch-courier-operations-one-dashboard',
+      'booking-to-delivery-shipment-lifecycle-doorear',
+    ],
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
+    kind: 'capability',
+  },
+  {
+    slug: 'multi-carrier-shipping',
+    metaTitle: 'Multi Carrier Shipping Software India',
+    description:
+      'Run multi carrier shipping from one logistics platform—AWB-style bookings, hub execution, PIN validation, and branch-scoped MIS for Indian courier and 3PL networks.',
+    keywords: [
+      'multi carrier shipping software India',
+      'multi carrier shipping platform',
+      'multi carrier AWB booking system',
+    ],
+    eyebrow: 'Solutions · Multi-carrier',
+    title: 'Multi-carrier shipping with',
+    titleHighlight: 'one operational system of record',
+    intro:
+      'Compare carriers in planning conversations—but execute in one disciplined workspace. Doorear keeps bookings, inward legs, delivery runs, and billing artifacts aligned when you ship across multiple logistics partners.',
+    painPoints: [
+      'Each carrier workflow lives in a different tool or spreadsheet tab.',
+      'Hub teams lose visibility when freight switches between partner lanes.',
+      'Invalid bookings slip through when coverage rules differ by partner.',
+    ],
+    benefits: [
+      'Serviceable PIN validation before capacity is committed.',
+      'Stage-aware shipment lifecycle from booking through POD.',
+      'Branch-scoped users see the right consignments for their hub or lane.',
+    ],
+    relatedBlogSlugs: [
+      'pin-coverage-booking-validation-logistics',
+      'booking-to-delivery-shipment-lifecycle-doorear',
+    ],
+    heroImage: '/images/marketing/web-logistics-hub.jpg',
+    kind: 'capability',
+  },
+  {
+    slug: 'supply-chain-visibility',
+    metaTitle: 'Supply Chain Visibility Platform India',
+    description:
+      'Doorear supply chain visibility for mid-market Indian networks—operational MIS, branch throughput, OFD progress, and commercial analytics in one logistics control tower.',
+    keywords: [
+      'supply chain visibility platform India',
+      'logistics control tower software',
+      'operational visibility courier network',
+    ],
+    eyebrow: 'Solutions · Visibility',
+    title: 'Supply chain visibility for',
+    titleHighlight: 'branch-heavy logistics networks',
+    intro:
+      'Visibility fails when data lives in exports and status meetings. Doorear gives ops heads and hub managers in-product MIS—pipeline health, delays, delivery performance, and branch KPIs without waiting on analyst turnaround.',
+    painPoints: [
+      'Leadership discovers delays after customers escalate, not from dashboards.',
+      'Branch managers and central ops use different spreadsheet versions.',
+      'Commercial teams lack operational context for lane and partner decisions.',
+    ],
+    benefits: [
+      'Operational dashboards tuned for daily standups and control-room rhythm.',
+      'Shared metrics across hubs, dispatch, and leadership.',
+      'Optional sales & purchase analytics when commercial modules are enabled.',
+    ],
+    relatedBlogSlugs: [
+      'logistics-mis-dashboard-operations-teams',
+      'multi-branch-courier-operations-one-dashboard',
+    ],
+    heroImage: '/images/marketing/page-features-ai.jpg',
+    kind: 'capability',
+  },
+  {
+    slug: 'transport-management',
+    metaTitle: 'Transport Management System for Courier & 3PL',
+    description:
+      'Doorear transport management for Indian courier and 3PL operators—bookings, manifests, inward legs, delivery runs, hub coordination, and fleet-aware branch workflows in one TMS-aligned workspace.',
+    keywords: [
+      'transport management system India',
+      'TMS software India courier',
+      'transport management software logistics companies',
+    ],
+    eyebrow: 'Solutions · Transport management',
+    title: 'Transport management built for',
+    titleHighlight: 'courier & 3PL reality',
+    intro:
+      'Generic TMS tools ignore branch hierarchy, AWB discipline, and GST-oriented billing contexts Indian networks need. Doorear maps transport execution to how hubs, linehaul, and last-mile teams actually hand off freight.',
+    painPoints: [
+      'Linehaul and last-mile teams work from disconnected status lists.',
+      'Hub inward queues bottleneck without stage-level accountability.',
+      'TMS rollouts fail when software ignores PIN coverage and franchise branches.',
+    ],
+    benefits: [
+      'Bags, manifests, inward legs, and delivery runs in one audit trail.',
+      'Hub and branch hierarchy that matches depots, franchises, and partners.',
+      'Finance artifacts tied to the same tenant as transport activity.',
+    ],
+    relatedBlogSlugs: [
+      'booking-to-delivery-shipment-lifecycle-doorear',
+      'roles-permissions-bookings-billing-safety',
+    ],
+    heroImage: '/images/marketing/hero-logistics-hub.jpg',
+    kind: 'capability',
   },
 ]
+
+export const audienceSolutionPages = solutionPages.filter(
+  (p) => p.kind !== 'capability'
+)
+
+export const capabilitySolutionPages = solutionPages.filter(
+  (p) => p.kind === 'capability'
+)
 
 export function getSolutionBySlug(slug: string) {
   return solutionPages.find((page) => page.slug === slug)

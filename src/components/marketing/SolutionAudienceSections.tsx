@@ -1,11 +1,15 @@
 import Link from 'next/link'
 import { PremiumCard, ScrollReveal, SectionShell } from '@/components/marketing/primitives'
-import type { SolutionPage } from '@/lib/solution-pages'
+
+type DepthPageContent = {
+  painPoints: string[]
+  benefits: string[]
+}
 
 export default function SolutionAudienceSections({
   solution,
 }: {
-  solution: SolutionPage
+  solution: DepthPageContent
 }) {
   return (
     <SectionShell tone='surface' bordered spacing='default'>

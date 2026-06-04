@@ -95,6 +95,39 @@ export const locationPages: LocationPage[] = [
       'Align GST-oriented billing artifacts with operational shipment activity.',
     ],
   },
+  {
+    slug: 'jaipur',
+    city: 'Jaipur',
+    state: 'Rajasthan',
+    titleQualifier: 'regional distribution and retail freight corridors',
+    painPoints: [
+      'Unify booking and hub ops across expanding Rajasthan lanes.',
+      'Validate PIN serviceability before peak retail seasons.',
+      'Give leadership MIS without overnight spreadsheet exports.',
+    ],
+  },
+  {
+    slug: 'kochi',
+    city: 'Kochi',
+    state: 'Kerala',
+    titleQualifier: 'coastal inbound logistics and southern lane coordination',
+    painPoints: [
+      'Coordinate hub inward queues with intercity linehaul partners.',
+      'Track last-mile delivery runs with stage-level accountability.',
+      'Scale users and shipment allowances as southern volumes grow.',
+    ],
+  },
+  {
+    slug: 'indore',
+    city: 'Indore',
+    state: 'Madhya Pradesh',
+    titleQualifier: 'central India hub routing and multi-branch rollouts',
+    painPoints: [
+      'Standardize bookings across franchise and owned branch mix.',
+      'Improve SLA tracking with operational dashboards for hub supervisors.',
+      'Align procurement and ops when commercial modules are enabled.',
+    ],
+  },
 ]
 
 export function getLocationBySlug(slug: string) {

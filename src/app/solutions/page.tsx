@@ -2,11 +2,14 @@ import type { Metadata } from 'next'
 import CTABlock from '@/components/marketing/CTABlock'
 import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import RelatedGuidesSection from '@/components/marketing/RelatedGuidesSection'
-import { SolutionsAudienceGrid } from '@/components/marketing/SolutionsAudienceGrid'
+import { SolutionPagesGrid } from '@/components/marketing/SolutionsAudienceGrid'
 import SolutionsPageSections from '@/components/marketing/SolutionsPageSections'
 import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/components/marketing/site-config'
 import { breadcrumbJsonLd } from '@/lib/seo-jsonld'
-import { solutionPages } from '@/lib/solution-pages'
+import {
+  audienceSolutionPages,
+  capabilitySolutionPages,
+} from '@/lib/solution-pages'
 
 export const metadata: Metadata = {
   title: 'Logistics Marketplace & 3PL Solutions for Supply Chain Teams',
@@ -15,10 +18,12 @@ export const metadata: Metadata = {
   keywords: [
     'logistics marketplace',
     'logistics operating system',
+    'courier aggregator platform India',
+    'multi carrier shipping software',
+    'supply chain visibility platform',
+    'transport management system India',
     'courier software solutions',
     '3PL operations platform',
-    'supply chain logistics platform',
-    'multi branch courier software',
   ],
   alternates: { canonical: '/solutions' },
   openGraph: {
@@ -38,6 +43,8 @@ const SOLUTION_GUIDE_SLUGS = [
   'multi-branch-courier-operations-one-dashboard',
   'procurement-rfq-proposals-agreements-logistics',
   'roles-permissions-bookings-billing-safety',
+  'logistics-marketplace-vs-courier-software',
+  'what-is-logistics-operating-system',
 ]
 
 export default function SolutionsPage() {
@@ -89,7 +96,18 @@ export default function SolutionsPage() {
         imageCaption='Hub & inward operations: queues, handoffs, and execution views supervisors use before SLAs slip.'
         cta={{ href: '/contact', label: 'Discuss your branch model' }}
       />
-      <SolutionsAudienceGrid pages={solutionPages} />
+      <SolutionPagesGrid
+        pages={capabilitySolutionPages}
+        title='Solutions by capability'
+        description='Own the keywords that matter—courier aggregation, multi-carrier execution, supply chain visibility, and transport management—for mid-market Indian logistics networks.'
+        iconKey='layers'
+      />
+      <SolutionPagesGrid
+        pages={audienceSolutionPages}
+        title='Solutions by audience'
+        description='DoorEar connects manufacturers, eCommerce brands, transporters, and 3PL operators on a unified logistics marketplace and operating system.'
+        iconKey='users'
+      />
       <SolutionsPageSections />
       <RelatedGuidesSection
         slugs={SOLUTION_GUIDE_SLUGS}

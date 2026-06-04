@@ -248,6 +248,75 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'what-is-logistics-operating-system',
+    title: 'What is a logistics operating system (LOS)?',
+    description:
+      'A logistics operating system unifies bookings, hub execution, MIS, procurement, and billing for Indian supply chains—how DoorEar differs from courier apps and generic TMS tools.',
+    datePublished: '2026-04-01',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/hero-logistics.jpg',
+    keywords: [
+      'logistics operating system',
+      'logistics operating system India',
+      'logistics SaaS platform',
+    ],
+    sections: [
+      {
+        heading: 'Definition: more than tracking',
+        paragraphs: [
+          'A logistics operating system (LOS) is the operational layer where bookings, hub handoffs, delivery runs, analytics, and commercial workflows run in one multi-tenant workspace. It is not a consumer parcel tracker or a spreadsheet with a login screen.',
+          'DoorEar is built as a LOS for mid-market Indian networks—branch hierarchy, PIN validation, GST-oriented billing support, and optional procurement modules when you enable them.',
+        ],
+      },
+      {
+        heading: 'LOS vs TMS vs courier software',
+        paragraphs: [
+          'Transport management systems often focus on fleet and linehaul. Courier software may stop at AWB creation. A LOS connects operator execution, finance artifacts, and partner coordination—the daily work dispatchers and hub managers actually perform.',
+        ],
+      },
+      {
+        heading: 'When you need a LOS',
+        paragraphs: [
+          'If you operate multiple branches, negotiate lane capacity with partners, and close the month with finance asking for shipment-level truth, a LOS reduces reconciliation drag. Start with a defined hub set and success criteria—not a big-bang rip-and-replace.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'logistics-marketplace-vs-courier-software',
+    title: 'Logistics marketplace vs courier software: which do you need?',
+    description:
+      'Compare a logistics marketplace and operating system with standalone courier management software—when shippers, 3PLs, and transporters should choose DoorEar’s unified model.',
+    datePublished: '2026-04-08',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions.jpg',
+    keywords: [
+      'logistics marketplace India',
+      'logistics marketplace vs courier software',
+      'B2B logistics marketplace',
+    ],
+    sections: [
+      {
+        heading: 'Courier software alone',
+        paragraphs: [
+          'Courier management software excels when one operator runs bookings, hubs, and billing inside their own network. The buyer is usually an ops head or IT lead at a 3PL or courier company.',
+        ],
+      },
+      {
+        heading: 'Marketplace + operating system',
+        paragraphs: [
+          'A logistics marketplace connects shippers and logistics providers—but execution still needs discipline. DoorEar combines network positioning with an operator workspace so partners do not fall back to WhatsApp and spreadsheets after the intro call.',
+        ],
+      },
+      {
+        heading: 'Practical decision guide',
+        paragraphs: [
+          'Choose courier software positioning when you are a single tenant scaling branches. Choose marketplace + LOS when you connect manufacturers, eCommerce brands, transporters, and 3PL partners who all need role-scoped visibility on shared lanes.',
+        ],
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
