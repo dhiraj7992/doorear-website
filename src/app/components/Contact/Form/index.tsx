@@ -39,15 +39,16 @@ const ContactForm = () => {
     e.preventDefault()
     setLoader(true)
 
-    fetch('https://formsubmit.co/ajax/doorear.info@gmail.com', {
+    fetch('/api/contact', {
       method: 'POST',
-      headers: { 'Content-type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
       body: JSON.stringify({
-        Name: formData.firstname,
-        LastName: formData.lastname,
-        Email: formData.email,
-        PhoneNo: formData.phnumber,
-        Message: formData.Message,
+        firstname: formData.firstname,
+        lastname: formData.lastname,
+        email: formData.email,
+        phnumber: formData.phnumber,
+        message: formData.Message,
+        source: 'legacy_contact_form',
       }),
     })
       .then((response) => response.json())
@@ -61,12 +62,10 @@ const ContactForm = () => {
             setShowThanks(false)
           }, 5000)
         }
-
-        reset()
-      })
-      .catch((error) => {
         setLoader(false)
-        console.log(error.message)
+      })
+      .catch(() => {
+        setLoader(false)
       })
   }
   return (

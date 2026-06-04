@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui'
 import { trackEvent } from '@/lib/analytics'
 
-const FORM_ENDPOINT = 'https://formsubmit.co/ajax/doorear.info@gmail.com'
+const FORM_ENDPOINT = '/api/contact'
 
 export default function MarketingContactForm() {
   const router = useRouter()
@@ -17,6 +17,7 @@ export default function MarketingContactForm() {
     Message: '',
   })
   const [showThanks, setShowThanks] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const [loader, setLoader] = useState(false)
   const [isFormValid, setIsFormValid] = useState(false)
   const [utmData, setUtmData] = useState({
@@ -58,16 +59,18 @@ export default function MarketingContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoader(true)
+    setErrorMessage('')
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',
-        headers: { 'Content-type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
-          Name: formData.firstname,
-          LastName: formData.lastname,
-          Email: formData.email,
-          PhoneNo: formData.phnumber,
-          Message: formData.Message,
+          firstname: formData.firstname,
+          lastname: formData.lastname,
+          email: formData.email,
+          phnumber: formData.phnumber,
+          message: formData.Message,
+          source: 'marketing_contact_page',
           UTMSource: utmData.utm_source,
           UTMMedium: utmData.utm_medium,
           UTMCampaign: utmData.utm_campaign,
@@ -77,8 +80,8 @@ export default function MarketingContactForm() {
           LandingPage: utmData.landing_page,
         }),
       })
-      const data = await res.json()
-      if (data.success) {
+      const data = (await res.json()) as { success?: boolean; message?: string }
+      if (res.ok && data.success) {
         trackEvent('marketing_contact_submit', {
           source: 'contact_page_form',
           form: 'marketing_contact',
@@ -98,9 +101,13 @@ export default function MarketingContactForm() {
           setShowThanks(false)
           router.push('/thank-you?type=demo')
         }, 1200)
+      } else {
+        setErrorMessage(
+          data.message ?? 'Something went wrong. Please try again in a moment.'
+        )
       }
     } catch {
-      /* handled by UI state */
+      setErrorMessage('Network error. Check your connection and try again.')
     } finally {
       setLoader(false)
     }
@@ -202,6 +209,11 @@ export default function MarketingContactForm() {
       {showThanks ? (
         <p className='text-sm font-medium text-[var(--chart-emerald)]' role='status'>
           Thank you—we will get back to you shortly.
+        </p>
+      ) : null}
+      {errorMessage ? (
+        <p className='text-sm font-medium text-red-600' role='alert'>
+          {errorMessage}
         </p>
       ) : null}
     </form>

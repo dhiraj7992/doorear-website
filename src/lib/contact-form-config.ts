@@ -1,0 +1,82 @@
+/** Contact form delivery — override with CONTACT_FORM_RECIPIENT in .env.local */
+export const DEFAULT_CONTACT_FORM_RECIPIENT = 'yy.dhiraj@gmail.com'
+
+export function getContactFormRecipient(): string {
+  const fromEnv = process.env.CONTACT_FORM_RECIPIENT?.trim()
+  return fromEnv && fromEnv.includes('@') ? fromEnv : DEFAULT_CONTACT_FORM_RECIPIENT
+}
+
+export type ContactFormPayload = {
+  firstname?: string
+  lastname?: string
+  Name?: string
+  LastName?: string
+  email?: string
+  Email?: string
+  phnumber?: string
+  PhoneNo?: string
+  Message?: string
+  message?: string
+  source?: string
+  UTMSource?: string
+  UTMMedium?: string
+  UTMCampaign?: string
+  UTMTerm?: string
+  UTMContent?: string
+  Referrer?: string
+  LandingPage?: string
+}
+
+export function normalizeContactPayload(raw: ContactFormPayload) {
+  const firstName = (raw.firstname ?? raw.Name ?? '').trim()
+  const lastName = (raw.lastname ?? raw.LastName ?? '').trim()
+  const email = (raw.email ?? raw.Email ?? '').trim()
+  const phone = (raw.phnumber ?? raw.PhoneNo ?? '').trim()
+  const message = (raw.Message ?? raw.message ?? '').trim()
+
+  return {
+    firstName,
+    lastName,
+    fullName: [firstName, lastName].filter(Boolean).join(' '),
+    email,
+    phone,
+    message,
+    utm: {
+      source: raw.UTMSource?.trim() ?? '',
+      medium: raw.UTMMedium?.trim() ?? '',
+      campaign: raw.UTMCampaign?.trim() ?? '',
+      term: raw.UTMTerm?.trim() ?? '',
+      content: raw.UTMContent?.trim() ?? '',
+      referrer: raw.Referrer?.trim() ?? '',
+      landingPage: raw.LandingPage?.trim() ?? '',
+    },
+  }
+}
+
+export function buildFormSubmitBody(
+  raw: ContactFormPayload,
+  options?: { source?: string }
+) {
+  const data = normalizeContactPayload(raw)
+  const source = options?.source ?? 'doorear.com contact form'
+
+  return {
+    _subject: `Doorear lead: ${data.fullName || data.email || 'New inquiry'}`,
+    _template: 'table',
+    _captcha: 'false',
+    _replyto: data.email || undefined,
+    Name: data.firstName,
+    'Last name': data.lastName,
+    Email: data.email,
+    Phone: data.phone,
+    Message: data.message,
+    Source: source,
+    'UTM Source': data.utm.source || '—',
+    'UTM Medium': data.utm.medium || '—',
+    'UTM Campaign': data.utm.campaign || '—',
+    'UTM Term': data.utm.term || '—',
+    'UTM Content': data.utm.content || '—',
+    Referrer: data.utm.referrer || '—',
+    'Landing page': data.utm.landingPage || '—',
+  }
+}
