@@ -5,6 +5,7 @@ import { comparePages } from '@/lib/compare-pages'
 import { featurePages } from '@/lib/feature-pages'
 import { glossaryTerms } from '@/lib/glossary-terms'
 import { locationPages } from '@/lib/location-pages'
+import { learnPages } from '@/lib/learn-pages'
 import { solutionPages } from '@/lib/solution-pages'
 
 export const dynamic = 'force-static'
@@ -34,6 +35,9 @@ function buildSitemap(): MetadataRoute.Sitemap {
     '/locations',
     '/faq',
     '/glossary',
+    '/learn',
+    '/compare',
+    '/integrations',
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: BUILD_DATE,
@@ -53,6 +57,13 @@ function buildSitemap(): MetadataRoute.Sitemap {
     lastModified: BUILD_DATE,
     changeFrequency: 'monthly',
     priority: 0.76,
+  }))
+
+  const learnRoutes: MetadataRoute.Sitemap = learnPages.map((page) => ({
+    url: `${base}/learn/${page.slug}`,
+    lastModified: BUILD_DATE,
+    changeFrequency: 'monthly',
+    priority: 0.79,
   }))
 
   const compareRoutes: MetadataRoute.Sitemap = comparePages.map((page) => ({
@@ -87,6 +98,7 @@ function buildSitemap(): MetadataRoute.Sitemap {
     ...staticRoutes,
     ...solutionRoutes,
     ...featureRoutes,
+    ...learnRoutes,
     ...compareRoutes,
     ...glossaryRoutes,
     ...blogRoutes,

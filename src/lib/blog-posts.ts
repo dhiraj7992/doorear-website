@@ -605,6 +605,246 @@ export const blogPosts: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: 'how-to-choose-logistics-marketplace-india',
+    title: 'How to choose a logistics marketplace in India',
+    description:
+      'Evaluation checklist for B2B logistics marketplaces—execution discipline, branch model, integrations, and pilot criteria beyond rate introductions.',
+    datePublished: '2026-06-01',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions.jpg',
+    keywords: ['logistics marketplace India', 'choose logistics software', 'B2B logistics evaluation'],
+    sections: [
+      {
+        heading: 'Start with execution, not introductions',
+        paragraphs: [
+          'A logistics marketplace should keep bookings, hubs, and MIS in one workspace after partners are onboarded—otherwise teams revert to WhatsApp and spreadsheets.',
+        ],
+      },
+      {
+        heading: 'Pilot with a defined hub set',
+        paragraphs: [
+          'Run a 90-day pilot on booking-to-POD, branch permissions, and finance alignment. See the logistics marketplace solution and book a demo for rollout-specific answers.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'logistics-control-tower-checklist-india',
+    title: 'Logistics control tower checklist for Indian operators',
+    description:
+      'Daily and weekly KPIs for a logistics control tower—OFD, inward backlog, branch throughput, and exception focus on Doorear MIS.',
+    datePublished: '2026-06-02',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-features-ai.jpg',
+    keywords: ['logistics control tower', 'supply chain visibility', 'logistics MIS dashboard'],
+    sections: [
+      {
+        heading: 'Daily standup metrics',
+        paragraphs: [
+          'Pipeline volume, OFD progress, inward queue age, and recurring delay lanes should be visible in minutes—not after analyst exports.',
+        ],
+      },
+      {
+        heading: 'Connect visibility to action',
+        paragraphs: [
+          'A control tower fails if it only charts problems. Pair MIS with branch-scoped accountability and hub supervisor workflows.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'reduce-rto-courier-networks-india',
+    title: 'How courier networks reduce RTO with booking discipline',
+    description:
+      'Reduce RTO and invalid routes with PIN validation, serviceable masters, and last-mile accountability on operator software.',
+    datePublished: '2026-06-03',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-3.jpg',
+    keywords: ['reduce RTO courier', 'PIN validation logistics', 'invalid booking prevention'],
+    sections: [
+      {
+        heading: 'Validate before sortation',
+        paragraphs: [
+          'PIN validation at booking time prevents capacity commits on lanes you cannot serve—reducing RTO noise and hub rework.',
+        ],
+      },
+      {
+        heading: 'Align last mile with hub truth',
+        paragraphs: [
+          'OFD and POD stages should share one consignment record with customer service and billing.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'hub-inward-queue-bottlenecks',
+    title: 'Fix hub inward queue bottlenecks before SLAs slip',
+    description:
+      'Why inward legs bottleneck and how hub operations software surfaces lag patterns for Indian courier supervisors.',
+    datePublished: '2026-06-04',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/hero-logistics-hub.jpg',
+    keywords: ['hub inward operations', 'hub operations software', 'inward leg delays'],
+    sections: [
+      {
+        heading: 'Inward is where drift starts',
+        paragraphs: [
+          'When inward queues grow, OFD promises slip downstream. Stage-level accountability makes root cause visible during standups.',
+        ],
+      },
+      {
+        heading: 'Supervisor workflows',
+        paragraphs: [
+          'Pair inward MIS with bag/manifest discipline so sortation teams know what must clear before the next dispatch window.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'ofd-metrics-courier-standups',
+    title: 'OFD metrics for courier daily standups',
+    description:
+      'Out-for-delivery KPIs branch managers should review every morning—OFD progress, delay patterns, and POD gaps.',
+    datePublished: '2026-06-05',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-1.jpg',
+    keywords: ['OFD metrics courier', 'last mile KPIs', 'courier standup MIS'],
+    sections: [
+      {
+        heading: 'OFD is a leading indicator',
+        paragraphs: [
+          'OFD progress predicts customer escalations before billing disputes. Track OFD by branch and lane, not only network totals.',
+        ],
+      },
+      {
+        heading: 'Close the loop with POD',
+        paragraphs: [
+          'OFD without POD discipline creates revenue leakage. Keep stages on one AWB record from booking through delivery.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: '3pl-rollout-phases-branch-pilot',
+    title: '3PL software rollout in phases: branch pilot playbook',
+    description:
+      'How to roll out 3PL operations software with a hub pilot, permissions, and success criteria before network-wide deployment.',
+    datePublished: '2026-06-06',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
+    keywords: ['3PL software rollout', 'logistics software implementation', 'branch pilot'],
+    sections: [
+      {
+        heading: 'Phase 1: hub set and roles',
+        paragraphs: [
+          'Pick two hubs and one franchise pattern. Define roles for booking, hub supervision, and read-only finance before expanding.',
+        ],
+      },
+      {
+        heading: 'Phase 2: booking-to-POD truth',
+        paragraphs: [
+          'Success means supervisors trust daily MIS—not only go-live checkmarks. Expand branches when exception rates stabilize.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'manufacturer-outbound-logistics-india',
+    title: 'Manufacturer outbound logistics in India',
+    description:
+      'How manufacturers coordinate plant dispatch, hubs, and distributor lanes with booking discipline and GST-oriented billing support.',
+    datePublished: '2026-06-07',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-logistics-hub.jpg',
+    keywords: ['manufacturer outbound logistics', 'logistics software for manufacturers'],
+    sections: [
+      {
+        heading: 'Outbound is multi-leg by default',
+        paragraphs: [
+          'Plant dispatch, regional hubs, and distributor delivery need one consignment story—not parallel spreadsheets per plant.',
+        ],
+      },
+      {
+        heading: 'Commercial alignment',
+        paragraphs: [
+          'Pair operational visibility with finance artifacts in one tenant when accounts modules are enabled.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'ecommerce-peak-season-courier-capacity',
+    title: 'eCommerce peak season capacity for courier networks',
+    description:
+      'Prepare courier networks for peak season with shipment top-ups, branch throughput views, and booking validation.',
+    datePublished: '2026-06-08',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/web-ops-6.jpg',
+    keywords: ['ecommerce peak season logistics', 'courier capacity planning', 'shipment top-ups'],
+    sections: [
+      {
+        heading: 'Plan capacity before the spike',
+        paragraphs: [
+          'Review subscription allowances and shipment top-ups with finance before peak weeks—not after limits block bookings.',
+        ],
+      },
+      {
+        heading: 'Watch inward and OFD together',
+        paragraphs: [
+          'Peak failures show up in inward backlog first. Use branch throughput MIS during daily control-room standups.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'logistics-software-security-rbac',
+    title: 'Logistics software security and RBAC for growing networks',
+    description:
+      'Why multi-tenant logistics SaaS needs least-privilege roles, branch scoping, and safe delegation as you add hubs and franchises.',
+    datePublished: '2026-06-09',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
+    keywords: ['logistics software RBAC', 'multi tenant logistics security', 'branch scoped access'],
+    sections: [
+      {
+        heading: 'Least privilege by design',
+        paragraphs: [
+          'Separate booking, analytics, and company setup permissions to reduce accidental changes and credential misuse blast radius.',
+        ],
+      },
+      {
+        heading: 'Branch scoping scales safer',
+        paragraphs: [
+          'Franchise and hub teams should see only the consignments and KPIs they operate—while headquarters retains network views.',
+        ],
+      },
+    ],
+  },
+  {
+    slug: 'when-not-to-buy-generic-tms',
+    title: 'When not to buy a generic TMS',
+    description:
+      'Scenarios where fleet-centric TMS tools underserve courier and 3PL hub networks—and what to buy instead.',
+    datePublished: '2026-06-10',
+    dateModified: '2026-06-04',
+    heroImage: '/images/marketing/hero-logistics-hub.jpg',
+    keywords: ['when not to buy TMS', 'courier software vs TMS', 'logistics operating system'],
+    sections: [
+      {
+        heading: 'Hub-heavy networks need consignment stages',
+        paragraphs: [
+          'If inward sort and franchise booking define your day, a TMS trip model may not match how work actually flows.',
+        ],
+      },
+      {
+        heading: 'Consider a logistics OS',
+        paragraphs: [
+          'Evaluate a logistics operating system that includes transport execution, marketplace connectivity, and branch RBAC—compare LOS vs TMS before you buy.',
+        ],
+      },
+    ],
+  },
 ]
 
 export function getPostBySlug(slug: string): BlogPost | undefined {

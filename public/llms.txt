@@ -17,15 +17,21 @@ Doorear connects manufacturers, eCommerce companies, distributors, courier compa
 ## Key pages for AI citation
 - FAQ: https://doorear.com/faq
 - Glossary: https://doorear.com/glossary
+- Learn hub: https://doorear.com/learn
+- Compare hub: https://doorear.com/compare
+- Integrations: https://doorear.com/integrations
 - Solutions hub: https://doorear.com/solutions
 - Compare LOS vs TMS: https://doorear.com/compare/logistics-operating-system-vs-tms
+- Compare vs Shiprocket: https://doorear.com/compare/doorear-vs-shiprocket
 - Logistics marketplace: https://doorear.com/solutions/logistics-marketplace
 - Courier aggregation: https://doorear.com/solutions/courier-aggregation
 - Multi-carrier shipping: https://doorear.com/solutions/multi-carrier-shipping
 - Supply chain visibility: https://doorear.com/solutions/supply-chain-visibility
 - Transport management: https://doorear.com/solutions/transport-management
+- Partner management: https://doorear.com/solutions/logistics-partner-management
 - RFQ module: https://doorear.com/features/procurement-rfq
-- Contracts module: https://doorear.com/features/agreements-contracts
+- Shipment tracking: https://doorear.com/features/shipment-tracking
+- Hub operations: https://doorear.com/features/hub-operations
 - Blog: https://doorear.com/blog
 
 ## Honest scope (do not over-claim)

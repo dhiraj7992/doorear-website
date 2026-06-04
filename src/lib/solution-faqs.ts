@@ -221,6 +221,104 @@ export const solutionPageFaqs: Record<string, readonly { q: string; a: string }[
       a: 'Doorear provides software structures for agreements—not legal advice. Your counsel owns compliance decisions.',
     },
   ],
+  'hub-operations': [
+    {
+      q: 'What hub stages does Doorear model?',
+      a: 'Inward legs, bags, manifests, and handoffs toward linehaul or last mile—with operational MIS for backlog and delays.',
+    },
+    {
+      q: 'Can hub managers see only their site?',
+      a: 'Yes—branch hierarchy and RBAC scope inward queues and KPIs to the right hubs.',
+    },
+    {
+      q: 'Does hub software include customer tracking only?',
+      a: 'No—Doorear is operator-first with stage-level execution visibility, not only customer-facing pings.',
+    },
+  ],
+  'multi-branch-rbac': [
+    {
+      q: 'How does multi-branch RBAC work?',
+      a: 'Parent/child branches and role permissions limit which bookings, analytics, and setup each user can access.',
+    },
+    {
+      q: 'Is franchise support included?',
+      a: 'Yes—franchise points can book locally while headquarters sees network MIS when roles allow.',
+    },
+    {
+      q: 'Can we delegate safely as we grow?',
+      a: 'Granular roles reduce risk compared to flat tenants where every user sees the entire network.',
+    },
+  ],
+  'gst-logistics-billing': [
+    {
+      q: 'Does Doorear provide tax advice?',
+      a: 'No—Doorear provides software structures for invoices and vouchers; your advisors own GST compliance decisions.',
+    },
+    {
+      q: 'Is billing tied to shipments?',
+      a: 'Finance artifacts are designed to reference the same tenant and shipment activity ops manages.',
+    },
+    {
+      q: 'Is checkout always in-product?',
+      a: 'Plans and renewals may coordinate offline—see Pricing for transparent subscription economics.',
+    },
+  ],
+  integrations: [
+    {
+      q: 'What can Doorear integrate with?',
+      a: 'Scope depends on your deployment—ERP, WMS, carrier, and analytics integrations should be confirmed with sales.',
+    },
+    {
+      q: 'Should we integrate before hub discipline?',
+      a: 'Establish booking-to-POD truth in Doorear first; integrations extend the system of record rather than replace it.',
+    },
+    {
+      q: 'Are APIs available?',
+      a: 'Confirm API and partner connector availability for your tenant during rollout planning.',
+    },
+  ],
+  'logistics-operating-system': [
+    {
+      q: 'What is a logistics operating system?',
+      a: 'An LOS unifies bookings, hub execution, MIS, procurement, and billing context for operator networks—not only label purchase.',
+    },
+    {
+      q: 'How is Doorear different from a TMS?',
+      a: 'Doorear includes transport execution inside a broader courier/3PL OS with marketplace and branch depth.',
+    },
+    {
+      q: 'Who should adopt an LOS?',
+      a: 'Mid-market Indian courier, 3PL, and enterprise networks with multi-branch accountability.',
+    },
+  ],
+  'courier-operations': [
+    {
+      q: 'What is courier operations software?',
+      a: 'Software for AWB booking, hub sort, delivery runs, PIN validation, and branch-scoped MIS.',
+    },
+    {
+      q: 'Does Doorear support POD?',
+      a: 'Yes—POD is part of the stage-aware shipment lifecycle; confirm field workflows with sales.',
+    },
+    {
+      q: 'Can eCommerce peaks be handled?',
+      a: 'Branch throughput views and shipment top-ups help during seasonal spikes.',
+    },
+  ],
+  'procurement-logistics': [
+    {
+      q: 'Is procurement required?',
+      a: 'Procurement modules are optional—enable RFQs and agreements when commercial teams need them in the same tenant.',
+    },
+    {
+      q: 'Can vendors respond in Doorear?',
+      a: 'Structured RFQ flows reduce email chaos; confirm deployed workflows for your tenant.',
+    },
+    {
+      q: 'Are agreements linked to ops?',
+      a: 'When modules are on, commercial artifacts sit beside operational data for reviews.',
+    },
+  ],
 }
 
 export function getPageFaqs(slug: string): readonly { q: string; a: string }[] {

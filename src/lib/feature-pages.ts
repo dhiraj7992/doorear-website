@@ -110,6 +110,100 @@ export const featurePages: FeaturePage[] = [
     ],
     heroImage: '/images/marketing/web-ops-5.jpg',
   },
+  {
+    slug: 'hub-operations',
+    metaTitle: 'Hub Operations Software | Courier India',
+    description:
+      'Hub operations software for inward queues, bagging, manifests, and handoffs to linehaul or last mile—on Doorear with stage-level accountability.',
+    keywords: [
+      'hub operations software',
+      'courier hub management',
+      'inward operations logistics',
+    ],
+    eyebrow: 'Features · Hub operations',
+    title: 'Hub operations software for',
+    titleHighlight: 'sortation and handoffs',
+    intro:
+      'Hub operations fail when inward lag is invisible until customers complain. Doorear models inward legs, bags, and manifests so supervisors see bottlenecks before SLAs slip.',
+    painPoints: [
+      'Inward queues tracked on whiteboards while CS uses a different status story.',
+      'Bag and manifest discipline inconsistent across branches.',
+      'No shared MIS for recurring inward delay patterns.',
+    ],
+    benefits: [
+      'Stage-aware records from booking through hub sort and onward legs.',
+      'Operational dashboards highlight inward backlog and OFD drift.',
+      'Branch-scoped visibility for hub managers vs central ops.',
+    ],
+    relatedBlogSlugs: [
+      'hub-inward-queue-bottlenecks',
+      'booking-to-delivery-shipment-lifecycle-doorear',
+    ],
+    heroImage: '/images/marketing/hero-logistics-hub.jpg',
+  },
+  {
+    slug: 'multi-branch-rbac',
+    metaTitle: 'Multi Branch Courier Software | RBAC',
+    description:
+      'Multi branch courier software with branch hierarchy, scoped users, and granular roles—how Doorear mirrors franchise and hub networks in India.',
+    keywords: [
+      'multi branch courier software',
+      'courier branch management',
+      'logistics RBAC India',
+    ],
+    eyebrow: 'Features · Multi-branch',
+    title: 'Multi-branch courier software with',
+    titleHighlight: 'scoped access and hierarchy',
+    intro:
+      'Multi-branch courier software should limit noise—franchise teams see their bookings and hubs, while headquarters retains control-tower MIS without micromanaging every scan.',
+    painPoints: [
+      'Flat tenants expose cross-branch data and create booking mistakes.',
+      'Permission changes require IT tickets for every new hub.',
+      'Franchise performance reviews lack branch-scoped KPIs.',
+    ],
+    benefits: [
+      'Parent/child branch hierarchy aligned to real sites.',
+      'Granular roles separate booking, analytics, and company setup.',
+      'Safer rollouts as you add cities and franchise points.',
+    ],
+    relatedBlogSlugs: [
+      'multi-branch-courier-operations-one-dashboard',
+      'courier-franchise-software-multi-branch',
+      'logistics-software-security-rbac',
+    ],
+    heroImage: '/images/marketing/page-solutions-ai.jpg',
+  },
+  {
+    slug: 'gst-logistics-billing',
+    metaTitle: 'GST Logistics Invoicing Software | India',
+    description:
+      'GST logistics invoicing software structures for Indian courier and 3PL tenants—tax invoices, vouchers, and company profiles tied to shipment activity on Doorear.',
+    keywords: [
+      'GST logistics invoicing software',
+      'courier billing software India',
+      'logistics tax invoice software',
+    ],
+    eyebrow: 'Features · GST billing',
+    title: 'GST logistics invoicing software with',
+    titleHighlight: 'ops-aligned finance artifacts',
+    intro:
+      'GST logistics invoicing software should sit in the same tenant as shipments—not a finance tool that re-imports volumes monthly. Doorear provides software structures; your advisors own compliance decisions.',
+    painPoints: [
+      'Finance rebuilds shipment lists from ops exports every month.',
+      'GST fields inconsistent across branches and products.',
+      'Billing disputes lack a shared consignment record with ops.',
+    ],
+    benefits: [
+      'Company profile and GST-oriented fields in one workspace.',
+      'Invoicing terms and AWB products aligned to how you bill.',
+      'Finance artifacts reference the same activity hubs manage daily.',
+    ],
+    relatedBlogSlugs: [
+      'gst-invoicing-accounts-logistics',
+      'subscription-plans-offline-billing-transparency',
+    ],
+    heroImage: '/images/marketing/page-pricing-ai.jpg',
+  },
 ]
 
 export function getFeatureBySlug(slug: string) {

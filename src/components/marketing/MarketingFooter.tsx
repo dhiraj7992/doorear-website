@@ -97,10 +97,20 @@ export default function MarketingFooter() {
                   </Link>
                 </li>
                 <li>
+                  <Link href='/learn' className='text-white/75 transition hover:text-white'>
+                    Learn
+                  </Link>
+                </li>
+                <li>
+                  <Link href='/compare' className='text-white/75 transition hover:text-white'>
+                    Compare
+                  </Link>
+                </li>
+                <li>
                   <Link
-                    href='/compare/logistics-operating-system-vs-tms'
+                    href='/integrations'
                     className='text-white/75 transition hover:text-white'>
-                    LOS vs TMS
+                    Integrations
                   </Link>
                 </li>
               </ul>

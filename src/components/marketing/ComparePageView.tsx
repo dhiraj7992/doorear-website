@@ -29,9 +29,11 @@ export default function ComparePageView({ page }: { page: ComparePage }) {
                     Aspect
                   </th>
                   <th className='py-3 pr-4 font-semibold text-[var(--app-primary)]'>
-                    Logistics OS (Doorear)
+                    {page.leftColumnLabel ?? 'Logistics OS (Doorear)'}
                   </th>
-                  <th className='py-3 font-semibold text-[var(--app-muted)]'>Typical TMS</th>
+                  <th className='py-3 font-semibold text-[var(--app-muted)]'>
+                    {page.rightColumnLabel ?? 'Typical TMS'}
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -83,17 +85,20 @@ export default function ComparePageView({ page }: { page: ComparePage }) {
 
           <ScrollReveal className='mt-10 text-sm text-[var(--app-muted)]'>
             Related:{' '}
-            <Link href='/glossary/logistics-operating-system' className='font-semibold text-[var(--app-primary)] hover:underline'>
-              LOS definition
-            </Link>
-            {' · '}
-            <Link href='/glossary/tms' className='font-semibold text-[var(--app-primary)] hover:underline'>
-              TMS definition
-            </Link>
-            {' · '}
-            <Link href='/solutions/transport-management' className='font-semibold text-[var(--app-primary)] hover:underline'>
-              Transport management
-            </Link>
+            {(page.relatedLinks ?? [
+              { href: '/glossary/logistics-operating-system', label: 'LOS definition' },
+              { href: '/glossary/tms', label: 'TMS definition' },
+              { href: '/solutions/transport-management', label: 'Transport management' },
+            ]).map((link, i, arr) => (
+              <span key={link.href}>
+                <Link
+                  href={link.href}
+                  className='font-semibold text-[var(--app-primary)] hover:underline'>
+                  {link.label}
+                </Link>
+                {i < arr.length - 1 ? ' · ' : null}
+              </span>
+            ))}
           </ScrollReveal>
         </div>
       </SectionShell>

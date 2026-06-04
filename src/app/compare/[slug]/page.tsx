@@ -7,6 +7,7 @@ import {
   getCompareBySlug,
 } from '@/lib/compare-pages'
 import { breadcrumbJsonLd, faqJsonLdFromItems } from '@/lib/seo-jsonld'
+import { safeJsonLdStringify } from '@/lib/safe-jsonld'
 
 type Props = { params: Promise<{ slug: string }> }
 
@@ -38,18 +39,21 @@ export default async function CompareSlugPage({ params }: Props) {
 
   const breadcrumbs = breadcrumbJsonLd([
     { name: 'Home', path: '/' },
-    { name: 'Compare', path: `/compare/${page.slug}` },
+    { name: 'Compare', path: '/compare' },
+    { name: page.h1, path: `/compare/${page.slug}` },
   ])
 
   return (
     <>
       <script
         type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLdFromItems(page.faqs)) }}
+        dangerouslySetInnerHTML={{
+          __html: safeJsonLdStringify(faqJsonLdFromItems(page.faqs)),
+        }}
       />
       <script
         type='application/ld+json'
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbs) }}
+        dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(breadcrumbs) }}
       />
       <ComparePageView page={page} />
     </>
