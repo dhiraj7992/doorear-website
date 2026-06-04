@@ -60,6 +60,14 @@ export default function MarketingContactForm() {
     e.preventDefault()
     setLoader(true)
     setErrorMessage('')
+
+    const email = formData.email.trim()
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErrorMessage('Enter a valid email address (e.g. name@company.com).')
+      setLoader(false)
+      return
+    }
+
     try {
       const res = await fetch(FORM_ENDPOINT, {
         method: 'POST',

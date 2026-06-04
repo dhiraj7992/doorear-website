@@ -1,9 +1,20 @@
-/** Contact form delivery — override with CONTACT_FORM_RECIPIENT in .env.local */
+/** Inbox that should receive lead emails (CC when using FormSubmit relay). */
 export const DEFAULT_CONTACT_FORM_RECIPIENT = 'yy.dhiraj@gmail.com'
+
+/**
+ * FormSubmit.co endpoint — must be an activated inbox.
+ * doorear.info@gmail.com is activated; yy.dhiraj@gmail.com needs one-time activation.
+ */
+export const DEFAULT_FORM_SUBMIT_INBOX = 'doorear.info@gmail.com'
 
 export function getContactFormRecipient(): string {
   const fromEnv = process.env.CONTACT_FORM_RECIPIENT?.trim()
   return fromEnv && fromEnv.includes('@') ? fromEnv : DEFAULT_CONTACT_FORM_RECIPIENT
+}
+
+export function getFormSubmitInbox(): string {
+  const fromEnv = process.env.CONTACT_FORM_FORMSUBMIT_INBOX?.trim()
+  return fromEnv && fromEnv.includes('@') ? fromEnv : DEFAULT_FORM_SUBMIT_INBOX
 }
 
 export type ContactFormPayload = {
@@ -59,11 +70,16 @@ export function buildFormSubmitBody(
 ) {
   const data = normalizeContactPayload(raw)
   const source = options?.source ?? 'doorear.com contact form'
+  const inbox = getFormSubmitInbox()
+  const notify = getContactFormRecipient()
+  const cc =
+    notify.toLowerCase() !== inbox.toLowerCase() ? notify : undefined
 
   return {
     _subject: `Doorear lead: ${data.fullName || data.email || 'New inquiry'}`,
     _template: 'table',
     _captcha: 'false',
+    _cc: cc,
     _replyto: data.email || undefined,
     Name: data.firstName,
     'Last name': data.lastName,
