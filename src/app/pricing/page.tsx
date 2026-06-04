@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: `Pricing | ${SITE_NAME}`,
     description:
-      'Compare Launch, Growth, Scale, and Enterprise plans with a real-time INR pricing estimator.',
+      'Compare Free trial, Launch, Growth, Scale, and Enterprise plans with a real-time INR pricing estimator.',
     url: '/pricing',
     type: 'website',
   },

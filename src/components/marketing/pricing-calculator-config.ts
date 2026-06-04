@@ -1,7 +1,7 @@
 export type BillingCycle = 'monthly' | 'annual'
 
 export type PlanConfig = {
-  id: 'launch' | 'growth' | 'scale' | 'enterprise'
+  id: 'free' | 'launch' | 'growth' | 'scale' | 'enterprise'
   name: string
   monthlyFee: number
   includedUsers: number
@@ -12,8 +12,14 @@ export type PlanConfig = {
   highlight?: boolean
   ctaLabel: string
   isContactSales?: boolean
+  isFreePlan?: boolean
+  /** Trial length in days (Free plan only). */
+  trialDays?: number
   startingFromLabel?: string
 }
+
+/** Add-on rates aligned with Launch (used by Free trial). */
+export const LAUNCH_EXTRA_USER_MONTHLY_FEE = 499
 
 export type ShipmentPack = {
   id: string
@@ -36,12 +42,26 @@ export const EXTRA_USER_OPTIONS = [0, 1, 5, 10, 15, 20] as const
 
 export const PRICING_PLANS: PlanConfig[] = [
   {
+    id: 'free',
+    name: 'Free',
+    monthlyFee: 0,
+    includedUsers: 2,
+    includedShipments: 100,
+    extraUserMonthlyFee: LAUNCH_EXTRA_USER_MONTHLY_FEE,
+    description:
+      'Evaluate Doorear with two seats and trial shipment volume—upgrade before the 10-day window ends.',
+    badge: 'Trial',
+    ctaLabel: 'Start Free',
+    isFreePlan: true,
+    trialDays: 10,
+  },
+  {
     id: 'launch',
     name: 'Launch',
     monthlyFee: 4999,
     includedUsers: 5,
     includedShipments: 1000,
-    extraUserMonthlyFee: 499,
+    extraUserMonthlyFee: LAUNCH_EXTRA_USER_MONTHLY_FEE,
     description: 'Best for teams starting structured branch-level operations.',
     badge: 'Starter',
     ctaLabel: 'Choose Launch',

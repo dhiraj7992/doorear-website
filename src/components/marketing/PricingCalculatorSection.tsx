@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { Check, LifeBuoy, PackagePlus, Users } from 'lucide-react'
 import SectionHeading from '@/components/marketing/SectionHeading'
 import { ScrollReveal, SectionShell } from '@/components/marketing/primitives'
@@ -42,6 +42,13 @@ export default function PricingCalculatorSection() {
     SHIPMENT_PACKS.find((pack) => pack.id === selectedPackId) ?? SHIPMENT_PACKS[0]
   const selectedSupportTier =
     SUPPORT_TIERS.find((tier) => tier.id === supportTierId) ?? SUPPORT_TIERS[0]
+
+  const isFreePlan = Boolean(selectedPlan.isFreePlan)
+  const extraUserOptions = isFreePlan ? ([0] as const) : EXTRA_USER_OPTIONS
+
+  useEffect(() => {
+    if (isFreePlan && extraUsers > 0) setExtraUsers(0)
+  }, [isFreePlan, extraUsers])
 
   const pricing = useMemo(() => {
     const basePlanMonthlyFee = selectedPlan.monthlyFee
@@ -97,58 +104,85 @@ export default function PricingCalculatorSection() {
         />
 
         <ScrollReveal className='mt-10'>
-          <div className='grid gap-6 lg:grid-cols-4'>
+          <div className='-mx-4 overflow-x-auto px-4 pb-1 sm:-mx-6 sm:px-6 lg:mx-0 lg:overflow-visible lg:px-0'>
+            <div className='pricing-plans-row grid grid-cols-5 gap-4 max-lg:min-w-[1080px] lg:gap-5'>
             {PRICING_PLANS.map((plan) => {
               const isSelected = selectedPlanId === plan.id
               return (
                 <article
                   key={plan.id}
                   className={cn(
-                    'premium-glass-panel rounded-2xl border p-6 shadow-sm transition',
-                    plan.highlight
-                      ? 'border-[var(--app-primary)] ring-2 ring-[var(--app-primary)]/15'
-                      : 'border-[var(--app-border)]',
+                    'premium-glass-panel flex min-w-0 flex-col rounded-2xl border border-[var(--app-border)] p-4 shadow-sm transition sm:p-5',
                     !plan.isContactSales &&
                       'cursor-pointer hover:-translate-y-0.5 hover:border-[var(--app-primary)]/30 hover:shadow-md',
-                    isSelected && 'border-[var(--app-primary)] ring-2 ring-[var(--app-primary)]/20'
+                    isSelected &&
+                      'border-[var(--app-primary)] ring-2 ring-[var(--app-primary)]/25 shadow-md'
                   )}
                   onClick={() => {
                     if (!plan.isContactSales) setSelectedPlanId(plan.id)
                   }}>
                   {plan.badge ? (
-                    <p className='mb-3 inline-flex rounded-full bg-[var(--app-surface)] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--app-muted)]'>
+                    <p
+                      className={cn(
+                        'mb-3 inline-flex rounded-full px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider',
+                        plan.highlight
+                          ? 'bg-[var(--app-primary)]/12 text-[var(--app-primary)]'
+                          : 'bg-[var(--app-surface)] text-[var(--app-muted)]'
+                      )}>
                       {plan.badge}
                     </p>
                   ) : null}
-                  <h3 className='text-xl font-bold text-[var(--app-foreground)]'>{plan.name}</h3>
-                  <p className='mt-3 text-3xl font-bold tracking-tight text-[var(--app-foreground)]'>
-                    {plan.isContactSales ? plan.startingFromLabel : formatInr(plan.monthlyFee)}
-                    {!plan.isContactSales ? (
+                  <h3 className='text-base font-bold text-[var(--app-foreground)] sm:text-lg'>
+                    {plan.name}
+                  </h3>
+                  <p className='mt-2 text-2xl font-bold tracking-tight text-[var(--app-foreground)] sm:mt-3 sm:text-[1.65rem]'>
+                    {plan.isContactSales
+                      ? plan.startingFromLabel
+                      : plan.isFreePlan
+                        ? 'Free'
+                        : formatInr(plan.monthlyFee)}
+                    {!plan.isContactSales && !plan.isFreePlan ? (
                       <span className='ml-1 text-sm font-medium text-[var(--app-muted)]'>/ month</span>
                     ) : null}
+                    {plan.isFreePlan ? (
+                      <span className='mt-1 block text-sm font-medium text-[var(--app-muted)]'>
+                        {plan.trialDays}-day trial
+                      </span>
+                    ) : null}
                   </p>
-                  <p className='mt-3 text-sm leading-relaxed text-[var(--app-muted)]'>{plan.description}</p>
+                  <p className='mt-2 text-xs leading-relaxed text-[var(--app-muted)] sm:text-sm'>
+                    {plan.description}
+                  </p>
                   {!plan.isContactSales ? (
-                    <ul className='mt-4 space-y-2 text-sm text-[var(--app-muted)]'>
+                    <ul className='mt-3 space-y-1.5 text-xs text-[var(--app-muted)] sm:space-y-2 sm:text-sm'>
                       <li className='flex items-center gap-2'>
-                        <Check className='h-4 w-4 text-[var(--chart-emerald)]' />
+                        <Check className='h-3.5 w-3.5 shrink-0 text-[var(--chart-emerald)] sm:h-4 sm:w-4' />
                         {plan.includedUsers} users included
                       </li>
                       <li className='flex items-center gap-2'>
-                        <Check className='h-4 w-4 text-[var(--chart-emerald)]' />
-                        {plan.includedShipments.toLocaleString('en-IN')} shipments / month
+                        <Check className='h-3.5 w-3.5 shrink-0 text-[var(--chart-emerald)] sm:h-4 sm:w-4' />
+                        {plan.includedShipments.toLocaleString('en-IN')} shipments
+                        {plan.isFreePlan ? ' (trial)' : ' / month'}
                       </li>
-                      <li className='flex items-center gap-2'>
-                        <Check className='h-4 w-4 text-[var(--chart-emerald)]' />
-                        Extra users {formatInr(plan.extraUserMonthlyFee)} / user / month
-                      </li>
+                      {plan.isFreePlan && plan.trialDays ? (
+                        <li className='flex items-center gap-2'>
+                          <Check className='h-3.5 w-3.5 shrink-0 text-[var(--chart-emerald)] sm:h-4 sm:w-4' />
+                          {plan.trialDays}-day access — then upgrade to continue
+                        </li>
+                      ) : null}
+                      {!plan.isFreePlan ? (
+                        <li className='flex items-center gap-2'>
+                          <Check className='h-3.5 w-3.5 shrink-0 text-[var(--chart-emerald)] sm:h-4 sm:w-4' />
+                          Extra users {formatInr(plan.extraUserMonthlyFee)} / user / month
+                        </li>
+                      ) : null}
                     </ul>
                   ) : (
                     <p className='mt-4 text-sm text-[var(--app-muted)]'>
                       Custom users, shipment limits, onboarding, and governance aligned to your network.
                     </p>
                   )}
-                  <div className='mt-5'>
+                  <div className='mt-auto pt-4'>
                     {plan.isContactSales ? (
                       <LinkButton href='/contact' variant='primary' size='block'>
                         {plan.ctaLabel}
@@ -169,6 +203,7 @@ export default function PricingCalculatorSection() {
                 </article>
               )
             })}
+            </div>
           </div>
         </ScrollReveal>
 
@@ -199,7 +234,9 @@ export default function PricingCalculatorSection() {
                   </div>
                 </div>
                 <p className='mt-3 text-sm text-[var(--app-muted)]'>
-                  Annual billing applies a {ANNUAL_DISCOUNT_PERCENT}% discount on the platform fee and keeps top-up and support charges at listed monthly rates.
+                  {isFreePlan
+                    ? 'Free trial has no platform fee. Shipment top-ups and support tiers use the same add-on prices as Launch.'
+                    : `Annual billing applies a ${ANNUAL_DISCOUNT_PERCENT}% discount on the platform fee and keeps top-up and support charges at listed monthly rates.`}
                 </p>
               </div>
 
@@ -209,13 +246,16 @@ export default function PricingCalculatorSection() {
                   <h3 className='text-lg font-semibold text-[var(--app-foreground)]'>Extra users</h3>
                 </div>
                 <p className='mt-2 text-sm text-[var(--app-muted)]'>
-                  Add named seats on top of your included users. Charges are based on your selected plan.
+                  {isFreePlan
+                    ? 'Free trial includes 2 users only—no extra seats during the trial window.'
+                    : 'Add named seats on top of your included users. Charges are based on your selected plan.'}
                 </p>
                 <select
                   value={extraUsers}
+                  disabled={isFreePlan}
                   onChange={(event) => setExtraUsers(Number(event.target.value))}
-                  className='mt-4 w-full rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] px-3 py-2.5 text-sm text-[var(--app-foreground)] outline-none transition focus:border-[var(--app-primary)] focus:ring-2 focus:ring-[var(--app-primary)]/20'>
-                  {EXTRA_USER_OPTIONS.map((value) => (
+                  className='mt-4 w-full rounded-xl border border-[var(--app-border)] bg-[var(--app-surface)] px-3 py-2.5 text-sm text-[var(--app-foreground)] outline-none transition focus:border-[var(--app-primary)] focus:ring-2 focus:ring-[var(--app-primary)]/20 disabled:cursor-not-allowed disabled:opacity-60'>
+                  {extraUserOptions.map((value) => (
                     <option key={value} value={value}>
                       +{value} {value === 1 ? 'user' : 'users'}
                     </option>
@@ -368,6 +408,14 @@ export default function PricingCalculatorSection() {
                     <span className='text-[var(--app-muted)]'>Plan selected</span>
                     <span className='font-medium text-[var(--app-foreground)]'>{selectedPlan.name}</span>
                   </div>
+                  {isFreePlan && selectedPlan.trialDays ? (
+                    <div className='flex items-center justify-between'>
+                      <span className='text-[var(--app-muted)]'>Trial duration</span>
+                      <span className='font-medium text-[var(--app-foreground)]'>
+                        {selectedPlan.trialDays} days
+                      </span>
+                    </div>
+                  ) : null}
                   <div className='flex items-center justify-between'>
                     <span className='text-[var(--app-muted)]'>Users included</span>
                     <span className='font-medium text-[var(--app-foreground)]'>{pricing.includedUsers}</span>
