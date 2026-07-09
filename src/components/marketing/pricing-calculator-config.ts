@@ -58,9 +58,9 @@ export const PRICING_PLANS: PlanConfig[] = [
   {
     id: 'launch',
     name: 'Launch',
-    monthlyFee: 4999,
-    includedUsers: 5,
-    includedShipments: 1000,
+    monthlyFee: 499,
+    includedUsers: 2,
+    includedShipments: 500,
     extraUserMonthlyFee: LAUNCH_EXTRA_USER_MONTHLY_FEE,
     description: 'Best for teams starting structured branch-level operations.',
     badge: 'Starter',
