@@ -17,6 +17,7 @@ const siteUrl = getSiteUrl()
 const supportUrl = getSupportUrl()
 const defaultOgImage = getOgImageUrl()
 const defaultGtmId = 'GTM-MD5MQRD5'
+const defaultGaMeasurementId = 'G-Y5V5FBK5K8'
 
 export const viewport: Viewport = {
   themeColor: '#0f172a',
@@ -88,6 +89,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID ?? defaultGtmId
+  const gaMeasurementId =
+    process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID ?? defaultGaMeasurementId
   const websiteJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
@@ -163,6 +166,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','${gtmId}');`,
             }}
           />
+        ) : null}
+        {gaMeasurementId ? (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}
+              strategy='afterInteractive'
+            />
+            <Script
+              id='ga4-base'
+              strategy='afterInteractive'
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${gaMeasurementId}');`,
+              }}
+            />
+          </>
         ) : null}
       </body>
     </html>
