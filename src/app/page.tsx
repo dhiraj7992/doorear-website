@@ -18,7 +18,7 @@ import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/components/marketing/
 import { safeJsonLdStringify } from '@/lib/safe-jsonld'
 
 export const metadata: Metadata = {
-  title: 'Operation Management Software for Courier, Logistics & 3PL Networks',
+  title: 'Logistics Management Software for Courier & 3PL Teams',
   description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {
