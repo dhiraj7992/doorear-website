@@ -36,6 +36,7 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    'operation management software',
     'logistics marketplace',
     'logistics operating system',
     'logistics management software',

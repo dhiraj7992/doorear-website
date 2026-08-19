@@ -38,8 +38,8 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.04 }}
               className='mt-4 text-[2.15rem] font-extrabold leading-[1.08] tracking-tight text-[var(--app-foreground)] sm:text-4xl md:text-5xl lg:mt-5 lg:text-[3.35rem] lg:leading-[1.06]'>
-              Logistics management software for{' '}
-              <span className='aigocy-gradient-text'>courier &amp; 3PL networks</span>
+              Operation management software for{' '}
+              <span className='aigocy-gradient-text'>courier, Logistics &amp; 3PL networks</span>
             </motion.h1>
 
             <motion.div
