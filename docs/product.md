@@ -1,6 +1,6 @@
-# Maa — product overview
+# Doorear — product overview
 
-**Maa** is operations software for **courier and logistics businesses**. It gives each company its own secure workspace: teams book shipments, run hubs and last-mile delivery, see operational and commercial analytics, handle accounts and GST-style documents, and manage company setup—from branches and coverage to users and roles.
+**Doorear** is operations software for **courier and logistics businesses**. It gives each company its own secure workspace: teams book shipments, run hubs and last-mile delivery, see operational and commercial analytics, handle accounts and GST-style documents, and manage company setup—from branches and coverage to users and roles.
 
 This document explains what the product **does for users and operators**, in plain language. It reflects **features present in this codebase**. Deeper technical detail (APIs, schema field names) lives in the same repo for engineering; visual standards are in **`design-system.md`**.
 
@@ -8,7 +8,7 @@ This document explains what the product **does for users and operators**, in pla
 
 ## What problem it solves
 
-Running a logistics operation means coordinating **bookings**, **hubs**, **routes**, **delivery**, **billing documents**, and **staff access**—often across branches. Maa centralizes that work in one web application so teams do not juggle disconnected spreadsheets and ad-hoc tools for day-to-day operations.
+Running a logistics operation means coordinating **bookings**, **hubs**, **routes**, **delivery**, **billing documents**, and **staff access**—often across branches. Doorear centralizes that work in one web application so teams do not juggle disconnected spreadsheets and ad-hoc tools for day-to-day operations.
 
 ---
 

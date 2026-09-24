@@ -27,7 +27,7 @@ export default function SectionHeading({
           <p
             className={cn(
               'text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--app-muted)]',
-              aigocy && 'aigocy-section-eyebrow'
+              aigocy && 'doorear-section-eyebrow aigocy-section-eyebrow'
             )}>
             {eyebrow}
           </p>

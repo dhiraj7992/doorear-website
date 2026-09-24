@@ -8,27 +8,28 @@ import {
 } from '@/components/marketing/site-config'
 
 export const metadata: Metadata = {
-  title: 'Contact Sales — Book a Demo',
+  title: 'Book an Enterprise Demo — Courier & 3PL Logistics OS',
   description:
-    'Reach the Doorear team at doorear.com: book a demo, ask about multi branch courier software fit, or discuss procurement, accounts, and subscription plans for your network.',
+    'Book a Doorear demo for multi-branch courier and 3PL networks: map hubs, permissions, MIS, GST billing, and shipment allowances to your operating model. Talk to sales at doorear.com/contact.',
   keywords: [
     'contact Doorear',
     'book courier software demo',
-    'logistics software sales contact',
+    'enterprise logistics software demo',
+    '3PL operations software consultation',
     'courier management software consultation',
   ],
   alternates: { canonical: '/contact' },
   openGraph: {
-    title: `Contact | ${SITE_NAME}`,
+    title: `Book Demo | ${SITE_NAME}`,
     description:
-      'Talk to us about hubs, permissions, MIS, GST-oriented invoicing support, shipment top-ups, and honest billing.',
+      'Enterprise walkthrough for hubs, permissions, MIS, GST-oriented invoicing, shipment top-ups, and honest billing.',
     url: '/contact',
     type: 'website',
   },
   twitter: {
-    title: `Contact | ${SITE_NAME}`,
+    title: `Book Demo | ${SITE_NAME}`,
     description:
-      'Book a rollout discussion for branches, MIS, permissions, and subscription planning.',
+      'Rollout discussion for multi-branch courier & 3PL teams—branches, MIS, permissions, subscription planning.',
   },
 }
 
@@ -51,28 +52,29 @@ export default function ContactPage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
       />
       <MarketingPageHero
-        eyebrow='Contact · Sales & onboarding'
+        eyebrow='Enterprise demo · Courier & 3PL networks'
         title={
           <>
-            Let&apos;s map <span className='aigocy-gradient-text'>your rollout</span> together
+            Book a walkthrough of{' '}
+            <span className='doorear-gradient-text aigocy-gradient-text'>your operating model</span>
           </>
         }
         description={
           <>
-            Book a demo or message {SITE_NAME}. Share branches, booking volumes,
-            seat counts, and what “go-live” means—whether you are evaluating
-            Standard vs Enterprise or need a Custom quote with unlimited
-            shipments.
+            Built for multi-branch courier and 3PL teams already running serious networks.
+            Share hub count, daily AWB volume, seat needs, and go-live criteria—we map
+            Doorear branches, permissions, MIS, and shipment allowances to how you
+            actually operate.
           </>
         }
-        extra='We respond with concrete next steps and honest scope—not generic brochures or integration promises your tenant has not deployed.'
+        extra='Prefer self-serve? Use Get Started for a pilot tenant. Large networks usually book a demo first so finance and ops align before rollout.'
         image={{
           src: '/images/marketing/web-ops-5.jpg',
-          alt: 'Open communication and partnership — contact Doorear',
+          alt: 'Enterprise demo conversation for Doorear logistics OS',
         }}
         imagePresentation='default'
-        imageCaption='Sales & onboarding for Indian courier and 3PL operators—branch rollouts, MIS workshops, and finance alignment.'
-        cta={{ href: '#contact-form', label: 'Send a message' }}
+        imageCaption='Live walkthrough for Indian courier and 3PL operators—hubs, MIS, RBAC, and billing honesty.'
+        cta={{ href: '#contact-form', label: 'Book enterprise demo' }}
         secondaryCta={{ href: APP_SIGNUP_URL, label: 'Get Started' }}
       />
       <ContactPageSections />

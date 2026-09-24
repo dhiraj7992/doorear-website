@@ -8,14 +8,14 @@ import { faqJsonLdFromItems, pricingSoftwareJsonLd } from '@/lib/seo-jsonld'
 import { PRICING_PLANS } from '@/components/marketing/pricing-calculator-config'
 
 export const metadata: Metadata = {
-  title: 'Pricing + Plan & Usage Calculator',
+  title: 'Doorear Pricing — Courier & 3PL Logistics OS Plans (INR)',
   description:
-    'Explore Doorear pricing plans in INR with an instant plan and usage calculator for users, shipment add-ons, support SLA, and billing cycle comparisons.',
+    'Compare Doorear logistics OS pricing in INR: Free trial, Launch, Growth, Scale, and Enterprise. Instant plan & usage calculator for seats, shipment add-ons, and support SLA.',
   alternates: { canonical: '/pricing' },
   openGraph: {
-    title: `Pricing | ${SITE_NAME}`,
+    title: `Pricing | ${SITE_NAME} logistics OS`,
     description:
-      'Compare Free trial, Launch, Growth, Scale, and Enterprise plans with a real-time INR pricing estimator.',
+      'Compare Free trial, Launch, Growth, Scale, and Enterprise plans with a real-time INR pricing estimator for courier and 3PL operators.',
     url: '/pricing',
     type: 'website',
   },

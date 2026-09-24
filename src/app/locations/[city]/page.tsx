@@ -83,12 +83,12 @@ export default async function LocationCityPage({ params }: Props) {
         eyebrow={`Location · ${location.city}`}
         title={
           <>
-            <span className='aigocy-gradient-text'>{location.city}</span> logistics
+            <span className='doorear-gradient-text aigocy-gradient-text'>{location.city}</span> logistics
             management software for courier teams
           </>
         }
-        description={`Doorear helps operators in ${location.city} run bookings, hub operations, delivery runs, and MIS in one branch-aware platform.`}
-        extra={`Designed for ${location.titleQualifier}.`}
+        description={`Doorear helps operators in ${location.city} run bookings, hub operations, delivery runs, and MIS in one branch-aware logistics OS—built for ${location.titleQualifier}.`}
+        extra={location.intro}
         image={{
           src: '/images/marketing/web-ops-3.jpg',
           alt: `${location.city} courier and logistics operations workflow`,

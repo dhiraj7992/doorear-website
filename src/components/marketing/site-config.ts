@@ -30,7 +30,7 @@ export function getOgImageUrl(): string {
   if (typeof process !== 'undefined' && process.env.NEXT_PUBLIC_OG_IMAGE_URL) {
     return process.env.NEXT_PUBLIC_OG_IMAGE_URL
   }
-  return `${getSiteUrl()}/images/insights/analytics-ops.png`
+  return `${getSiteUrl()}/opengraph-image`
 }
 
 export const APP_LOGIN_URL =

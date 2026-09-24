@@ -1,13 +1,13 @@
-# Maa design system
+# Doorear design system
 
-Use this document for **the web application** (`Frontend/`) and to keep **marketing sites, landing pages, and emails** visually aligned with the product. Values below come from **`Frontend/src/index.css`**, **`useThemeStore`**, and shared UI components unless noted.
+Use this document for **the web application** (`Frontend/`) and to keep **marketing sites, landing pages, and emails** visually aligned with the product. Marketing site tokens live in **`src/app/globals.css`** (Route Ink). App values may also come from **`Frontend/src/index.css`** and shared UI components.
 
 ---
 
 ## Purpose
 
 1. **Product UI** — Single source for colors, type scale patterns, and component behavior inside the React app (including user-tunable theme).  
-2. **Marketing & website** — Map landing pages and docs to the **same brand DNA** (primary blue, dark sidebar idiom, clean sans type) so prospects recognize Maa before login.  
+2. **Marketing & website** — Map landing pages and docs to the **same brand DNA** (Route Ink: ink navy, route teal, signal amber) so prospects recognize Doorear before login.  
 3. **Cross-platform consistency** — Apply the same rules when building **static sites**, **Webflow/WordPress**, or **email**: use the token hex values and hierarchy below rather than inventing a second palette.
 
 ---
@@ -15,8 +15,8 @@ Use this document for **the web application** (`Frontend/`) and to keep **market
 ## Brand pillars (non-technical)
 
 - **Professional & operational** — Feels like control-room software: clear hierarchy, dense-but-readable tables, subtle motion.  
-- **Trustworthy** — Primary blue (`#2563eb` default), ample whitespace, restrained shadows.  
-- **Logistics warmth (accent)** — Optional amber/orange touches (scrollbars, occasional gradients) suggest movement and energy without clownish color.
+- **Trustworthy** — Ink navy (`#0B1F33`) + route teal primary (`#0F766E`), ample whitespace, restrained shadows.  
+- **Logistics warmth (accent)** — Signal amber (`#C45C26`) for energy and movement without competing as the main brand color.
 
 ---
 
@@ -28,15 +28,16 @@ These are the **defaults** in `:root`. Dark mode mirrors are in `.dark` in `inde
 
 | Token | Default (light) | Role |
 |-------|-------------------|------|
-| `--app-primary` | `#2563eb` | CTAs, links, focus, key charts |
-| `--app-sidebar` | `#0f172a` | Nav rail (dark strip) |
-| `--app-surface` | `#f8fafc` | Page background |
+| `--app-primary` | `#0f766e` | CTAs, links, focus (route teal) |
+| `--app-accent` | `#c45c26` | Signal amber accents |
+| `--app-sidebar` / ink | `#0b1f33` | Nav rail / brand ink |
+| `--app-surface` | `#f7f8fa` | Page background |
 | `--app-card` | `#ffffff` | Cards, inputs surface |
 | `--app-border` | `#e2e8f0` | Dividers, table borders |
-| `--app-muted` | `#64748b` | Secondary text, labels |
-| `--app-foreground` | `#0f172a` | Primary text on light UI |
+| `--app-muted` | `#5b6b7c` | Secondary text, labels |
+| `--app-foreground` | `#0b1f33` | Primary text on light UI |
 
-**Marketing site recommendation:** Use **`--app-primary`** (or the hex above) for all primary buttons and links. Use **`--app-foreground`** for body copy and **`#64748b`** (or `--app-muted`) for supporting text—do not introduce a third neutral gray family unless necessary.
+**Marketing site recommendation:** Use **`--app-primary`** for primary buttons and links. Use **`--app-foreground`** for body copy and **`--app-muted`** for supporting text. Display: Syne; body: DM Sans on marketing pages.
 
 ### Dark mode
 
@@ -65,7 +66,7 @@ KPI and status colors in the app use **fixed Tailwind hues** (sky, emerald, viol
 
 `ui-sans-serif, system-ui, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif`
 
-**Website guidance:** Use the **same stack** on maa.com-style pages for parity. If marketing adopts **Inter** or **Geist**, restrict to **one** webfont and ensure weights map to app patterns (600–700 for headings, 400–500 for body).
+**Website guidance:** Marketing uses **Syne** (display) + **DM Sans** (body) via `next/font`. Keep product app stacks aligned; do not introduce Inter/Roboto as the marketing brand face.
 
 ### Hierarchy (align marketing to app)
 
@@ -86,7 +87,7 @@ App default button: **filled primary** (`bg` = primary, white text, `rounded-lg`
 
 **Marketing consistency:**
 
-- **Primary CTA** — Solid fill `#2563eb` (or current `--app-primary`), white text, rounded corners **8–12px** (`rounded-lg` / `rounded-xl`), no heavy 3D effects.  
+- **Primary CTA** — Solid fill `#0f766e` (or current `--app-primary`), white text, rounded corners **8–12px** (`rounded-lg` / `rounded-xl`), no heavy 3D effects.  
 - **Secondary** — Outline or light gray fill; border `#e2e8f0`.  
 - **Ghost** — Text-only with hover wash; use sparingly in hero.
 
@@ -154,7 +155,7 @@ Use this for **design QA** on any new surface (app or web).
 | **Product (React)** | Source of truth: `index.css` + `useThemeStore`. Theme drawer may change primary/sidebar per tenant—screenshots for marketing should note “default theme” if showing blue. |
 | **Marketing website** | Inline CSS variables copying the table above, or Tailwind with the same hex values. One global `--color-primary`. |
 | **Documentation (e.g. GitBook, Mintlify)** | Custom CSS injecting the same fonts and primary color; avoid default purple or green themes. |
-| **Email** | Limited CSS: use **inline styles** with `#2563eb` buttons, `#0f172a` text, system fonts, 16px body. No reliance on `color-mix` or dark mode in email. |
+| **Email** | Limited CSS: use **inline styles** with `#0f766e` buttons, `#0b1f33` text, system fonts, 16px body. No reliance on `color-mix` or dark mode in email. |
 | **Social / ads** | Hero imagery: dark sidebar + light content **or** clean white + blue CTA—both match brand; avoid off-brand gradients unrelated to logistics. |
 | **PDF / print** | Booking voucher print styles in `index.css` use `#0f172a` and slate borders—PDFs generated elsewhere should match for legal consistency. |
 

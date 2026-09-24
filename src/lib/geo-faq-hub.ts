@@ -130,8 +130,28 @@ const implementationFaqs = [
   },
 ] as const
 
+const geoFaqs = [
+  {
+    q: 'Does Doorear have offices in every Indian city listed?',
+    a: 'No. Location pages describe where Indian courier and 3PL networks operate with Doorear-style workflows—not physical Doorear offices or LocalBusiness NAP claims.',
+  },
+  {
+    q: 'Can we use Doorear across multiple cities from one tenant?',
+    a: 'Yes. Multi-branch hierarchy, PIN serviceability, and role-scoped users are designed for networks spanning metros and regional hubs in India.',
+  },
+  {
+    q: 'Which cities are covered on doorear.com/locations?',
+    a: 'Programmatic city pages currently include Delhi, Mumbai, Hyderabad, Bangalore, Chennai, Pune, Kolkata, Ahmedabad, Jaipur, Kochi, and Indore—each with local logistics context and links into solutions and guides.',
+  },
+  {
+    q: 'How do city pages help courier operators evaluating software?',
+    a: 'They map local network realities (hub density, e-com corridors, industrial belts) to Doorear capabilities—booking discipline, hub ops, MIS, and GST-aware accounts—then route to demos and pricing.',
+  },
+] as const
+
 export const faqCategories: FaqCategory[] = [
   { id: 'overview', title: 'Overview & entity', items: [...marketingFaqs, ...entityFaqs] },
+  { id: 'geo', title: 'India locations & network coverage', items: geoFaqs },
   { id: 'marketplace', title: 'Logistics marketplace', items: marketplaceFaqs },
   { id: 'aggregation', title: 'Courier aggregation', items: aggregationFaqs },
   { id: 'multi-carrier', title: 'Multi-carrier shipping', items: multiCarrierFaqs },

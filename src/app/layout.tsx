@@ -20,7 +20,7 @@ const defaultGtmId = 'GTM-MD5MQRD5'
 const defaultGaMeasurementId = 'G-Y5V5FBK5K8'
 
 export const viewport: Viewport = {
-  themeColor: '#0f172a',
+  themeColor: '#0b1f33',
   width: 'device-width',
   initialScale: 1,
 }
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   applicationName: SITE_NAME,
   title: {
-    default: `${SITE_NAME} | Logistics Marketplace & Operating System`,
+    default: `${SITE_NAME} | Logistics OS for Courier & 3PL Networks`,
     template: `%s | ${SITE_NAME}`,
   },
   description: SITE_DESCRIPTION,
@@ -40,6 +40,7 @@ export const metadata: Metadata = {
     'logistics operating system',
     'logistics management software',
     'courier management software',
+    'courier software India',
     'supply chain logistics platform',
     'shipment booking software',
     'logistics operations platform',
@@ -52,7 +53,7 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: siteUrl,
     siteName: SITE_NAME,
-    title: `${SITE_NAME} | Logistics marketplace & courier operations platform`,
+    title: `${SITE_NAME} | Smart Access. Smooth Delivery.`,
     description: SITE_DESCRIPTION,
     images: [
       {

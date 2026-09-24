@@ -8,9 +8,9 @@ import { getSiteUrl, SITE_NAME } from '@/components/marketing/site-config'
 import { breadcrumbJsonLd, faqJsonLdFromItems } from '@/lib/seo-jsonld'
 
 export const metadata: Metadata = {
-  title: 'Courier Software Features — Booking, Hubs, MIS & Accounts',
+  title: 'Courier Software Features — Booking, Hubs, MIS & GST Accounts',
   description:
-    'Explore Doorear features: shipment tracking software, RFQ management, booking and hub ops, logistics MIS, GST-oriented accounts, and procurement workflows for Indian courier and 3PL networks.',
+    'Doorear logistics OS features for Indian courier & 3PL networks: shipment booking and tracking, hub operations, multi-branch RBAC, PIN validation, MIS dashboards, RFQ procurement, and GST-oriented accounts.',
   keywords: [
     'shipment tracking software',
     'RFQ management software',
@@ -18,10 +18,11 @@ export const metadata: Metadata = {
     'shipment booking software',
     'logistics MIS dashboard',
     'logistics operating system',
+    'courier software India',
   ],
   alternates: { canonical: '/features' },
   openGraph: {
-    title: `Features | ${SITE_NAME} courier platform`,
+    title: `Features | ${SITE_NAME} logistics OS`,
     description:
       'Forward booking, manifests, branch hierarchy, PIN validation, analytics, accounts, procurement, and usage-based top-ups—aligned to real courier operations.',
     url: '/features',

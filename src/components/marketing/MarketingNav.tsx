@@ -68,13 +68,16 @@ export default function MarketingNav() {
         <div className='flex items-center gap-2 sm:gap-3'>
           <LinkButton
             href='/contact'
-            variant='secondary'
+            variant='primary'
             size='nav'
-            secondaryTone='muted'
-            className='hidden sm:inline-flex'>
+            className='hidden sm:inline-flex shadow-sm shadow-teal-700/20'>
             Book Demo
           </LinkButton>
-          <LinkButton href={APP_SIGNUP_URL} variant='primary' size='nav'>
+          <LinkButton
+            href={APP_SIGNUP_URL}
+            variant='secondary'
+            size='nav'
+            secondaryTone='muted'>
             Get Started
           </LinkButton>
           <Link
@@ -111,16 +114,16 @@ export default function MarketingNav() {
             ))}
             <LinkButton
               href='/contact'
-              variant='secondary'
+              variant='primary'
               size='navMobile'
-              secondaryTone='surface'
               onClick={() => setOpen(false)}>
               Book Demo
             </LinkButton>
             <LinkButton
               href={APP_SIGNUP_URL}
-              variant='primary'
+              variant='secondary'
               size='navMobile'
+              secondaryTone='surface'
               onClick={() => setOpen(false)}>
               Get Started
             </LinkButton>

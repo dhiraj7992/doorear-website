@@ -1,4 +1,4 @@
-# Maa — marketing & SEO reference
+# Doorear — marketing & SEO reference
 
 Audience: **website copywriters, growth, and SEO**. Grounded in **`docs/product.md`** and the current product scope—avoid promising integrations or checkout flows not verified in code.
 
@@ -6,7 +6,7 @@ Audience: **website copywriters, growth, and SEO**. Grounded in **`docs/product.
 
 ## Product summary (marketing-friendly)
 
-**Maa** is a **cloud operations platform for courier and logistics companies**. It helps teams **book and track shipments**, **coordinate hubs and last-mile delivery**, **run operational and commercial analytics**, and **manage company setup**—branches, coverage, fleet, partners, users, and roles—from one secure, multi-tenant workspace.
+**Doorear** is a **cloud operations platform for courier and logistics companies**. It helps teams **book and track shipments**, **coordinate hubs and last-mile delivery**, **run operational and commercial analytics**, and **manage company setup**—branches, coverage, fleet, partners, users, and roles—from one secure, multi-tenant workspace.
 
 **One-liner options:**
 
@@ -80,8 +80,8 @@ Audience: **website copywriters, growth, and SEO**. Grounded in **`docs/product.
 
 ### Branded
 
-- Maa logistics software  
-- Maa courier platform  
+- Doorear logistics software  
+- Doorear courier platform  
 
 ### Negative / clarify in copy (avoid confusion)
 
@@ -95,7 +95,7 @@ Audience: **website copywriters, growth, and SEO**. Grounded in **`docs/product.
 These map to **real modules** and support SEO while helping buyers evaluate fit.
 
 1. **“How to run multi-branch courier operations from one dashboard”** — branches, users, permissions, daily KPIs.  
-2. **“Booking to delivery: what a shipment lifecycle looks like in Maa”** — forward booking, hub concepts, inward/delivery (high level).  
+2. **“Booking to delivery: what a shipment lifecycle looks like in Doorear”** — forward booking, hub concepts, inward/delivery (high level).  
 3. **“PIN coverage and booking validation for logistics networks”** — serviceable locations, fewer bad bookings.  
 4. **“Analytics for operations teams: MIS, deliveries, and commercial insight”** — tie to dashboard + analytics areas.  
 5. **“Roles and permissions: keeping bookings and billing safe”** — RBAC, invites.  
@@ -107,8 +107,8 @@ These map to **real modules** and support SEO while helping buyers evaluate fit.
 
 **FAQ seeds for structured data**
 
-- What is Maa used for?  
-- Does Maa support multiple branches?  
+- What is Doorear used for?  
+- Does Doorear support multiple branches?  
 - Can we control who books shipments vs. who sees analytics?  
 - How does billing work for the subscription? (Answer honestly: plans + offline coordination as implemented.)
 
