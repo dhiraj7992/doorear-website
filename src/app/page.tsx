@@ -5,21 +5,20 @@ import TrustedByStrip from '@/components/marketing/TrustedByStrip'
 import CTABlock from '@/components/marketing/CTABlock'
 import FAQSection from '@/components/marketing/FAQSection'
 import { faqJsonLd } from '@/components/marketing/faq-content'
-import { WorkflowSection } from '@/components/marketing/HomeSections'
+import {
+  IndiaMarketSection,
+  WorkflowSection,
+} from '@/components/marketing/HomeSections'
 import HomePlatformSection from '@/components/marketing/HomePlatformSection'
 import HomeSolutionsCapabilityStrip from '@/components/marketing/HomeSolutionsCapabilityStrip'
 import AISection from '@/components/marketing/AISection'
+import AIDemoSection from '@/components/marketing/AIDemoSection'
 import ProductUiCallout from '@/components/marketing/ProductUiCallout'
-import {
-  APP_SIGNUP_URL,
-  getSiteUrl,
-  SITE_DESCRIPTION,
-  SITE_NAME,
-} from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/components/marketing/site-config'
 import { safeJsonLdStringify } from '@/lib/safe-jsonld'
 
 export const metadata: Metadata = {
-  title: 'Doorear — Logistics OS for Courier & 3PL Networks in India',
+  title: 'Logistics Management Software for Courier & 3PL Teams',
   description: SITE_DESCRIPTION,
   alternates: { canonical: '/' },
   openGraph: {
@@ -59,20 +58,18 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: safeJsonLdStringify(faqJsonLd()) }}
       />
       <HeroSection />
-      <TrustedByStrip />
       <HomeOperatorStats />
-      <ProductUiCallout />
+      <TrustedByStrip />
+      <IndiaMarketSection />
       <AISection />
+      <AIDemoSection />
+      <ProductUiCallout />
       <HomePlatformSection />
       <HomeSolutionsCapabilityStrip />
       <WorkflowSection />
       <CTABlock
-        title='Map Doorear to your courier network'
-        description='Book a live walkthrough for multi-branch courier and 3PL teams—branches, permissions, MIS, and shipment allowances on your operating model. Use Get Started when you are ready to pilot a defined hub set.'
-        primaryLabel='Book Demo'
-        primaryHref='/contact'
-        secondaryLabel='Get Started'
-        secondaryHref={APP_SIGNUP_URL}
+        title='See Doorear on your data model'
+        description='Book a live walkthrough to map branches, permissions, MIS, and subscription allowances to your network. Use Get Started when you are ready to pilot with a defined hub set and success criteria.'
       />
       <FAQSection />
     </>

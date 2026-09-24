@@ -20,7 +20,7 @@ export default function ProductUiCallout() {
               </p>
               <div className='flex flex-wrap gap-2'>
                 <span className='inline-flex items-center gap-2 rounded-full border border-[var(--app-border)] bg-white/60 px-3 py-1 text-xs font-semibold text-[var(--app-foreground)]'>
-                  <Sparkles className='h-3.5 w-3.5 text-[var(--app-accent)]' aria-hidden />
+                  <Sparkles className='h-3.5 w-3.5 text-amber-600' aria-hidden />
                   Real in-app screenshots
                 </span>
               </div>

@@ -11,7 +11,7 @@ import { solutionPages } from '@/lib/solution-pages'
 export const dynamic = 'force-static'
 export const revalidate = false
 
-const BUILD_DATE = new Date('2026-09-24')
+const BUILD_DATE = new Date('2026-06-04')
 
 function buildSitemap(): MetadataRoute.Sitemap {
   const base = getSiteUrl()

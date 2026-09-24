@@ -6,9 +6,9 @@ import { NAV_LINKS, SITE_DESCRIPTION, SITE_NAME } from './site-config'
 
 export default function MarketingFooter() {
   return (
-    <footer className='doorear-dark-band aigocy-dark-band relative overflow-hidden border-t border-white/10'>
+    <footer className='aigocy-dark-band relative overflow-hidden border-t border-white/10'>
       <div
-        className='pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[var(--app-primary)]/50 to-transparent'
+        className='pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#6493ea]/50 to-transparent'
         aria-hidden
       />
       <div className='marketing-container py-16 md:py-20'>
@@ -28,7 +28,7 @@ export default function MarketingFooter() {
           </div>
           <div className='grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-8 lg:grid-cols-4'>
             <div>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Product
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
@@ -46,7 +46,7 @@ export default function MarketingFooter() {
               </ul>
             </div>
             <div>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Solutions
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
@@ -62,7 +62,7 @@ export default function MarketingFooter() {
               </ul>
             </div>
             <div>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Company
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
@@ -82,7 +82,7 @@ export default function MarketingFooter() {
                   </Link>
                 </li>
               </ul>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Resources
               </p>
               <ul className='mt-3 space-y-2.5 text-sm'>
@@ -114,7 +114,7 @@ export default function MarketingFooter() {
                   </Link>
                 </li>
               </ul>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Cities
               </p>
               <ul className='mt-3 space-y-2 text-sm'>
@@ -130,7 +130,7 @@ export default function MarketingFooter() {
               </ul>
             </div>
             <div className='col-span-2 sm:col-span-1'>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Legal
               </p>
               <ul className='mt-4 space-y-2.5 text-sm'>
@@ -149,7 +149,7 @@ export default function MarketingFooter() {
                   </Link>
                 </li>
               </ul>
-              <p className='doorear-section-eyebrow aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
+              <p className='aigocy-section-eyebrow mt-6 text-[10px] font-semibold uppercase tracking-[0.18em] text-white/45'>
                 Connect
               </p>
               <Link

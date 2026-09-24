@@ -13,14 +13,14 @@ const buyerPersonas = [
 ]
 
 export const metadata: Metadata = {
-  title: 'India Locations — Courier & 3PL Logistics OS by City',
+  title: 'Locations — Courier Software for Major Indian Cities',
   description:
-    'Doorear logistics OS fit across Delhi, Mumbai, Hyderabad, Bangalore, Chennai, Pune, Kolkata, Ahmedabad, Jaipur, Kochi, and Indore—network coverage context for Indian courier and 3PL operators, not physical offices.',
+    'Explore Doorear logistics marketplace and courier software deployment fit across Delhi, Mumbai, Hyderabad, Bangalore, Chennai, Pune, Kolkata, and Ahmedabad.',
   alternates: { canonical: '/locations' },
   openGraph: {
-    title: `Locations | ${SITE_NAME} logistics OS`,
+    title: `Locations | ${SITE_NAME}`,
     description:
-      'City-focused courier operations pages for India: branch workflows, MIS, last-mile execution, and demo next steps.',
+      'City-focused courier operations pages for India: branch workflows, MIS, and last-mile execution.',
     url: '/locations',
   },
 }
@@ -32,19 +32,18 @@ export default function LocationsIndexPage() {
         eyebrow='Locations · India'
         title={
           <>
-            Courier &amp; 3PL software by{' '}
-            <span className='doorear-gradient-text aigocy-gradient-text'>Indian city</span>
+            Courier management software by{' '}
+            <span className='aigocy-gradient-text'>city</span>
           </>
         }
-        description='Choose your city for unique logistics-network context—how Doorear aligns booking, hubs, delivery runs, and MIS for branch-heavy operators in that market.'
-        extra='These pages describe network-ops fit across Indian metros—not Doorear offices. Evaluate rollout fit, then map branches, users, and shipment limits with our team before go-live.'
+        description='Choose your city to see how Doorear aligns booking, hubs, delivery runs, and MIS for branch-heavy courier and 3PL networks.'
+        extra='Each city page speaks to real lane pressure, branch coordination, and SLA expectations in that market. Use these pages to evaluate rollout fit, then map branches, users, and shipment limits with our team before go-live.'
         image={{
           src: '/images/marketing/web-ops-2.jpg',
           alt: 'Indian city operations and branch rollout planning',
         }}
         imagePresentation='default'
-        cta={{ href: '/contact', label: 'Book a network demo' }}
-        secondaryCta={{ href: '/pricing', label: 'See pricing' }}
+        cta={{ href: '/contact', label: 'Discuss your rollout' }}
       />
       <LocationsIndexSections
         locations={locationPages}

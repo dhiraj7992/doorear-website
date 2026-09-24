@@ -136,11 +136,11 @@ export function WorkflowSection() {
     <SectionShell spacing='default'>
       <div className='marketing-container'>
         <ScrollReveal className='mx-auto max-w-2xl text-center'>
-          <p className='doorear-section-eyebrow aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--app-muted)]'>
-            Operator OS flow
+          <p className='aigocy-section-eyebrow text-[10px] font-semibold uppercase tracking-[0.2em] text-[var(--app-muted)]'>
+            End-to-end flow
           </p>
           <h2 className='mt-3 text-3xl font-bold tracking-tight text-[var(--app-foreground)] md:text-4xl lg:text-[2.75rem] lg:leading-[1.12]'>
-            Book → hub → OFD → MIS → accounts
+            From booking intent to proof of delivery
           </h2>
           <p className='mt-4 text-base text-[var(--app-muted)] md:text-lg'>
             Doorear connects operational steps your teams already perform—now with
@@ -189,17 +189,17 @@ export function WorkflowSection() {
         </div>
         <ScrollReveal className='mt-14 flex flex-wrap justify-center gap-4' delay={0.1}>
           <LinkButton
-            href='/contact'
+            href={APP_SIGNUP_URL}
             variant='primary'
             size='sectionWide'>
-            Book Demo
+            Get Started
           </LinkButton>
           <LinkButton
-            href={APP_SIGNUP_URL}
+            href='/pricing'
             variant='secondary'
             size='sectionWide'
             secondaryTone='surface'>
-            Get Started
+            View plans &amp; limits
           </LinkButton>
         </ScrollReveal>
       </div>

@@ -4,12 +4,7 @@ import MarketingPageHero from '@/components/marketing/MarketingPageHero'
 import RelatedGuidesSection from '@/components/marketing/RelatedGuidesSection'
 import { SolutionPagesGrid } from '@/components/marketing/SolutionsAudienceGrid'
 import SolutionsPageSections from '@/components/marketing/SolutionsPageSections'
-import {
-  APP_SIGNUP_URL,
-  getSiteUrl,
-  SITE_DESCRIPTION,
-  SITE_NAME,
-} from '@/components/marketing/site-config'
+import { getSiteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/components/marketing/site-config'
 import { breadcrumbJsonLd } from '@/lib/seo-jsonld'
 import {
   audienceSolutionPages,
@@ -17,9 +12,9 @@ import {
 } from '@/lib/solution-pages'
 
 export const metadata: Metadata = {
-  title: 'Doorear Solutions — Logistics OS for Courier, 3PL & Supply Chain Teams',
+  title: 'Logistics Marketplace & 3PL Solutions for Supply Chain Teams',
   description:
-    'Explore Doorear solutions for manufacturers, eCommerce logistics, transporters, 3PL operators, courier franchise networks, and capability plays like marketplace, multi-carrier, and supply chain visibility—built for Indian ops.',
+    'Doorear connects manufacturers, eCommerce companies, distributors, couriers, transporters, and 3PL providers on a unified logistics marketplace and operating system for Indian supply chains.',
   keywords: [
     'logistics marketplace',
     'logistics operating system',
@@ -82,8 +77,8 @@ export default function SolutionsPage() {
         eyebrow='Solutions · Marketplace & audiences'
         title={
           <>
-            A logistics OS for teams who{' '}
-            <span className='doorear-gradient-text aigocy-gradient-text'>run courier &amp; 3PL networks</span>
+            A logistics marketplace for teams who{' '}
+            <span className='aigocy-gradient-text'>run supply chain operations</span>
           </>
         }
         description={
@@ -119,12 +114,8 @@ export default function SolutionsPage() {
         title='Solution guides'
       />
       <CTABlock
-        title='Map Doorear to your branch model'
-        description='Book a live walkthrough for multi-branch courier and 3PL networks—hubs, permissions, MIS, and rollout phases mapped transparently, without overselling integrations that are not deployed for your tenant.'
-        primaryLabel='Book Demo'
-        primaryHref='/contact'
-        secondaryLabel='Get Started'
-        secondaryHref={APP_SIGNUP_URL}
+        title='Tell us about your branch model'
+        description='We will map hubs, permissions, MIS, and rollout phases to your network—transparently and without overselling integrations that are not deployed for your tenant.'
       />
     </>
   )

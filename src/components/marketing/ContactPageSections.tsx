@@ -7,18 +7,18 @@ import { IconBadge, PremiumCard, ScrollReveal, SectionShell } from '@/components
 const bullets = [
   {
     icon: Mail,
-    title: 'What enterprise buyers send',
-    text: 'Branch / hub count, average daily shipments, franchise vs owned mix, current tools, and whether procurement or deep finance modules matter in phase one.',
+    title: 'What to include',
+    text: 'Branch count, average daily shipments, current tools, and whether you need procurement or deep finance modules in phase one.',
   },
   {
     icon: Clock,
-    title: 'How we run the demo',
-    text: 'We prioritize operational detail: pilot hub set, training expectations, MIS standup rhythm, and how finance approves subscriptions (including offline billing where needed).',
+    title: 'Response time',
+    text: 'We prioritize operational detail: timelines for pilot hubs, training expectations, and how your finance team handles subscription approvals.',
   },
   {
     icon: MessageSquare,
-    title: 'Honest conversation',
-    text: 'No scripted fluff—we walk booking → hub → delivery → MIS on real workflows and only discuss integrations that are actually live for your deployment.',
+    title: 'Conversation style',
+    text: 'No scripted fluff—we walk real workflows (booking → hub → delivery → MIS) and align expectations on integrations that are actually live.',
   },
 ]
 
@@ -48,10 +48,10 @@ export default function ContactPageSections() {
             id='contact-form'
             className='premium-glass-panel scroll-mt-28 rounded-3xl border border-[var(--app-border)] p-8 shadow-lg shadow-slate-900/5 md:p-10'>
             <h2 className='text-center text-xl font-bold text-[var(--app-foreground)] md:text-2xl'>
-              Request your network walkthrough
+              Send a message
             </h2>
             <p className='mt-2 text-center text-sm text-[var(--app-muted)]'>
-              Tell us about your corridors and hubs—we route you to the right specialist.
+              All fields help us route you to the right specialist.
             </p>
             <div className='mt-8'>
               <MarketingContactForm />

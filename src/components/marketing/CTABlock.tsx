@@ -55,40 +55,26 @@ export default function CTABlock({
               <LinkButton
                 href={primaryHref}
                 variant='primary'
-                onClick={() => {
-                  const isDemo =
-                    primaryHref.includes('/contact') ||
-                    primaryLabel.toLowerCase().includes('demo')
-                  trackEvent(
-                    isDemo ? 'marketing_demo_click' : 'marketing_signup_click',
-                    {
-                      source: 'cta_block',
-                      cta: primaryLabel.toLowerCase().replace(/\s+/g, '_'),
-                    }
-                  )
-                }}
-                size='cta'
-                className='shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5'>
+                onClick={() =>
+                  trackEvent('marketing_signup_click', {
+                    source: 'cta_block',
+                    cta: primaryLabel.toLowerCase().replace(/\s+/g, '_'),
+                  })
+                }
+                size='cta'>
                 {primaryLabel}
               </LinkButton>
               <LinkButton
                 href={secondaryHref}
                 variant='secondary'
-                onClick={() => {
-                  const isDemo =
-                    secondaryHref.includes('/contact') ||
-                    secondaryLabel.toLowerCase().includes('demo')
-                  trackEvent(
-                    isDemo ? 'marketing_demo_click' : 'marketing_signup_click',
-                    {
-                      source: 'cta_block',
-                      cta: secondaryLabel.toLowerCase().replace(/\s+/g, '_'),
-                    }
-                  )
-                }}
+                onClick={() =>
+                  trackEvent('marketing_demo_click', {
+                    source: 'cta_block',
+                    cta: secondaryLabel.toLowerCase().replace(/\s+/g, '_'),
+                  })
+                }
                 size='cta'
-                secondaryTone='surface'
-                className='transition hover:-translate-y-0.5'>
+                secondaryTone='surface'>
                 {secondaryLabel}
               </LinkButton>
             </div>
